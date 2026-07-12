@@ -14,11 +14,14 @@ public class PublicEndpointsConfig {
             "/error",
             "/api/v3/roles",
             "/api/v3/auth/authenticate",
+            "/api/tiles/**"
     };
 
     // ✅ только POST-запросы без авторизации
     public static final String[] PUBLIC_POST_ENDPOINTS = {
             "/api/v3/auth/authenticate",
-            "/api/v3/roles"// регистрация и логин
+            "/api/v3/roles",
+            "/api/admin/*",
+            "/api/tiles/**"
     };
 }
