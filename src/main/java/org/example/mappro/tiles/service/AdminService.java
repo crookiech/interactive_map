@@ -24,10 +24,9 @@ public class AdminService {
     private final WKTReader wktReader = new WKTReader();
 
     @Transactional
-    public GeoObject createGeoObject(GeoObjectCreateDto dto) {
+    public GeoObject createGeoObject(GeoObjectCreateDto dto) {  // Возвращаем сущность
         try {
             Geometry geometry = wktReader.read(dto.getGeometryWkt());
-            // Устанавливаем SRID=4326 (градусы)
             geometry.setSRID(4326);
 
             GeoObject geoObject = new GeoObject();
@@ -48,7 +47,7 @@ public class AdminService {
     }
 
     @Transactional
-    public Violation createViolation(ViolationCreateDto dto) {
+    public Violation createViolation(ViolationCreateDto dto) {  // Возвращаем сущность
         if (!geoRepository.existsById(dto.getGeoObjectId())) {
             throw new RuntimeException("GeoObject with id " + dto.getGeoObjectId() + " not found");
         }

@@ -62,8 +62,6 @@ public class TileService {
         return buildFeatureCollection(objects, z, request.getLang());
     }
 
-    // ========== Вспомогательные методы (без изменений) ==========
-
     private FeatureCollection buildFeatureCollection(List<GeoObjectDto> objects, int z, String lang) {
         FeatureCollection collection = new FeatureCollection();
         List<Feature> features = objects.stream()
