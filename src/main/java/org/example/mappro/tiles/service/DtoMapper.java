@@ -15,17 +15,19 @@ public class DtoMapper {
         }
 
         return GeoObjectResponseDto.builder()
-                .id(geoObject.getId())
-                .name(geoObject.getName())
-                .type(geoObject.getType())
-                .geometryWkt(geoObject.getGeometry() != null ? geoObject.getGeometry().toText() : null)
-                .parentId(geoObject.getParentId())
-                .lodMin(geoObject.getLodMin())
-                .lodMax(geoObject.getLodMax())
-                .labelPriority(geoObject.getLabelPriority())
-                .isSegment(geoObject.getIsSegment())
-                .segmentOrder(geoObject.getSegmentOrder())
-                .build();
+            .id(geoObject.getId())
+            .name(geoObject.getName())
+            .typeName(geoObject.getType() != null ? geoObject.getType().getName() : null)
+            .typeId(geoObject.getType() != null ? geoObject.getType().getId() : null)
+            .geometryWkt(geoObject.getGeometry() != null ? geoObject.getGeometry().toText() : null)
+            .parentId(geoObject.getParent() != null ? geoObject.getParent().getId() : null)
+            .parentName(geoObject.getParent() != null ? geoObject.getParent().getName() : null)
+            .lodMin(geoObject.getLodMin())
+            .lodMax(geoObject.getLodMax())
+            .labelPriority(geoObject.getLabelPriority())
+            .isSegment(geoObject.getIsSegment())
+            .segmentOrder(geoObject.getSegmentOrder())
+            .build();
     }
 
     public ViolationResponseDto toViolationResponseDto(Violation violation) {
@@ -34,12 +36,11 @@ public class DtoMapper {
         }
 
         return ViolationResponseDto.builder()
-                .id(violation.getId())
-                .geoObjectId(violation.getGeoObjectId())
-                .type(violation.getType())
-                .severity(violation.getSeverity())
-                .date(violation.getDate())
-                .description(violation.getDescription())
-                .build();
+            .id(violation.getId())
+            .typeId(violation.getType() != null ? violation.getType().getId() : null)
+            .severity(violation.getSeverity())
+            .date(violation.getDate())
+            .description(violation.getDescription())
+            .build();
     }
 }

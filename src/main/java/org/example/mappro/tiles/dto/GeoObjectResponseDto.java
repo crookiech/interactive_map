@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 public class GeoObjectResponseDto {
     private Long id;
     private String name;
-    private String type;
-    private String geometryWkt;  // геометрия в виде WKT строки
+    private String typeName;
+    private Long typeId;
+    private String geometryWkt;
     private Long parentId;
+    private String parentName;
     private Integer lodMin;
     private Integer lodMax;
     private Integer labelPriority;

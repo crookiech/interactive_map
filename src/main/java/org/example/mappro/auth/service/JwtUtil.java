@@ -6,7 +6,6 @@ import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -34,7 +33,7 @@ public class JwtUtil {
         this.refreshExpiration = refreshExpiration;
     }
 
-    // ======= ACCESS TOKEN =======
+    // ACCESS TOKEN
     public String generateAccessToken(String username, List<String> roles) {
         return Jwts.builder()
                 .subject(username)
@@ -45,7 +44,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ======= REFRESH TOKEN =======
+    //REFRESH TOKEN
     public String generateRefreshToken(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -55,13 +54,12 @@ public class JwtUtil {
                 .compact();
     }
 
-    // ======= Извлечение / валидация =======
     public String extractUsername(String token, boolean isRefresh) {
-        return extractClaim(token, Claims::getSubject, isRefresh);
+        return extractClaim(token, claims -> claims != null ? claims.getSubject() : null, isRefresh);
     }
 
     public Date extractExpiration(String token, boolean isRefresh) {
-        return extractClaim(token, Claims::getExpiration, isRefresh);
+        return extractClaim(token, claims -> claims != null ? claims.getExpiration() : null, isRefresh);
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> resolver, boolean isRefresh) {
@@ -87,9 +85,12 @@ public class JwtUtil {
 
     public List<String> extractRoles(String token) {
         Claims claims = extractAllClaims(token, false);
+        if (claims == null) {
+            return List.of();
+        }
         Object rawRoles = claims.get("roles");
         if (rawRoles instanceof List<?> list) {
-            return list.stream().map(Object::toString).toList();
+            return list.stream().map(String::valueOf).toList();
         }
         return List.of();
     }

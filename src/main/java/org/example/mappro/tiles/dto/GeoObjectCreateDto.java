@@ -1,12 +1,10 @@
 package org.example.mappro.tiles.dto;
 
-
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class GeoObjectCreateDto {
-
     @NotBlank(message = "Name is required")
     private String name;
 
@@ -14,7 +12,7 @@ public class GeoObjectCreateDto {
     private String type;
 
     @NotBlank(message = "Geometry WKT is required")
-    private String geometryWkt;   // например: "POINT(30.5 50.4)"
+    private String geometryWkt;
 
     private Long parentId;
     private Integer lodMin = 0;

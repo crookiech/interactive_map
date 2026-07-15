@@ -1,23 +1,28 @@
 package org.example.mappro.tiles.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "violations")
 @Data
 public class Violation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "geo_object_id")
-    private Long geoObjectId;
-    private String type;
-    private String severity;   // HIGH, MEDIUM, LOW
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id")
+    private ViolationType type;
+
+    private String severity;
     private LocalDateTime date;
     private String description;
+    private String status;
+
+    @OneToMany(mappedBy = "violation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<GeoObjectViolation> geoObjectViolations;
 }
+

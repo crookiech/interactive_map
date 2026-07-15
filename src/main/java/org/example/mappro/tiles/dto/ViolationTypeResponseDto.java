@@ -4,16 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ViolationResponseDto {
+public class ViolationTypeResponseDto {
     private Long id;
-    private Long typeId;
-    private String severity;
-    private LocalDateTime date;
-    private String description;
+    private String type;
 }
