@@ -14,7 +14,8 @@ public class PublicEndpointsConfig {
             "/error",
             "/api/v3/roles",
             "/api/v3/auth/authenticate",
-            "/api/tiles/**"
+            "/api/tiles/**",
+            "/api/admin/import/**"
     };
 
     // ✅ только POST-запросы без авторизации
@@ -22,6 +23,7 @@ public class PublicEndpointsConfig {
             "/api/v3/auth/authenticate",
             "/api/v3/roles",
             "/api/admin/*",
-            "/api/tiles/**"
+            "/api/tiles/**",
+            "/api/admin/import/**"
     };
 }

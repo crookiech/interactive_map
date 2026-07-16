@@ -11,4 +11,6 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
     List<GeoObject> findByType(Long type);
 
     List<GeoObject> findByParent(Long parent);
+
+    List<GeoObject> findAllByType_NameOrderByIdAsc(String typeName);
 }
