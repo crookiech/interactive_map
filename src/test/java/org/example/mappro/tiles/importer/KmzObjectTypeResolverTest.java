@@ -1,6 +1,7 @@
 package org.example.mappro.tiles.importer;
 
 import org.example.mappro.tiles.importer.model.ImportedPlacemark;
+import org.example.mappro.tiles.importer.service.KmzObjectTypeResolver;
 import org.junit.jupiter.api.Test;
 import org.locationtech.jts.io.WKTReader;
 

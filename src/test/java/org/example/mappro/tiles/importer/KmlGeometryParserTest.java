@@ -1,5 +1,6 @@
 package org.example.mappro.tiles.importer;
 
+import org.example.mappro.tiles.importer.service.KmlGeometryParser;
 import org.junit.jupiter.api.Test;
 import org.locationtech.jts.geom.LineString;
 
