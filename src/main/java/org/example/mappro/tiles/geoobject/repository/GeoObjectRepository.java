@@ -18,23 +18,26 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
     List<GeoObject> findByParent(Long parent);
 
     @Query(value = """
-        SELECT go.id, go.name, go.type,
+        SELECT go.id, go.name, got.name as type,
             ST_AsGeoJSON(ST_Simplify(go.geometry, :simplifyTolerance, true)) AS geometryJson,
             go.parent_id AS parentId, go.label_priority AS labelPriority, go.is_segment AS isSegment,
-            go.segment_order AS segmentOrder, COUNT(v.id) AS violationCount, ARRAY_AGG(DISTINCT v.type) AS violationTypes
+            go.segment_order AS segmentOrder, COUNT(v.id) AS violationCount, ARRAY_AGG(DISTINCT vt.name) AS violationTypes
         FROM geo_objects go
-        LEFT JOIN violations v ON v.geo_object_id = go.id
+        LEFT JOIN geo_object_types got ON go.type_id = got.id
+        LEFT JOIN geo_object_violation gov ON gov.object_id = go.id
+        LEFT JOIN violations v ON gov.violation_id = v.id
+        LEFT JOIN violation_types vt ON v.type_id = vt.id
         WHERE
             ST_Intersects(ST_Transform(go.geometry, 4326), ST_Transform(ST_MakeEnvelope(:xmin, :ymin, :xmax, :ymax, 3857), 4326))
             AND go.lod_min <= :z AND go.lod_max >= :z
-            AND (:showCities = TRUE OR go.type != 'CITY')
-            AND (COALESCE(CAST(:types AS text[]), '{}'::text[]) = '{}'::text[] OR go.type = ANY(CAST(:types AS text[])))
+            AND (:showCities = TRUE OR got.name != 'CITY')
+            AND (COALESCE(CAST(:types AS text[]), '{}'::text[]) = '{}'::text[] OR got.name = ANY(CAST(:types AS text[])))
             AND (COALESCE(CAST(:severities AS text[]), '{}'::text[]) = '{}'::text[] OR v.severity = ANY(CAST(:severities AS text[])))
             AND (:fromDate IS NULL OR v.date >= :fromDate)
             AND (:returnSegments = FALSE OR go.is_segment = TRUE)
         GROUP BY
             go.id, go.geometry, go.parent_id, go.label_priority,
-            go.is_segment, go.segment_order
+            go.is_segment, go.segment_order, got.name
         LIMIT 2000
     """, nativeQuery = true)
     List<GeoObjectTileProjectionDto> findObjectsForTile(
@@ -50,5 +53,6 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
             @Param("simplifyTolerance") double simplifyTolerance,
             @Param("returnSegments") boolean returnSegments
     );
+    
     List<GeoObject> findAllByType_NameOrderByIdAsc(String typeName);
 }
