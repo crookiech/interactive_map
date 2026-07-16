@@ -2,6 +2,7 @@ package org.example.mappro.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.mappro.auth.service.JwtRequestFilter;
+import org.example.mappro.auth.service.AuthErrorResponseWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -27,9 +28,11 @@ import java.util.List;
 public class SecurityConfig {
 
     private final JwtRequestFilter jwtRequestFilter;
+    private final AuthErrorResponseWriter errorWriter;
 
-    public SecurityConfig(JwtRequestFilter jwtRequestFilter) {
+    public SecurityConfig(JwtRequestFilter jwtRequestFilter, AuthErrorResponseWriter errorWriter) {
         this.jwtRequestFilter = jwtRequestFilter;
+        this.errorWriter = errorWriter;
     }
 
     @Bean
@@ -95,11 +98,11 @@ public class SecurityConfig {
             .exceptionHandling(handling -> handling
                 .accessDeniedHandler((request, response, ex) -> {
                     log.error("Access denied for path: {}", request.getRequestURI());
-                    response.sendError(403, "Access Denied");
+                    errorWriter.write(response, 403, "Недостаточно прав");
                 })
                 .authenticationEntryPoint((request, response, ex) -> {
                     log.error("Unauthorized for path: {}", request.getRequestURI());
-                    response.sendError(401, "Unauthorized");
+                    errorWriter.write(response, 401, "Требуется авторизация");
                 })
             )
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
