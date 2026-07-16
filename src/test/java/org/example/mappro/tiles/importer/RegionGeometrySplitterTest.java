@@ -1,6 +1,6 @@
 package org.example.mappro.tiles.importer;
 
-import org.example.mappro.tiles.model.GeoObject;
+import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.importer.service.RegionGeometrySplitter;
 import org.junit.jupiter.api.Test;
 import org.locationtech.jts.io.WKTReader;

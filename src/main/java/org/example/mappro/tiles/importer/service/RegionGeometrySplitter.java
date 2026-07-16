@@ -1,6 +1,6 @@
 package org.example.mappro.tiles.importer.service;
 
-import org.example.mappro.tiles.model.GeoObject;
+import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.TopologyException;
 import org.locationtech.jts.geom.util.GeometryFixer;
