@@ -16,6 +16,8 @@ public class PublicEndpointsConfig {
             "/api/v3/auth/authenticate",
             "/api/tiles/**",
             "/api/admin/import/**"
+            "/api/**",
+            "/api/tiles/**"
     };
 
     // ✅ только POST-запросы без авторизации
@@ -25,5 +27,7 @@ public class PublicEndpointsConfig {
             "/api/admin/*",
             "/api/tiles/**",
             "/api/admin/import/**"
+            "/api/**",
+            "/api/tiles/**"
     };
 }
