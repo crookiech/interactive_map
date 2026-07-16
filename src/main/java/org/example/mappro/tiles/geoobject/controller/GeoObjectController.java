@@ -21,13 +21,13 @@ public class GeoObjectController {
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<GeoObjectResponseDto> getGeoObjectById(@PathVariable Long id) {
         GeoObjectResponseDto geoObject = geoObjectService.getGeoObject(id);
         return ResponseEntity.ok(geoObject);
     }
 
-    @GetMapping("/name")
+    @GetMapping("/name/{name}")
     public ResponseEntity<GeoObjectResponseDto> getGeoObjectByName(@RequestParam String name) {
         GeoObjectResponseDto geoObject = geoObjectService.getGeoObjectByName(name);
         return ResponseEntity.ok(geoObject);

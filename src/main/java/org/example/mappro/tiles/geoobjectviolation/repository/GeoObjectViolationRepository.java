@@ -6,12 +6,11 @@ import org.example.mappro.tiles.violation.model.Violation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import java.util.List;
 
 public interface GeoObjectViolationRepository extends JpaRepository<GeoObjectViolation, Long> {
 
-    // id нарушений для объекта
+     // id нарушений для объекта
     @Query("""
         SELECT gov.violation FROM GeoObjectViolation gov
         WHERE gov.geoObject.id = :objectId
