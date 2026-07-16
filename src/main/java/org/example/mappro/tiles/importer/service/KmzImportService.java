@@ -1,7 +1,6 @@
 package org.example.mappro.tiles.importer.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.mappro.tiles.importer.model.KmzImportException;
 import org.example.mappro.tiles.importer.service.RegionGeometrySplitter.GeometryPart;
 import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.geoobject.repository.GeoObjectRepository;
@@ -74,6 +73,12 @@ public class KmzImportService {
 
     private GeoObjectType requiredType(String typeName) {
         return typeRepository.findByName(typeName)
-                .orElseThrow(() -> new KmzImportException("Object type not found: " + typeName));
+                .orElseGet(() -> createType(typeName));
+    }
+
+    private GeoObjectType createType(String typeName) {
+        GeoObjectType type = new GeoObjectType();
+        type.setName(typeName);
+        return typeRepository.save(type);
     }
 }
