@@ -29,7 +29,6 @@ public class TileService {
         int z = request.getZ();
         double simplifyTolerance = computeSimplifyTolerance(z);
         boolean returnSegments = z >= 16;
-
         BoundingBox bbox = tileToBBox(request.getX(), request.getY(), z);
 
         // Единый метод
@@ -40,8 +39,7 @@ public class TileService {
                 request.getSeverities(),
                 request.getFromDate(),
                 request.getShowCities() != null ? request.getShowCities() : true,
-                simplifyTolerance,
-                returnSegments
+                simplifyTolerance
         );
 
         List<GeoObjectDto> objects = projections.stream()
