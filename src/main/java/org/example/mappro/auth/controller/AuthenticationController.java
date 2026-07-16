@@ -17,10 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,9 +58,9 @@ public class AuthenticationController {
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
 
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .map(r -> r.replace("ROLE_", ""))
-                .collect(Collectors.toList());
+            .map(authority -> authority.getAuthority())
+            .map(r -> r.replace("ROLE_", ""))
+            .collect(Collectors.toList());
 
         final String accessToken = jwtUtil.generateAccessToken(userDetails.getUsername(), roles);
         final String refreshToken = jwtUtil.generateRefreshToken(userDetails.getUsername());
@@ -74,12 +72,12 @@ public class AuthenticationController {
 
         // Устанавливаем refresh токен в httpOnly cookie
         ResponseCookie cookie = ResponseCookie.from("refreshToken", refreshToken)
-                .httpOnly(true)
-                .secure(true)   // в production должно быть true (HTTPS)
-                .path("/")
-                .maxAge(Duration.ofDays(7))
-                .sameSite("Strict")
-                .build();
+            .httpOnly(true)
+            .secure(true)   // в production должно быть true (HTTPS)
+            .path("/")
+            .maxAge(Duration.ofDays(7))
+            .sameSite("Strict")
+            .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 
         // Возвращаем access токен (refresh тоже можно вернуть, но он уже в cookie)
@@ -118,7 +116,7 @@ public class AuthenticationController {
         // 3. Загружаем пользователя и генерируем новую пару
         UserDetails userDetails = userService.loadUserByUsername(username);
         List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
+                .map(authority -> authority.getAuthority())
                 .map(r -> r.replace("ROLE_", ""))
                 .collect(Collectors.toList());
 
