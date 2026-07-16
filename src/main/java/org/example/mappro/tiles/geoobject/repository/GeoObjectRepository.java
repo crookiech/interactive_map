@@ -50,4 +50,5 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
             @Param("simplifyTolerance") double simplifyTolerance,
             @Param("returnSegments") boolean returnSegments
     );
+    List<GeoObject> findAllByType_NameOrderByIdAsc(String typeName);
 }

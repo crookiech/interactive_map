@@ -14,6 +14,8 @@ public class PublicEndpointsConfig {
             "/error",
             "/api/v3/roles",
             "/api/v3/auth/authenticate",
+            "/api/tiles/**",
+            "/api/admin/import/**"
             "/api/**",
             "/api/tiles/**"
     };
@@ -23,6 +25,8 @@ public class PublicEndpointsConfig {
             "/api/v3/auth/authenticate",
             "/api/v3/roles",
             "/api/admin/*",
+            "/api/tiles/**",
+            "/api/admin/import/**"
             "/api/**",
             "/api/tiles/**"
     };

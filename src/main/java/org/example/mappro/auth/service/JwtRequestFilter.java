@@ -23,11 +23,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final AuthErrorResponseWriter errorWriter;
     private static final AntPathMatcher pathMatcher = new AntPathMatcher();
 
-    public JwtRequestFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
+    public JwtRequestFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService,
+                            AuthErrorResponseWriter errorWriter) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
+        this.errorWriter = errorWriter;
     }
 
     @Override
@@ -56,22 +59,31 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             String token = authHeader.substring(7);
 
             if (jwtUtil.validateToken(token, false)) {
-                String username = jwtUtil.extractUsername(token, false);
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                List<SimpleGrantedAuthority> authorities = jwtUtil.extractRoles(token).stream()
-                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                        .toList();
+                try {
+                    String username = jwtUtil.extractUsername(token, false);
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    List<SimpleGrantedAuthority> authorities = jwtUtil.extractRoles(token).stream()
+                            .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                            .toList();
 
-                UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
+                    UsernamePasswordAuthenticationToken authToken =
+                            new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
 
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                } catch (RuntimeException exception) {
+                    SecurityContextHolder.clearContext();
+                    errorWriter.write(response, HttpServletResponse.SC_UNAUTHORIZED,
+                            "Недействительный access token");
+                    return;
+                }
             } else {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid access token");
+                errorWriter.write(response, HttpServletResponse.SC_UNAUTHORIZED,
+                        "Недействительный access token");
                 return;
             }
         } else {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authorization header required");
+            errorWriter.write(response, HttpServletResponse.SC_UNAUTHORIZED,
+                    "Требуется заголовок Authorization");
             return;
         }
 
