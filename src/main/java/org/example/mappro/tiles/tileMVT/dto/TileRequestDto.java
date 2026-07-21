@@ -1,9 +1,8 @@
-package org.example.mappro.tiles.tile.dto;
+package org.example.mappro.tiles.tileMVT.dto;
 
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDate;
 import java.util.List;
 
