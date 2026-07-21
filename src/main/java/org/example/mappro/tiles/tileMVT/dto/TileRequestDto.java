@@ -1,4 +1,4 @@
-package org.example.mappro.tiles.tile.dto;
+package org.example.mappro.tiles.tileMVT.dto;
 
 import lombok.Builder;
 import lombok.Data;

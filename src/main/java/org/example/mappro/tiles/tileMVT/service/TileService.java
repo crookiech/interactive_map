@@ -1,12 +1,11 @@
-package org.example.mappro.tiles.tile.service;
+package org.example.mappro.tiles.tileMVT.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectDto;
-import org.example.mappro.tiles.geoobject.dto.GeoObjectTileProjectionDto;
-import org.example.mappro.tiles.tile.dto.TileRequestDto;
-import org.example.mappro.tiles.geoobject.repository.GeoObjectRepository;
+import org.example.mappro.tiles.tileMVT.dto.TileRequestDto;
+import org.example.mappro.tiles.tileMVT.repository.TileRepository;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.GeoJsonObject;
@@ -21,43 +20,22 @@ import java.util.stream.Collectors;
 @Slf4j
 public class TileService {
 
-    private final GeoObjectRepository geoObjectRepository;
+    private final TileRepository tileRepository;
     private final ObjectMapper objectMapper;
 
     @Cacheable(value = "tiles", key = "#request")
-    public FeatureCollection getTile(TileRequestDto request) {
-        int z = request.getZ();
-        double simplifyTolerance = computeSimplifyTolerance(z);
-        boolean returnSegments = z >= 16;
-        BoundingBox bbox = tileToBBox(request.getX(), request.getY(), z);
+    public byte[] getTile(TileRequestDto request) {
 
-        // Единый метод
-        List<GeoObjectTileProjectionDto> projections = geoObjectRepository.findObjectsForTile(
-                z,
-                bbox.xmin, bbox.ymin, bbox.xmax, bbox.ymax,
+        return tileRepository.getTile(
+                request.getZ(),
+                request.getX(),
+                request.getY(),
                 request.getTypes(),
                 request.getSeverities(),
                 request.getFromDate(),
-                request.getShowCities() != null ? request.getShowCities() : true,
-                simplifyTolerance
+                request.getShowCities() == null || request.getShowCities(),
+                computeSimplifyTolerance(request.getZ())
         );
-
-        List<GeoObjectDto> objects = projections.stream()
-                .map(p -> GeoObjectDto.builder()
-                        .id(p.getId())
-                        .name(p.getName())
-                        .type(p.getType())
-                        .geometryJson(p.getGeometryJson())
-                        .parentId(p.getParentId())
-                        .labelPriority(p.getLabelPriority())
-                        .isSegment(p.getIsSegment())
-                        .segmentOrder(p.getSegmentOrder())
-                        .violationCount(p.getViolationCount())
-                        .violationTypes(p.getViolationTypes())
-                        .build())
-                .collect(Collectors.toList());
-
-        return buildFeatureCollection(objects, z, request.getLang());
     }
 
     private FeatureCollection buildFeatureCollection(List<GeoObjectDto> objects, int z, String lang) {
