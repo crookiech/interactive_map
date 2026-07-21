@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class TileRepositoryImpl implements TileRepository {
+public class TileMVTRepositoryImpl implements TileMVTRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 

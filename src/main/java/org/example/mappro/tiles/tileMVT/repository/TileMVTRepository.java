@@ -3,7 +3,7 @@ package org.example.mappro.tiles.tileMVT.repository;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface TileRepository {
+public interface TileMVTRepository {
 
     byte[] getTile(
             int z,

@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectDto;
 import org.example.mappro.tiles.tileMVT.dto.TileRequestDto;
-import org.example.mappro.tiles.tileMVT.repository.TileRepository;
+import org.example.mappro.tiles.tileMVT.repository.TileMVTRepository;
 import org.geojson.Feature;
 import org.geojson.FeatureCollection;
 import org.geojson.GeoJsonObject;
@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class TileService {
+public class TileMVTService {
 
-    private final TileRepository tileRepository;
+    private final TileMVTRepository tileRepository;
     private final ObjectMapper objectMapper;
 
     @Cacheable(value = "tiles", key = "#request")

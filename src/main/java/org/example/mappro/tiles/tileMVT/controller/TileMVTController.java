@@ -2,7 +2,7 @@ package org.example.mappro.tiles.tileMVT.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.mappro.tiles.tileMVT.dto.TileRequestDto;
-import org.example.mappro.tiles.tileMVT.service.TileService;
+import org.example.mappro.tiles.tileMVT.service.TileMVTService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +14,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tiles/mvt")
 @RequiredArgsConstructor
-public class TileController {
+public class TileMVTController {
 
-    private final TileService tileService;
+    private final TileMVTService tileService;
 
     @GetMapping("/{z}/{x}/{y}")
     public ResponseEntity<byte[]> getTile(
