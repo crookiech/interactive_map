@@ -1,5 +1,6 @@
 package org.example.mappro.tiles.geoobject.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Сущность объекта")
 public class GeoObjectDto {
     private Long id;
     private String name;
