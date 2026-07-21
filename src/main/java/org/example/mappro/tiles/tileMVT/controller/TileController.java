@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tiles")
+@RequestMapping("/api/tiles/mvt")
 @RequiredArgsConstructor
 public class TileController {
 

@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class TileController {
 
     private final TileRESTService tileService;
-    
+
     @GetMapping("/{z}/{x}/{y}")
     public String getTile(
             @PathVariable int z,
             @PathVariable int x,
             @PathVariable int y) {
-        
+
         return tileService.getTileAsJson(
-            org.example.mappro.tiles.tile.dto.TileRequestDto.builder()
-                .z(z).x(x).y(y).build()
+                org.example.mappro.tiles.tile.dto.TileRequestDto.builder()
+                        .z(z).x(x).y(y).build()
         );
     }
 }
