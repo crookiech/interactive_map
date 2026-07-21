@@ -1,42 +1,30 @@
 package org.example.mappro.tiles.tile.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.mappro.tiles.tile.dto.TileRequestDto;
-import org.example.mappro.tiles.tile.service.TileService;
-import org.geojson.FeatureCollection;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.example.mappro.tiles.tile.service.TileRESTService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/tiles")
 @RequiredArgsConstructor
+@Slf4j
 public class TileController {
-    private final TileService tileService;
 
+    private final TileRESTService tileService;
+    
     @GetMapping("/{z}/{x}/{y}")
-    public ResponseEntity<FeatureCollection> getTile(
+    public String getTile(
             @PathVariable int z,
             @PathVariable int x,
-            @PathVariable int y,
-            @RequestParam(required = false) List<String> types,
-            @RequestParam(required = false) List<String> severities,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-            @RequestParam(required = false) Boolean showCities, // по умолчанию true
-            @RequestParam(required = false) String lang   // ru/en
-    ) {
-        TileRequestDto request = TileRequestDto.builder()
-                .z(z).x(x).y(y)
-                .types(types)
-                .severities(severities)
-                .fromDate(fromDate)
-                .showCities(showCities != null ? showCities : true)
-                .lang(lang)
-                .build();
-        FeatureCollection result = tileService.getTile(request);
-        return ResponseEntity.ok(result);
+            @PathVariable int y) {
+        
+        return tileService.getTileAsJson(
+            org.example.mappro.tiles.tile.dto.TileRequestDto.builder()
+                .z(z).x(x).y(y).build()
+        );
     }
 }
