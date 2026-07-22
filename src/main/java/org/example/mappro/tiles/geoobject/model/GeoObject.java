@@ -28,11 +28,11 @@ public class GeoObject {
     @Column(columnDefinition = "geometry")
     private Geometry geometry;
 
-    @Column(name = "lod_min")
-    private Integer lodMin;
+    // @Column(name = "lod_min")
+    // private Integer lodMin;
 
-    @Column(name = "lod_max")
-    private Integer lodMax;
+    // @Column(name = "lod_max")
+    // private Integer lodMax;
 
     @Column(name = "label_priority")
     private Integer labelPriority;

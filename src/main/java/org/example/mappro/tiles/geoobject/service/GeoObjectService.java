@@ -43,8 +43,8 @@ public class GeoObjectService {
                 geoObject.setParent(parent);
             }
             
-            geoObject.setLodMin(dto.getLodMin());
-            geoObject.setLodMax(dto.getLodMax());
+            // geoObject.setLodMin(dto.getLodMin());
+            // geoObject.setLodMax(dto.getLodMax());
             geoObject.setLabelPriority(dto.getLabelPriority());
             geoObject.setIsSegment(dto.getIsSegment());
             geoObject.setSegmentOrder(dto.getSegmentOrder());
@@ -97,8 +97,8 @@ public class GeoObjectService {
                 .geometryWkt(geoObject.getGeometry() != null ? geoObject.getGeometry().toText() : null)
                 .parentId(geoObject.getParent() != null ? geoObject.getParent().getId() : null)
                 .parentName(geoObject.getParent() != null ? geoObject.getParent().getName() : null)
-                .lodMin(geoObject.getLodMin())
-                .lodMax(geoObject.getLodMax())
+                // .lodMin(geoObject.getLodMin())
+                // .lodMax(geoObject.getLodMax())
                 .labelPriority(geoObject.getLabelPriority())
                 .isSegment(geoObject.getIsSegment())
                 .segmentOrder(geoObject.getSegmentOrder())

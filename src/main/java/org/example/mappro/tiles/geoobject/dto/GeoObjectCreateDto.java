@@ -10,8 +10,8 @@ public class GeoObjectCreateDto {
     private String type;
     private String geometryWkt;
     private Long parentId;
-    private Integer lodMin;
-    private Integer lodMax;
+    // private Integer lodMin;
+    // private Integer lodMax;
     private Integer labelPriority;
     private Boolean isSegment;
     private Integer segmentOrder;

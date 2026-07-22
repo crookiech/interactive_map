@@ -25,6 +25,11 @@ public class GeoObjectTypeService {
         GeoObjectType geoObjectType = new GeoObjectType();
         geoObjectType.setName(dto.getName());
 
+        /////////////////////////////////////////////////////
+        geoObjectType.setLodMin(dto.getLodMin());
+        geoObjectType.setLodMax(dto.getLodMax());
+        /////////////////////////////////////////////////////
+
         GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
         log.info("Created violation with id: {}", saved.getId());
 

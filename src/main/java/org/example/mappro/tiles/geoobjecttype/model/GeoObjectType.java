@@ -12,5 +12,13 @@ public class GeoObjectType {
     private Long id;
 
     private String name;
+
+    //////////////////////////////////////////////////////////////////
+
+    @Column(name = "lod_min")
+    private Integer lodMin;
+
+    @Column(name = "lod_max")
+    private Integer lodMax;
 }
 

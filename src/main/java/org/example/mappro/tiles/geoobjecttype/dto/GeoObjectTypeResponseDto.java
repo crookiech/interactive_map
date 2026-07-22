@@ -12,4 +12,9 @@ import lombok.NoArgsConstructor;
 public class GeoObjectTypeResponseDto {
     private Long id;
     private String name;
+
+    ///////////////////////////////////
+    private Integer lodMin;
+    private Integer lodMax;
+    ///////////////////////////////////
 }

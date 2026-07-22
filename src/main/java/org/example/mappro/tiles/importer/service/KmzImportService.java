@@ -59,8 +59,8 @@ public class KmzImportService {
                 object.setType(type);
                 object.setGeometry(part.geometry());
                 object.setParent(part.region());
-                object.setLodMin(0);
-                object.setLodMax(22);
+                // object.setLodMin(0);
+                // object.setLodMax(22);
                 object.setLabelPriority(1);
                 object.setIsSegment(segmented);
                 object.setSegmentOrder(segmented ? index + 1 : null);

@@ -7,4 +7,8 @@ import lombok.Data;
 public class GeoObjectTypeCreateDto {
     @NotBlank(message = "Type is required")
     private String name;
+    
+    /////////////////////////////////////////////////////
+    private Integer lodMin;
+    private Integer lodMax;
 }
