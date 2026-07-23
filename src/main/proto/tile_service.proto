@@ -3,13 +3,12 @@ syntax = "proto3";
 package org.example.mappro.tiles.grpc;
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
 
 option java_package = "org.example.mappro.tiles.grpc";
 option java_multiple_files = true;
 
 service TileService {
-    rpc GetTile (TileRequest) returns (TileResponse);
+    rpc GetTile (TileRequest) returns (stream ChunkResponse);
     rpc HealthCheck (google.protobuf.Empty) returns (HealthResponse);
 }
 
@@ -17,11 +16,16 @@ message TileRequest {
     int32 z = 1;
     int32 x = 2;
     int32 y = 3;
+    repeated string types = 4;
+    repeated string severities = 5;
+    string from_date = 6;
+    bool show_cities = 7;
+    string lang = 8;
 }
 
-message TileResponse {
-    string geojson = 1;
-    int32 count = 2;
+message ChunkResponse {
+    bytes data = 1;
+    bool is_last = 2;
 }
 
 message HealthResponse {

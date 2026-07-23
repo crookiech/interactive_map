@@ -1,5 +1,6 @@
 package org.example.mappro.tiles.tile.service;
 
+import com.google.protobuf.ByteString;
 import com.google.protobuf.Empty;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -7,47 +8,82 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.grpc.server.service.GrpcService;
 
+import org.example.mappro.tiles.grpc.ChunkResponse;
 import org.example.mappro.tiles.grpc.HealthResponse;
 import org.example.mappro.tiles.grpc.TileRequest;
-import org.example.mappro.tiles.grpc.TileResponse;
 import org.example.mappro.tiles.grpc.TileServiceGrpc;
 import org.example.mappro.tiles.tile.dto.TileRequestDto;
+
+import java.time.LocalDate;
 
 @GrpcService
 @RequiredArgsConstructor
 @Slf4j
 public class TileGrpcService extends TileServiceGrpc.TileServiceImplBase {
 
-    private final TileRESTService tileService;
+    private final TileMVTGrpcService tileMVTService;
 
     @Override
     public void getTile(TileRequest request,
-                        StreamObserver<TileResponse> responseObserver) {
+                        StreamObserver<ChunkResponse> responseObserver) {  // ← ChunkResponse
 
         long startTime = System.currentTimeMillis();
 
         try {
-            log.info("gRPC GetTile: z={}, x={}, y={}", 
+            log.info("gRPC GetTile MVT: z={}, x={}, y={}", 
                     request.getZ(), request.getX(), request.getY());
 
+            // Преобразуем protobuf запрос в DTO
             TileRequestDto dto = TileRequestDto.builder()
                     .z(request.getZ())
                     .x(request.getX())
                     .y(request.getY())
+                    .types(request.getTypesList().isEmpty() ? null : request.getTypesList())
+                    .severities(request.getSeveritiesList().isEmpty() ? null : request.getSeveritiesList())
+                    .fromDate(request.getFromDate() != null && !request.getFromDate().isEmpty() 
+                            ? LocalDate.parse(request.getFromDate()) 
+                            : null)
+                    .showCities(request.getShowCities())
+                    .lang(request.getLang())
                     .build();
             
-            String geojson = tileService.getTileAsJson(dto);
-            int count = countFeatures(geojson);
+            // Получаем MVT данные как массив байт
+            byte[] mvtData = tileMVTService.getTileAsMVT(dto);
+            
+            if (mvtData == null || mvtData.length == 0) {
+                // Отправляем пустой чанк
+                ChunkResponse emptyResponse = ChunkResponse.newBuilder()
+                        .setData(ByteString.EMPTY)
+                        .setIsLast(true)
+                        .build();
+                responseObserver.onNext(emptyResponse);
+                responseObserver.onCompleted();
+                return;
+            }
 
-            TileResponse response = TileResponse.newBuilder()
-                    .setGeojson(geojson)
-                    .setCount(count)
-                    .build();
+            // Отправляем данные чанками
+            int chunkSize = 1024 * 1024; // 1MB
+            int totalChunks = (int) Math.ceil((double) mvtData.length / chunkSize);
+            
+            for (int i = 0; i < totalChunks; i++) {
+                int from = i * chunkSize;
+                int to = Math.min(from + chunkSize, mvtData.length);
+                byte[] chunk = new byte[to - from];
+                System.arraycopy(mvtData, from, chunk, 0, chunk.length);
+                
+                ChunkResponse response = ChunkResponse.newBuilder()
+                        .setData(ByteString.copyFrom(chunk))
+                        .setIsLast(i == totalChunks - 1)
+                        .build();
+                
+                responseObserver.onNext(response);
+                log.debug("Отправлен чанк {}/{} ({} байт)", i + 1, totalChunks, chunk.length);
+            }
 
             long elapsedTime = System.currentTimeMillis() - startTime;
-            log.info("gRPC GetTile завершён: {} объектов, {} мс", count, elapsedTime);
+            log.info("gRPC GetTile MVT завершён: {} байт, {} чанков, {} мс", 
+                    mvtData.length, totalChunks, elapsedTime);
 
-            responseObserver.onNext(response);
             responseObserver.onCompleted();
 
         } catch (IllegalArgumentException e) {
@@ -58,7 +94,7 @@ public class TileGrpcService extends TileServiceGrpc.TileServiceImplBase {
                             .asException()
             );
         } catch (Exception e) {
-            log.error("Ошибка в gRPC GetTile: {}", e.getMessage(), e);
+            log.error("Ошибка в gRPC GetTile MVT: {}", e.getMessage(), e);
             responseObserver.onError(
                     Status.INTERNAL
                             .withDescription("Внутренняя ошибка сервера: " + e.getMessage())
@@ -88,26 +124,6 @@ public class TileGrpcService extends TileServiceGrpc.TileServiceImplBase {
                             .withDescription("Ошибка health check")
                             .asException()
             );
-        }
-    }
-
-    private int countFeatures(String geojson) {
-        if (geojson == null || geojson.isEmpty()) {
-            return 0;
-        }
-
-        try {
-            int count = 0;
-            int index = 0;
-            String search = "\"type\":\"Feature\"";
-            while ((index = geojson.indexOf(search, index)) != -1) {
-                count++;
-                index += search.length();
-            }
-            return count;
-        } catch (Exception e) {
-            log.warn("Ошибка подсчёта объектов: {}", e.getMessage());
-            return 0;
         }
     }
 }
