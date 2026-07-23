@@ -1,6 +1,9 @@
 package org.example.mappro.tiles.geoobjecttype.controller;
 
+import java.util.List;
+
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeCreateDto;
+import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeLodUpdateDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeResponseDto;
 import org.example.mappro.tiles.geoobjecttype.service.GeoObjectTypeService;
 import org.springframework.http.HttpStatus;
@@ -22,10 +25,27 @@ public class GeoObjectTypeController {
 
     private final GeoObjectTypeService geoObjectTypeService;
 
+    @GetMapping
+    @Operation(summary = "Получение типов объектов")
+    public ResponseEntity<List<GeoObjectTypeResponseDto>> getGeoObjectTypes() {
+        return ResponseEntity.ok(geoObjectTypeService.getGeoObjectTypes());
+    }
+
     @PostMapping
     @Operation(summary = "Создание типа объекта")
-    public ResponseEntity<GeoObjectTypeResponseDto> createGeoObjectType(@Valid @RequestBody GeoObjectTypeCreateDto dto) {
+    public ResponseEntity<GeoObjectTypeResponseDto> createGeoObjectType(
+        @Valid @RequestBody GeoObjectTypeCreateDto dto
+    ) {
         GeoObjectTypeResponseDto response = geoObjectTypeService.createGeoObjectType(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PutMapping("/{id}/lod")
+    @Operation(summary = "Изменение уровней детализации типа объекта")
+    public ResponseEntity<GeoObjectTypeResponseDto> updateGeoObjectTypeLod(
+        @PathVariable Long id,
+        @Valid @RequestBody GeoObjectTypeLodUpdateDto dto
+    ) {
+        return ResponseEntity.ok(geoObjectTypeService.updateLod(id, dto));
     }
 }
