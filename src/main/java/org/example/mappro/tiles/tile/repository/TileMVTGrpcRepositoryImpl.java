@@ -1,6 +1,7 @@
-package org.example.mappro.tiles.tileMVT.repository;
+package org.example.mappro.tiles.tile.repository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,8 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class TileMVTRepositoryImpl implements TileMVTRepository {
+@Slf4j
+public class TileMVTGrpcRepositoryImpl implements TileMVTGrpcRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 

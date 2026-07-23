@@ -2,8 +2,9 @@ package org.example.mappro.tiles.tile.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.mappro.tiles.tileMVT.repository.TileMVTRepository;
 import org.example.mappro.tiles.tile.dto.TileRequestDto;
+import org.example.mappro.tiles.tile.repository.TileMVTGrpcRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,22 +12,29 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class TileMVTGrpcService {
 
-    private final TileMVTRepository tileRepository;
+    private final TileMVTGrpcRepository tileMVTGrpcRepository;
+
+    @Cacheable(value = "tiles", key = "#request")
+    public byte[] getTile(TileRequestDto request) {
+
+        return tileMVTGrpcRepository.getTile(
+            request.getZ(),
+            request.getX(),
+            request.getY(),
+            request.getTypes(),
+            computeSimplifyTolerance(request.getZ())
+        );
+    }
 
     public byte[] getTileAsMVT(TileRequestDto request) {
-        log.info("Получение MVT тайла: z={}, x={}, y={}", 
-                request.getZ(), request.getX(), request.getY());
+        log.info("Получение MVT тайла: z={}, x={}, y={}", request.getZ(), request.getX(), request.getY());
 
-        // Используем существующий репозиторий из MVT модуля
-        return tileRepository.getTile(
-                request.getZ(),
-                request.getX(),
-                request.getY(),
-                request.getTypes(),
-                request.getSeverities(),
-                request.getFromDate(),
-                request.getShowCities() != null && request.getShowCities(),
-                computeSimplifyTolerance(request.getZ())
+        return tileMVTGrpcRepository.getTile(
+            request.getZ(),
+            request.getX(),
+            request.getY(),
+            request.getTypes(),
+            computeSimplifyTolerance(request.getZ())
         );
     }
 

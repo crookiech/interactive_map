@@ -31,9 +31,9 @@ public class TileMVTService {
                 request.getX(),
                 request.getY(),
                 request.getTypes(),
-                request.getSeverities(),
-                request.getFromDate(),
-                request.getShowCities() == null || request.getShowCities(),
+                // request.getSeverities(),
+                // request.getFromDate(),
+                // request.getShowCities() == null || request.getShowCities(),
                 computeSimplifyTolerance(request.getZ())
         );
     }
@@ -62,17 +62,17 @@ public class TileMVTService {
         props.put("id", dto.getId());
         props.put("name", dto.getName());
         props.put("type", dto.getType());
-        props.put("violationCount", dto.getViolationCount());
+        // props.put("violationCount", dto.getViolationCount());
 
         // Получаем массив типов нарушений и формируем топ-3, отфильтровывая null
-        String[] types = dto.getViolationTypes();
-        List<String> top3 = (types != null && types.length > 0)
-                ? Arrays.stream(types)
-                .filter(Objects::nonNull)   // исключаем null значения
-                .limit(3)
-                .collect(Collectors.toList())
-                : List.of();
-        props.put("violationTypes", top3);
+        // String[] types = dto.getViolationTypes();
+        // List<String> top3 = (types != null && types.length > 0)
+        //         ? Arrays.stream(types)
+        //         .filter(Objects::nonNull)   // исключаем null значения
+        //         .limit(3)
+        //         .collect(Collectors.toList())
+        //         : List.of();
+        // props.put("violationTypes", top3);
 
         props.put("labelPriority", dto.getLabelPriority());
 
