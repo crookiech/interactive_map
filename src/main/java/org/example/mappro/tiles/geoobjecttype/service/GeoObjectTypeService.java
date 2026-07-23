@@ -5,6 +5,7 @@ import java.util.List;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeCreateDto;
@@ -47,6 +48,7 @@ public class GeoObjectTypeService {
     }
 
     @Transactional
+    @CacheEvict(value = "tiles", allEntries = true)
     public GeoObjectTypeResponseDto updateLod(Long id, GeoObjectTypeLodUpdateDto dto) {
         validateLodRange(dto.getLodMin(), dto.getLodMax());
 
