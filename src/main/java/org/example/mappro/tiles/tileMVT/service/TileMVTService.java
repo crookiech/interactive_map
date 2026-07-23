@@ -31,9 +31,6 @@ public class TileMVTService {
                 request.getX(),
                 request.getY(),
                 request.getTypes(),
-                // request.getSeverities(),
-                // request.getFromDate(),
-                // request.getShowCities() == null || request.getShowCities(),
                 computeSimplifyTolerance(request.getZ())
         );
     }

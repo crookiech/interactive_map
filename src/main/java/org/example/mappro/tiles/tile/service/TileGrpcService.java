@@ -34,9 +34,6 @@ public class TileGrpcService extends TileServiceGrpc.TileServiceImplBase {
                 .x(request.getX())
                 .y(request.getY())
                 .types(request.getTypesList().isEmpty() ? null : request.getTypesList())
-                .severities(request.getSeveritiesList().isEmpty() ? null : request.getSeveritiesList())
-                .fromDate(request.getFromDate() != null && !request.getFromDate().isEmpty() ? LocalDate.parse(request.getFromDate()) : null)
-                .showCities(request.getShowCities())
                 .lang(request.getLang())
                 .build();
             

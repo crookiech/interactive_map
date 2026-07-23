@@ -25,9 +25,6 @@ public class TileMVTGrpcController {
             @PathVariable int x,
             @PathVariable int y,
             @RequestParam(required = false) List<String> types,
-            @RequestParam(required = false) List<String> severities,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate,
-            @RequestParam(required = false) Boolean showCities,
             @RequestParam(required = false) String lang
     ) {
         TileRequestDto request = TileRequestDto.builder()
@@ -35,9 +32,6 @@ public class TileMVTGrpcController {
                 .x(x)
                 .y(y)
                 .types(types)
-                // .severities(severities)
-                // .fromDate(fromDate)
-                // .showCities(showCities == null || showCities)
                 .lang(lang)
                 .build();
 
