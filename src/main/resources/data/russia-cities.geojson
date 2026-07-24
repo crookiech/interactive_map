@@ -1,0 +1,4283 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.10242,
+          44.60789
+        ]
+      },
+      "properties": {
+        "id": "geonames-528293",
+        "name": "Майкоп",
+        "ascii_name": "Maykop",
+        "source": "GeoNames",
+        "geoname_id": 528293,
+        "feature_code": "PPLA",
+        "population": 141970,
+        "admin1": "01",
+        "admin2": "11205694",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.51238,
+          50.91239
+        ]
+      },
+      "properties": {
+        "id": "geonames-2026895",
+        "name": "Белогорск",
+        "ascii_name": "Belogorsk",
+        "source": "GeoNames",
+        "geoname_id": 2026895,
+        "feature_code": "PPLA2",
+        "population": 67911,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.1401,
+          51.37498
+        ]
+      },
+      "properties": {
+        "id": "geonames-2015833",
+        "name": "Свободный",
+        "ascii_name": "Svobodnyy",
+        "source": "GeoNames",
+        "geoname_id": 2015833,
+        "feature_code": "PPLA2",
+        "population": 61017,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.73676,
+          55.14941
+        ]
+      },
+      "properties": {
+        "id": "geonames-2014718",
+        "name": "Тында",
+        "ascii_name": "Tynda",
+        "source": "GeoNames",
+        "geoname_id": 2014718,
+        "feature_code": "PPLA2",
+        "population": 37335,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.67622,
+          52.00318
+        ]
+      },
+      "properties": {
+        "id": "geonames-2016701",
+        "name": "Шимановск",
+        "ascii_name": "Shimanovsk",
+        "source": "GeoNames",
+        "geoname_id": 2016701,
+        "feature_code": "PPLA2",
+        "population": 21466,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.44035,
+          50.11105
+        ]
+      },
+      "properties": {
+        "id": "geonames-2012626",
+        "name": "Завитинск",
+        "ascii_name": "Zavitinsk",
+        "source": "GeoNames",
+        "geoname_id": 2012626,
+        "feature_code": "PPLA2",
+        "population": 13198,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.94014,
+          53.98367
+        ]
+      },
+      "properties": {
+        "id": "geonames-2016443",
+        "name": "Сковородино",
+        "ascii_name": "Skovorodino",
+        "source": "GeoNames",
+        "geoname_id": 2016443,
+        "feature_code": "PPLA2",
+        "population": 10007,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.91892,
+          51.96056
+        ]
+      },
+      "properties": {
+        "id": "geonames-1506271",
+        "name": "Горно-Алтайск",
+        "ascii_name": "Gorno-Altaysk",
+        "source": "GeoNames",
+        "geoname_id": 1506271,
+        "feature_code": "PPLA",
+        "population": 63214,
+        "admin1": "03",
+        "admin2": "11205727",
+        "timezone": "Asia/Barnaul",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.72786,
+          53.36199
+        ]
+      },
+      "properties": {
+        "id": "geonames-1510853",
+        "name": "Барнаул",
+        "ascii_name": "Barnaul",
+        "source": "GeoNames",
+        "geoname_id": 1510853,
+        "feature_code": "PPLA",
+        "population": 632372,
+        "admin1": "04",
+        "admin2": "1535931",
+        "timezone": "Asia/Barnaul",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.72499,
+          56.65836
+        ]
+      },
+      "properties": {
+        "id": "geonames-2019309",
+        "name": "Нерюнгри",
+        "ascii_name": "Neryungri",
+        "source": "GeoNames",
+        "geoname_id": 2019309,
+        "feature_code": "PPL",
+        "population": 66320,
+        "admin1": "63",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.40002,
+          58.61232
+        ]
+      },
+      "properties": {
+        "id": "geonames-2027968",
+        "name": "Алдан",
+        "ascii_name": "Aldan",
+        "source": "GeoNames",
+        "geoname_id": 2027968,
+        "feature_code": "PPLA2",
+        "population": 24426,
+        "admin1": "63",
+        "admin2": "2027964",
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.93447,
+          60.72383
+        ]
+      },
+      "properties": {
+        "id": "geonames-2020838",
+        "name": "Ленск",
+        "ascii_name": "Lensk",
+        "source": "GeoNames",
+        "geoname_id": 2020838,
+        "feature_code": "PPLA2",
+        "population": 23694,
+        "admin1": "63",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.4203,
+          60.3743
+        ]
+      },
+      "properties": {
+        "id": "geonames-2018571",
+        "name": "Олёкминск",
+        "ascii_name": "Olyokminsk",
+        "source": "GeoNames",
+        "geoname_id": 2018571,
+        "feature_code": "PPL",
+        "population": 8813,
+        "admin1": "63",
+        "admin2": "2018569",
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.19661,
+          52.53423
+        ]
+      },
+      "properties": {
+        "id": "geonames-1510018",
+        "name": "Бийск",
+        "ascii_name": "Biysk",
+        "source": "GeoNames",
+        "geoname_id": 1510018,
+        "feature_code": "PPLA2",
+        "population": 215430,
+        "admin1": "04",
+        "admin2": null,
+        "timezone": "Asia/Barnaul",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.20613,
+          51.51473
+        ]
+      },
+      "properties": {
+        "id": "geonames-1493467",
+        "name": "Рубцовск",
+        "ascii_name": "Rubtsovsk",
+        "source": "GeoNames",
+        "geoname_id": 1493467,
+        "feature_code": "PPL",
+        "population": 161065,
+        "admin1": "04",
+        "admin2": null,
+        "timezone": "Asia/Barnaul",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.52637,
+          50.27593
+        ]
+      },
+      "properties": {
+        "id": "geonames-2026609",
+        "name": "Благовещенск",
+        "ascii_name": "Blagoveshchensk",
+        "source": "GeoNames",
+        "geoname_id": 2026609,
+        "feature_code": "PPLA",
+        "population": 225091,
+        "admin1": "05",
+        "admin2": null,
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.55183,
+          64.5461
+        ]
+      },
+      "properties": {
+        "id": "geonames-581049",
+        "name": "Архангельск",
+        "ascii_name": "Arkhangel'sk",
+        "source": "GeoNames",
+        "geoname_id": 581049,
+        "feature_code": "PPLA",
+        "population": 349742,
+        "admin1": "06",
+        "admin2": "505262",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.82971,
+          64.55825
+        ]
+      },
+      "properties": {
+        "id": "geonames-496285",
+        "name": "Северодвинск",
+        "ascii_name": "Severodvinsk",
+        "source": "GeoNames",
+        "geoname_id": 496285,
+        "feature_code": "PPLA2",
+        "population": 194292,
+        "admin1": "06",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.04076,
+          46.34968
+        ]
+      },
+      "properties": {
+        "id": "geonames-580497",
+        "name": "Астрахань",
+        "ascii_name": "Astrakhan",
+        "source": "GeoNames",
+        "geoname_id": 580497,
+        "feature_code": "PPLA",
+        "population": 533925,
+        "admin1": "07",
+        "admin2": "824964",
+        "timezone": "Europe/Astrakhan",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          55.96779,
+          54.74306
+        ]
+      },
+      "properties": {
+        "id": "geonames-479561",
+        "name": "Уфа",
+        "ascii_name": "Ufa",
+        "source": "GeoNames",
+        "geoname_id": 479561,
+        "feature_code": "PPLA",
+        "population": 1120547,
+        "admin1": "08",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          55.9533,
+          53.63793
+        ]
+      },
+      "properties": {
+        "id": "geonames-487495",
+        "name": "Стерлитамак",
+        "ascii_name": "Sterlitamak",
+        "source": "GeoNames",
+        "geoname_id": 487495,
+        "feature_code": "PPLA2",
+        "population": 267231,
+        "admin1": "08",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          55.91094,
+          53.3828
+        ]
+      },
+      "properties": {
+        "id": "geonames-499292",
+        "name": "Салават",
+        "ascii_name": "Salavat",
+        "source": "GeoNames",
+        "geoname_id": 499292,
+        "feature_code": "PPLA2",
+        "population": 159893,
+        "admin1": "08",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          54.26383,
+          56.08879
+        ]
+      },
+      "properties": {
+        "id": "geonames-522942",
+        "name": "Нефтекамск",
+        "ascii_name": "Neftekamsk",
+        "source": "GeoNames",
+        "geoname_id": 522942,
+        "feature_code": "PPLA2",
+        "population": 126805,
+        "admin1": "08",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.47103,
+          54.48147
+        ]
+      },
+      "properties": {
+        "id": "geonames-515879",
+        "name": "Октябрьский",
+        "ascii_name": "Oktyabrsky",
+        "source": "GeoNames",
+        "geoname_id": 515879,
+        "feature_code": "PPL",
+        "population": 108200,
+        "admin1": "08",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.58091,
+          50.60343
+        ]
+      },
+      "properties": {
+        "id": "geonames-578072",
+        "name": "Белгород",
+        "ascii_name": "Belgorod",
+        "source": "GeoNames",
+        "geoname_id": 578072,
+        "feature_code": "PPLA",
+        "population": 345289,
+        "admin1": "09",
+        "admin2": "578070",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.84613,
+          51.3025
+        ]
+      },
+      "properties": {
+        "id": "geonames-487928",
+        "name": "Старый Оскол",
+        "ascii_name": "Staryy Oskol",
+        "source": "GeoNames",
+        "geoname_id": 487928,
+        "feature_code": "PPLA2",
+        "population": 226977,
+        "admin1": "09",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.32143,
+          53.27096
+        ]
+      },
+      "properties": {
+        "id": "geonames-571476",
+        "name": "Брянск",
+        "ascii_name": "Bryansk",
+        "source": "GeoNames",
+        "geoname_id": 571476,
+        "feature_code": "PPLA",
+        "population": 427236,
+        "admin1": "10",
+        "admin2": "571467",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.59979,
+          51.82648
+        ]
+      },
+      "properties": {
+        "id": "geonames-2014407",
+        "name": "Улан-Удэ",
+        "ascii_name": "Ulan-Ude",
+        "source": "GeoNames",
+        "geoname_id": 2014407,
+        "feature_code": "PPLA",
+        "population": 360278,
+        "admin1": "11",
+        "admin2": "2050912",
+        "timezone": "Asia/Irkutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.68895,
+          43.31195
+        ]
+      },
+      "properties": {
+        "id": "geonames-558418",
+        "name": "Грозный",
+        "ascii_name": "Grozny",
+        "source": "GeoNames",
+        "geoname_id": 558418,
+        "feature_code": "PPLA",
+        "population": 297137,
+        "admin1": "12",
+        "admin2": "11497700",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.42877,
+          55.1611
+        ]
+      },
+      "properties": {
+        "id": "geonames-1508291",
+        "name": "Челябинск",
+        "ascii_name": "Chelyabinsk",
+        "source": "GeoNames",
+        "geoname_id": 1508291,
+        "feature_code": "PPLA",
+        "population": 1202371,
+        "admin1": "13",
+        "admin2": "1535932",
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.0066,
+          53.39808
+        ]
+      },
+      "properties": {
+        "id": "geonames-532288",
+        "name": "Магнитогорск",
+        "ascii_name": "Magnitogorsk",
+        "source": "GeoNames",
+        "geoname_id": 532288,
+        "feature_code": "PPLA2",
+        "population": 413351,
+        "admin1": "13",
+        "admin2": "825030",
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.65471,
+          55.17182
+        ]
+      },
+      "properties": {
+        "id": "geonames-462444",
+        "name": "Златоуст",
+        "ascii_name": "Zlatoust",
+        "source": "GeoNames",
+        "geoname_id": 462444,
+        "feature_code": "PPLA2",
+        "population": 191366,
+        "admin1": "13",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.10756,
+          55.04552
+        ]
+      },
+      "properties": {
+        "id": "geonames-1498894",
+        "name": "Миасс",
+        "ascii_name": "Miass",
+        "source": "GeoNames",
+        "geoname_id": 1498894,
+        "feature_code": "PPLA2",
+        "population": 167500,
+        "admin1": "13",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          177.5103,
+          64.73424
+        ]
+      },
+      "properties": {
+        "id": "geonames-2127202",
+        "name": "Анадырь",
+        "ascii_name": "Anadyr",
+        "source": "GeoNames",
+        "geoname_id": 2127202,
+        "feature_code": "PPLA",
+        "population": 15604,
+        "admin1": "15",
+        "admin2": null,
+        "timezone": "Asia/Anadyr",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.246,
+          56.13218
+        ]
+      },
+      "properties": {
+        "id": "geonames-569696",
+        "name": "Чебоксары",
+        "ascii_name": "Cheboksary",
+        "source": "GeoNames",
+        "geoname_id": 569696,
+        "feature_code": "PPLA",
+        "population": 492331,
+        "admin1": "16",
+        "admin2": "569698",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.47755,
+          56.11095
+        ]
+      },
+      "properties": {
+        "id": "geonames-518976",
+        "name": "Новочебоксарск",
+        "ascii_name": "Novocheboksarsk",
+        "source": "GeoNames",
+        "geoname_id": 518976,
+        "feature_code": "PPL",
+        "population": 128468,
+        "admin1": "16",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.50027,
+          42.97782
+        ]
+      },
+      "properties": {
+        "id": "geonames-532096",
+        "name": "Махачкала",
+        "ascii_name": "Makhachkala",
+        "source": "GeoNames",
+        "geoname_id": 532096,
+        "feature_code": "PPLA",
+        "population": 596356,
+        "admin1": "17",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.58571,
+          43.24872
+        ]
+      },
+      "properties": {
+        "id": "geonames-550478",
+        "name": "Хасавюрт",
+        "ascii_name": "Khasavyurt",
+        "source": "GeoNames",
+        "geoname_id": 550478,
+        "feature_code": "PPLA2",
+        "population": 126829,
+        "admin1": "17",
+        "admin2": "Gorod Khasavyurt",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.28759,
+          42.06622
+        ]
+      },
+      "properties": {
+        "id": "geonames-566532",
+        "name": "Дербент",
+        "ascii_name": "Derbent",
+        "source": "GeoNames",
+        "geoname_id": 566532,
+        "feature_code": "PPLA2",
+        "population": 105965,
+        "admin1": "17",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.77323,
+          43.22597
+        ]
+      },
+      "properties": {
+        "id": "geonames-523064",
+        "name": "Назрань",
+        "ascii_name": "Nazran",
+        "source": "GeoNames",
+        "geoname_id": 523064,
+        "feature_code": "PPLA2",
+        "population": 164131,
+        "admin1": "19",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.29076,
+          52.29566
+        ]
+      },
+      "properties": {
+        "id": "geonames-2023469",
+        "name": "Иркутск",
+        "ascii_name": "Irkutsk",
+        "source": "GeoNames",
+        "geoname_id": 2023469,
+        "feature_code": "PPLA",
+        "population": 623869,
+        "admin1": "20",
+        "admin2": "2023464",
+        "timezone": "Asia/Irkutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.61417,
+          56.1325
+        ]
+      },
+      "properties": {
+        "id": "geonames-2051523",
+        "name": "Братск",
+        "ascii_name": "Bratsk",
+        "source": "GeoNames",
+        "geoname_id": 2051523,
+        "feature_code": "PPLA2",
+        "population": 256600,
+        "admin1": "20",
+        "admin2": "11749372",
+        "timezone": "Asia/Irkutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.91413,
+          52.55968
+        ]
+      },
+      "properties": {
+        "id": "geonames-2027667",
+        "name": "Ангарск",
+        "ascii_name": "Angarsk",
+        "source": "GeoNames",
+        "geoname_id": 2027667,
+        "feature_code": "PPLA2",
+        "population": 243158,
+        "admin1": "20",
+        "admin2": null,
+        "timezone": "Asia/Irkutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.66194,
+          58.00056
+        ]
+      },
+      "properties": {
+        "id": "geonames-2013952",
+        "name": "Усть-Илимск",
+        "ascii_name": "Ust'-Ilimsk",
+        "source": "GeoNames",
+        "geoname_id": 2013952,
+        "feature_code": "PPL",
+        "population": 100271,
+        "admin1": "20",
+        "admin2": null,
+        "timezone": "Asia/Irkutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.97257,
+          56.99988
+        ]
+      },
+      "properties": {
+        "id": "geonames-555312",
+        "name": "Иваново",
+        "ascii_name": "Ivanovo",
+        "source": "GeoNames",
+        "geoname_id": 555312,
+        "feature_code": "PPLA",
+        "population": 406113,
+        "admin1": "21",
+        "admin2": "825094",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.61889,
+          43.49806
+        ]
+      },
+      "properties": {
+        "id": "geonames-523523",
+        "name": "Нальчик",
+        "ascii_name": "Nalchik",
+        "source": "GeoNames",
+        "geoname_id": 523523,
+        "feature_code": "PPLA",
+        "population": 239300,
+        "admin1": "22",
+        "admin2": "825098",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.51102,
+          54.70639
+        ]
+      },
+      "properties": {
+        "id": "geonames-554234",
+        "name": "Калининград",
+        "ascii_name": "Kaliningrad",
+        "source": "GeoNames",
+        "geoname_id": 554234,
+        "feature_code": "PPLA",
+        "population": 475056,
+        "admin1": "23",
+        "admin2": "825118",
+        "timezone": "Europe/Kaliningrad",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.25537,
+          46.30794
+        ]
+      },
+      "properties": {
+        "id": "geonames-563514",
+        "name": "Элиста",
+        "ascii_name": "Elista",
+        "source": "GeoNames",
+        "geoname_id": 563514,
+        "feature_code": "PPLA",
+        "population": 106971,
+        "admin1": "24",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.27,
+          54.53063
+        ]
+      },
+      "properties": {
+        "id": "geonames-553915",
+        "name": "Калуга",
+        "ascii_name": "Kaluga",
+        "source": "GeoNames",
+        "geoname_id": 553915,
+        "feature_code": "PPLA",
+        "population": 340851,
+        "admin1": "25",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.61238,
+          55.10993
+        ]
+      },
+      "properties": {
+        "id": "geonames-516436",
+        "name": "Обнинск",
+        "ascii_name": "Obninsk",
+        "source": "GeoNames",
+        "geoname_id": 516436,
+        "feature_code": "PPLA2",
+        "population": 107392,
+        "admin1": "25",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.04624,
+          44.22375
+        ]
+      },
+      "properties": {
+        "id": "geonames-569154",
+        "name": "Черкесск",
+        "ascii_name": "Cherkessk",
+        "source": "GeoNames",
+        "geoname_id": 569154,
+        "feature_code": "PPLA",
+        "population": 122395,
+        "admin1": "27",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.34691,
+          61.78491
+        ]
+      },
+      "properties": {
+        "id": "geonames-509820",
+        "name": "Петрозаводск",
+        "ascii_name": "Petrozavodsk",
+        "source": "GeoNames",
+        "geoname_id": 509820,
+        "feature_code": "PPLA",
+        "population": 279190,
+        "admin1": "28",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.10435,
+          55.35417
+        ]
+      },
+      "properties": {
+        "id": "geonames-1503901",
+        "name": "Кемерово",
+        "ascii_name": "Kemerovo",
+        "source": "GeoNames",
+        "geoname_id": 1503901,
+        "feature_code": "PPLA",
+        "population": 558973,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          87.13599,
+          53.75752
+        ]
+      },
+      "properties": {
+        "id": "geonames-1496990",
+        "name": "Новокузнецк",
+        "ascii_name": "Novokuznetsk",
+        "source": "GeoNames",
+        "geoname_id": 1496990,
+        "feature_code": "PPLA2",
+        "population": 539616,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.71891,
+          53.91518
+        ]
+      },
+      "properties": {
+        "id": "geonames-1494114",
+        "name": "Прокопьевск",
+        "ascii_name": "Prokop'yevsk",
+        "source": "GeoNames",
+        "geoname_id": 1494114,
+        "feature_code": "PPLA2",
+        "population": 219000,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.1737,
+          54.6567
+        ]
+      },
+      "properties": {
+        "id": "geonames-1500665",
+        "name": "Ленинск-Кузнецкий",
+        "ascii_name": "Leninsk-Kuznetsky",
+        "source": "GeoNames",
+        "geoname_id": 1500665,
+        "feature_code": "PPL",
+        "population": 109023,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          86.6621,
+          53.99
+        ]
+      },
+      "properties": {
+        "id": "geonames-1503277",
+        "name": "Киселёвск",
+        "ascii_name": "Kiselevsk",
+        "source": "GeoNames",
+        "geoname_id": 1503277,
+        "feature_code": "PPLA2",
+        "population": 104000,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.06221,
+          53.68993
+        ]
+      },
+      "properties": {
+        "id": "geonames-1498920",
+        "name": "Междуреченск",
+        "ascii_name": "Mezhdurechensk",
+        "source": "GeoNames",
+        "geoname_id": 1498920,
+        "feature_code": "PPLA2",
+        "population": 101026,
+        "admin1": "29",
+        "admin2": null,
+        "timezone": "Asia/Novokuznetsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.0971,
+          48.46204
+        ]
+      },
+      "properties": {
+        "id": "geonames-2022890",
+        "name": "Хабаровск",
+        "ascii_name": "Khabarovsk",
+        "source": "GeoNames",
+        "geoname_id": 2022890,
+        "feature_code": "PPLA",
+        "population": 618150,
+        "admin1": "30",
+        "admin2": "2022887",
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          137.00995,
+          50.55034
+        ]
+      },
+      "properties": {
+        "id": "geonames-2021851",
+        "name": "Комсомольск-на-Амуре",
+        "ascii_name": "Komsomolsk-on-Amur",
+        "source": "GeoNames",
+        "geoname_id": 2021851,
+        "feature_code": "PPLA2",
+        "population": 275908,
+        "admin1": "30",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91.42593,
+          53.7154
+        ]
+      },
+      "properties": {
+        "id": "geonames-1512236",
+        "name": "Абакан",
+        "ascii_name": "Abakan",
+        "source": "GeoNames",
+        "geoname_id": 1512236,
+        "feature_code": "PPLA",
+        "population": 184168,
+        "admin1": "31",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.41775,
+          61.25757
+        ]
+      },
+      "properties": {
+        "id": "geonames-1490624",
+        "name": "Сургут",
+        "ascii_name": "Surgut",
+        "source": "GeoNames",
+        "geoname_id": 1490624,
+        "feature_code": "PPLA2",
+        "population": 300367,
+        "admin1": "32",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.5531,
+          60.9344
+        ]
+      },
+      "properties": {
+        "id": "geonames-1497543",
+        "name": "Нижневартовск",
+        "ascii_name": "Nizhnevartovsk",
+        "source": "GeoNames",
+        "geoname_id": 1497543,
+        "feature_code": "PPLA2",
+        "population": 244937,
+        "admin1": "32",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.60349,
+          61.09979
+        ]
+      },
+      "properties": {
+        "id": "geonames-1497917",
+        "name": "Нефтеюганск",
+        "ascii_name": "Nefteyugansk",
+        "source": "GeoNames",
+        "geoname_id": 1497917,
+        "feature_code": "PPL",
+        "population": 112632,
+        "admin1": "32",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.02728,
+          61.00187
+        ]
+      },
+      "properties": {
+        "id": "geonames-1503772",
+        "name": "Ханты-Мансийск",
+        "ascii_name": "Khanty-Mansiysk",
+        "source": "GeoNames",
+        "geoname_id": 1503772,
+        "feature_code": "PPLA",
+        "population": 101466,
+        "admin1": "32",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.65783,
+          58.59809
+        ]
+      },
+      "properties": {
+        "id": "geonames-548408",
+        "name": "Киров",
+        "ascii_name": "Kirov",
+        "source": "GeoNames",
+        "geoname_id": 548408,
+        "feature_code": "PPLA",
+        "population": 507155,
+        "admin1": "33",
+        "admin2": "548394",
+        "timezone": "Europe/Kirov",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.8163,
+          61.66393
+        ]
+      },
+      "properties": {
+        "id": "geonames-485239",
+        "name": "Сыктывкар",
+        "ascii_name": "Syktyvkar",
+        "source": "GeoNames",
+        "geoname_id": 485239,
+        "feature_code": "PPLA",
+        "population": 245083,
+        "admin1": "34",
+        "admin2": "485241",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.69141,
+          63.56904
+        ]
+      },
+      "properties": {
+        "id": "geonames-479411",
+        "name": "Ухта",
+        "ascii_name": "Ukhta",
+        "source": "GeoNames",
+        "geoname_id": 479411,
+        "feature_code": "PPLA2",
+        "population": 102187,
+        "admin1": "34",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.92828,
+          57.76638
+        ]
+      },
+      "properties": {
+        "id": "geonames-543878",
+        "name": "Кострома",
+        "ascii_name": "Kostroma",
+        "source": "GeoNames",
+        "geoname_id": 543878,
+        "feature_code": "PPLA",
+        "population": 277280,
+        "admin1": "37",
+        "admin2": "543869",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.98178,
+          45.04534
+        ]
+      },
+      "properties": {
+        "id": "geonames-542420",
+        "name": "Краснодар",
+        "ascii_name": "Krasnodar",
+        "source": "GeoNames",
+        "geoname_id": 542420,
+        "feature_code": "PPLA",
+        "population": 899541,
+        "admin1": "38",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.72477,
+          43.59699
+        ]
+      },
+      "properties": {
+        "id": "geonames-491422",
+        "name": "Сочи",
+        "ascii_name": "Sochi",
+        "source": "GeoNames",
+        "geoname_id": 491422,
+        "feature_code": "PPLA2",
+        "population": 327608,
+        "admin1": "38",
+        "admin2": "6695246",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.76176,
+          44.73188
+        ]
+      },
+      "properties": {
+        "id": "geonames-518255",
+        "name": "Новороссийск",
+        "ascii_name": "Novorossiysk",
+        "source": "GeoNames",
+        "geoname_id": 518255,
+        "feature_code": "PPLA2",
+        "population": 241856,
+        "admin1": "38",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.11472,
+          44.99849
+        ]
+      },
+      "properties": {
+        "id": "geonames-580922",
+        "name": "Армавир",
+        "ascii_name": "Armavir",
+        "source": "GeoNames",
+        "geoname_id": 580922,
+        "feature_code": "PPLA2",
+        "population": 199548,
+        "admin1": "38",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.34344,
+          55.44905
+        ]
+      },
+      "properties": {
+        "id": "geonames-1501321",
+        "name": "Курган",
+        "ascii_name": "Kurgan",
+        "source": "GeoNames",
+        "geoname_id": 1501321,
+        "feature_code": "PPLA",
+        "population": 309285,
+        "admin1": "40",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.18457,
+          51.72689
+        ]
+      },
+      "properties": {
+        "id": "geonames-538560",
+        "name": "Курск",
+        "ascii_name": "Kursk",
+        "source": "GeoNames",
+        "geoname_id": 538560,
+        "feature_code": "PPLA",
+        "population": 448733,
+        "admin1": "41",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.12833,
+          59.57639
+        ]
+      },
+      "properties": {
+        "id": "geonames-561887",
+        "name": "Гатчина",
+        "ascii_name": "Gatchina",
+        "source": "GeoNames",
+        "geoname_id": 561887,
+        "feature_code": "PPLA2",
+        "population": 89761,
+        "admin1": "42",
+        "admin2": "561883",
+        "timezone": "Europe/Moscow",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.55151,
+          52.5876
+        ]
+      },
+      "properties": {
+        "id": "geonames-535121",
+        "name": "Липецк",
+        "ascii_name": "Lipetsk",
+        "source": "GeoNames",
+        "geoname_id": 535121,
+        "feature_code": "PPLA",
+        "population": 509735,
+        "admin1": "43",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.50935,
+          52.61435
+        ]
+      },
+      "properties": {
+        "id": "geonames-467978",
+        "name": "Елец",
+        "ascii_name": "Yelets",
+        "source": "GeoNames",
+        "geoname_id": 467978,
+        "feature_code": "PPLA2",
+        "population": 115688,
+        "admin1": "43",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          150.80211,
+          59.56274
+        ]
+      },
+      "properties": {
+        "id": "geonames-2123628",
+        "name": "Магадан",
+        "ascii_name": "Magadan",
+        "source": "GeoNames",
+        "geoname_id": 2123628,
+        "feature_code": "PPLA",
+        "population": 92782,
+        "admin1": "44",
+        "admin2": null,
+        "timezone": "Asia/Magadan",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.89078,
+          56.63877
+        ]
+      },
+      "properties": {
+        "id": "geonames-466806",
+        "name": "Йошкар-Ола",
+        "ascii_name": "Yoshkar-Ola",
+        "source": "GeoNames",
+        "geoname_id": 466806,
+        "feature_code": "PPLA",
+        "population": 268272,
+        "admin1": "45",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.17166,
+          54.18485
+        ]
+      },
+      "properties": {
+        "id": "geonames-498698",
+        "name": "Саранск",
+        "ascii_name": "Saransk",
+        "source": "GeoNames",
+        "geoname_id": 498698,
+        "feature_code": "PPLA",
+        "population": 318841,
+        "admin1": "46",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.42848,
+          55.9001
+        ]
+      },
+      "properties": {
+        "id": "geonames-550280",
+        "name": "Химки",
+        "ascii_name": "Khimki",
+        "source": "GeoNames",
+        "geoname_id": 550280,
+        "feature_code": "PPLA2",
+        "population": 239967,
+        "admin1": "47",
+        "admin2": "550279",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.55472,
+          55.42419
+        ]
+      },
+      "properties": {
+        "id": "geonames-508101",
+        "name": "Подольск",
+        "ascii_name": "Podolsk",
+        "source": "GeoNames",
+        "geoname_id": 508101,
+        "feature_code": "PPL",
+        "population": 179400,
+        "admin1": "47",
+        "admin2": "508091",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.72964,
+          55.91099
+        ]
+      },
+      "properties": {
+        "id": "geonames-523812",
+        "name": "Мытищи",
+        "ascii_name": "Mytishchi",
+        "source": "GeoNames",
+        "geoname_id": 523812,
+        "feature_code": "PPLA2",
+        "population": 160542,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.89322,
+          55.67719
+        ]
+      },
+      "properties": {
+        "id": "geonames-532615",
+        "name": "Люберцы",
+        "ascii_name": "Lyubertsy",
+        "source": "GeoNames",
+        "geoname_id": 532615,
+        "feature_code": "PPLA2",
+        "population": 154650,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.94794,
+          55.79479
+        ]
+      },
+      "properties": {
+        "id": "geonames-579464",
+        "name": "Балашиха",
+        "ascii_name": "Balashikha",
+        "source": "GeoNames",
+        "geoname_id": 579464,
+        "feature_code": "PPLA2",
+        "population": 150103,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.78399,
+          55.07108
+        ]
+      },
+      "properties": {
+        "id": "geonames-546230",
+        "name": "Коломна",
+        "ascii_name": "Kolomna",
+        "source": "GeoNames",
+        "geoname_id": 546230,
+        "feature_code": "PPLA2",
+        "population": 147690,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.45713,
+          55.78647
+        ]
+      },
+      "properties": {
+        "id": "geonames-563523",
+        "name": "Электросталь",
+        "ascii_name": "Elektrostal'",
+        "source": "GeoNames",
+        "geoname_id": 563523,
+        "feature_code": "PPLA2",
+        "population": 144387,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.01684,
+          55.744
+        ]
+      },
+      "properties": {
+        "id": "geonames-463355",
+        "name": "Железнодорожный",
+        "ascii_name": "Zheleznodorozhnyy",
+        "source": "GeoNames",
+        "geoname_id": 463355,
+        "feature_code": "PPL",
+        "population": 141648,
+        "admin1": "47",
+        "admin2": "579462",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.82556,
+          55.91417
+        ]
+      },
+      "properties": {
+        "id": "geonames-554233",
+        "name": "Королёв",
+        "ascii_name": "Korolev",
+        "source": "GeoNames",
+        "geoname_id": 554233,
+        "feature_code": "PPLA2",
+        "population": 139798,
+        "admin1": "47",
+        "admin2": "8521441",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.27716,
+          55.66977
+        ]
+      },
+      "properties": {
+        "id": "geonames-516215",
+        "name": "Одинцово",
+        "ascii_name": "Odintsovo",
+        "source": "GeoNames",
+        "geoname_id": 516215,
+        "feature_code": "PPLA2",
+        "population": 137041,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.41618,
+          54.9198
+        ]
+      },
+      "properties": {
+        "id": "geonames-496527",
+        "name": "Серпухов",
+        "ascii_name": "Serpukhov",
+        "source": "GeoNames",
+        "geoname_id": 496527,
+        "feature_code": "PPLA2",
+        "population": 128158,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.99155,
+          55.81242
+        ]
+      },
+      "properties": {
+        "id": "geonames-515024",
+        "name": "Орехово-Зуево",
+        "ascii_name": "Orekhovo-Zuyevo",
+        "source": "GeoNames",
+        "geoname_id": 515024,
+        "feature_code": "PPLA2",
+        "population": 120000,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.44853,
+          55.86486
+        ]
+      },
+      "properties": {
+        "id": "geonames-520068",
+        "name": "Ногинск",
+        "ascii_name": "Noginsk",
+        "source": "GeoNames",
+        "geoname_id": 520068,
+        "feature_code": "PPLA2",
+        "population": 115979,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.97218,
+          55.92497
+        ]
+      },
+      "properties": {
+        "id": "geonames-495344",
+        "name": "Щёлково",
+        "ascii_name": "Shchyolkovo",
+        "source": "GeoNames",
+        "geoname_id": 495344,
+        "feature_code": "PPL",
+        "population": 113000,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.13869,
+          56.31204
+        ]
+      },
+      "properties": {
+        "id": "geonames-496638",
+        "name": "Сергиев Посад",
+        "ascii_name": "Sergiyev Posad",
+        "source": "GeoNames",
+        "geoname_id": 496638,
+        "feature_code": "PPLA2",
+        "population": 109252,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.82897,
+          55.99456
+        ]
+      },
+      "properties": {
+        "id": "geonames-503977",
+        "name": "Пушкино",
+        "ascii_name": "Pushkino",
+        "source": "GeoNames",
+        "geoname_id": 503977,
+        "feature_code": "PPLA2",
+        "population": 102816,
+        "admin1": "47",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.61781,
+          55.75204
+        ]
+      },
+      "properties": {
+        "id": "geonames-524901",
+        "name": "Москва",
+        "ascii_name": "Moscow",
+        "source": "GeoNames",
+        "geoname_id": 524901,
+        "feature_code": "PPLC",
+        "population": 10381222,
+        "admin1": "48",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.18139,
+          55.9825
+        ]
+      },
+      "properties": {
+        "id": "geonames-463829",
+        "name": "Зеленоград",
+        "ascii_name": "Zelenograd",
+        "source": "GeoNames",
+        "geoname_id": 463829,
+        "feature_code": "PPL",
+        "population": 215727,
+        "admin1": "48",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.33583,
+          55.64528
+        ]
+      },
+      "properties": {
+        "id": "geonames-511510",
+        "name": "Ново-Переделкино",
+        "ascii_name": "Novo-Peredelkino",
+        "source": "GeoNames",
+        "geoname_id": 511510,
+        "feature_code": "PPL",
+        "population": 115536,
+        "admin1": "48",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.09922,
+          68.96778
+        ]
+      },
+      "properties": {
+        "id": "geonames-524305",
+        "name": "Мурманск",
+        "ascii_name": "Murmansk",
+        "source": "GeoNames",
+        "geoname_id": 524305,
+        "feature_code": "PPLA",
+        "population": 295374,
+        "admin1": "49",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.09792,
+          67.66782
+        ]
+      },
+      "properties": {
+        "id": "geonames-13645359",
+        "name": "Нарьян-Мар",
+        "ascii_name": "Narian-Mar",
+        "source": "GeoNames",
+        "geoname_id": 13645359,
+        "feature_code": "PPL",
+        "population": 22912,
+        "admin1": "50",
+        "admin2": null,
+        "timezone": "Europe/Kirov",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.00205,
+          56.32867
+        ]
+      },
+      "properties": {
+        "id": "geonames-520555",
+        "name": "Нижний Новгород",
+        "ascii_name": "Nizhniy Novgorod",
+        "source": "GeoNames",
+        "geoname_id": 520555,
+        "feature_code": "PPLA",
+        "population": 1259013,
+        "admin1": "51",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.45543,
+          56.24422
+        ]
+      },
+      "properties": {
+        "id": "geonames-563708",
+        "name": "Дзержинск",
+        "ascii_name": "Dzerzhinsk",
+        "source": "GeoNames",
+        "geoname_id": 563708,
+        "feature_code": "PPLA2",
+        "population": 233126,
+        "admin1": "51",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.8381,
+          55.39563
+        ]
+      },
+      "properties": {
+        "id": "geonames-580724",
+        "name": "Арзамас",
+        "ascii_name": "Arzamas",
+        "source": "GeoNames",
+        "geoname_id": 580724,
+        "feature_code": "PPLA2",
+        "population": 109479,
+        "admin1": "51",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.27104,
+          58.52131
+        ]
+      },
+      "properties": {
+        "id": "geonames-519336",
+        "name": "Великий Новгород",
+        "ascii_name": "Velikiy Novgorod",
+        "source": "GeoNames",
+        "geoname_id": 519336,
+        "feature_code": "PPLA",
+        "population": 222868,
+        "admin1": "52",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.93175,
+          55.02259
+        ]
+      },
+      "properties": {
+        "id": "geonames-1496747",
+        "name": "Новосибирск",
+        "ascii_name": "Novosibirsk",
+        "source": "GeoNames",
+        "geoname_id": 1496747,
+        "feature_code": "PPLA",
+        "population": 1612833,
+        "admin1": "53",
+        "admin2": "1496742",
+        "timezone": "Asia/Novosibirsk",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.36859,
+          54.99244
+        ]
+      },
+      "properties": {
+        "id": "geonames-1496153",
+        "name": "Омск",
+        "ascii_name": "Omsk",
+        "source": "GeoNames",
+        "geoname_id": 1496153,
+        "feature_code": "PPLA",
+        "population": 1172070,
+        "admin1": "54",
+        "admin2": null,
+        "timezone": "Asia/Omsk",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          55.09883,
+          51.76712
+        ]
+      },
+      "properties": {
+        "id": "geonames-515003",
+        "name": "Оренбург",
+        "ascii_name": "Orenburg",
+        "source": "GeoNames",
+        "geoname_id": 515003,
+        "feature_code": "PPLA",
+        "population": 564773,
+        "admin1": "55",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.48802,
+          51.23206
+        ]
+      },
+      "properties": {
+        "id": "geonames-514734",
+        "name": "Орск",
+        "ascii_name": "Orsk",
+        "source": "GeoNames",
+        "geoname_id": 514734,
+        "feature_code": "PPLA2",
+        "population": 246836,
+        "admin1": "55",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.31318,
+          51.20099
+        ]
+      },
+      "properties": {
+        "id": "geonames-517836",
+        "name": "Новотроицк",
+        "ascii_name": "Novotroitsk",
+        "source": "GeoNames",
+        "geoname_id": 517836,
+        "feature_code": "PPLA2",
+        "population": 106186,
+        "admin1": "55",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.0791,
+          52.96879
+        ]
+      },
+      "properties": {
+        "id": "geonames-515012",
+        "name": "Орёл",
+        "ascii_name": "Orel",
+        "source": "GeoNames",
+        "geoname_id": 515012,
+        "feature_code": "PPLA",
+        "population": 303696,
+        "admin1": "56",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.01075,
+          53.19568
+        ]
+      },
+      "properties": {
+        "id": "geonames-511565",
+        "name": "Пенза",
+        "ascii_name": "Penza",
+        "source": "GeoNames",
+        "geoname_id": 511565,
+        "feature_code": "PPLA",
+        "population": 523553,
+        "admin1": "57",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.87353,
+          43.10562
+        ]
+      },
+      "properties": {
+        "id": "geonames-2013348",
+        "name": "Владивосток",
+        "ascii_name": "Vladivostok",
+        "source": "GeoNames",
+        "geoname_id": 2013348,
+        "feature_code": "PPLA",
+        "population": 604901,
+        "admin1": "59",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.95734,
+          43.80467
+        ]
+      },
+      "properties": {
+        "id": "geonames-2014006",
+        "name": "Уссурийск",
+        "ascii_name": "Ussuriysk",
+        "source": "GeoNames",
+        "geoname_id": 2014006,
+        "feature_code": "PPLA2",
+        "population": 157068,
+        "admin1": "59",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.91831,
+          42.8436
+        ]
+      },
+      "properties": {
+        "id": "geonames-2019528",
+        "name": "Находка",
+        "ascii_name": "Nakhodka",
+        "source": "GeoNames",
+        "geoname_id": 2019528,
+        "feature_code": "PPLA2",
+        "population": 146920,
+        "admin1": "59",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.19137,
+          43.35757
+        ]
+      },
+      "properties": {
+        "id": "geonames-2027456",
+        "name": "Артём",
+        "ascii_name": "Artem",
+        "source": "GeoNames",
+        "geoname_id": 2027456,
+        "feature_code": "PPLA2",
+        "population": 102300,
+        "admin1": "59",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.33181,
+          57.81922
+        ]
+      },
+      "properties": {
+        "id": "geonames-504341",
+        "name": "Псков",
+        "ascii_name": "Pskov",
+        "source": "GeoNames",
+        "geoname_id": 504341,
+        "feature_code": "PPLA",
+        "population": 210501,
+        "admin1": "60",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.54377,
+          56.34063
+        ]
+      },
+      "properties": {
+        "id": "geonames-476077",
+        "name": "Великие Луки",
+        "ascii_name": "Velikiye Luki",
+        "source": "GeoNames",
+        "geoname_id": 476077,
+        "feature_code": "PPLA2",
+        "population": 103149,
+        "admin1": "60",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.70769,
+          47.21997
+        ]
+      },
+      "properties": {
+        "id": "geonames-501175",
+        "name": "Ростов-на-Дону",
+        "ascii_name": "Rostov-on-Don",
+        "source": "GeoNames",
+        "geoname_id": 501175,
+        "feature_code": "PPLA",
+        "population": 1130305,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.9053,
+          47.23627
+        ]
+      },
+      "properties": {
+        "id": "geonames-484907",
+        "name": "Таганрог",
+        "ascii_name": "Taganrog",
+        "source": "GeoNames",
+        "geoname_id": 484907,
+        "feature_code": "PPL",
+        "population": 279056,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.21603,
+          47.71916
+        ]
+      },
+      "properties": {
+        "id": "geonames-496015",
+        "name": "Шахты",
+        "ascii_name": "Shakhty",
+        "source": "GeoNames",
+        "geoname_id": 496015,
+        "feature_code": "PPLA2",
+        "population": 221312,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.15269,
+          47.51141
+        ]
+      },
+      "properties": {
+        "id": "geonames-472761",
+        "name": "Волгодонск",
+        "ascii_name": "Volgodonsk",
+        "source": "GeoNames",
+        "geoname_id": 472761,
+        "feature_code": "PPLA2",
+        "population": 167731,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.09373,
+          47.4222
+        ]
+      },
+      "properties": {
+        "id": "geonames-518970",
+        "name": "Новочеркасск",
+        "ascii_name": "Novocherkassk",
+        "source": "GeoNames",
+        "geoname_id": 518970,
+        "feature_code": "PPLA2",
+        "population": 166974,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.75713,
+          47.13746
+        ]
+      },
+      "properties": {
+        "id": "geonames-578740",
+        "name": "Батайск",
+        "ascii_name": "Bataysk",
+        "source": "GeoNames",
+        "geoname_id": 578740,
+        "feature_code": "PPL",
+        "population": 109962,
+        "admin1": "61",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.70415,
+          54.62696
+        ]
+      },
+      "properties": {
+        "id": "geonames-500096",
+        "name": "Рязань",
+        "ascii_name": "Ryazan'",
+        "source": "GeoNames",
+        "geoname_id": 500096,
+        "feature_code": "PPLA",
+        "population": 538962,
+        "admin1": "62",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.72288,
+          62.03114
+        ]
+      },
+      "properties": {
+        "id": "geonames-2013159",
+        "name": "Якутск",
+        "ascii_name": "Yakutsk",
+        "source": "GeoNames",
+        "geoname_id": 2013159,
+        "feature_code": "PPLA",
+        "population": 235600,
+        "admin1": "63",
+        "admin2": "8617188",
+        "timezone": "Asia/Yakutsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          142.73559,
+          46.9543
+        ]
+      },
+      "properties": {
+        "id": "geonames-2119441",
+        "name": "Южно-Сахалинск",
+        "ascii_name": "Yuzhno-Sakhalinsk",
+        "source": "GeoNames",
+        "geoname_id": 2119441,
+        "feature_code": "PPLA",
+        "population": 198973,
+        "admin1": "64",
+        "admin2": null,
+        "timezone": "Asia/Sakhalin",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.13553,
+          53.20767
+        ]
+      },
+      "properties": {
+        "id": "geonames-499099",
+        "name": "Самара",
+        "ascii_name": "Samara",
+        "source": "GeoNames",
+        "geoname_id": 499099,
+        "feature_code": "PPLA",
+        "population": 1163399,
+        "admin1": "65",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.3461,
+          53.5303
+        ]
+      },
+      "properties": {
+        "id": "geonames-482283",
+        "name": "Тольятти",
+        "ascii_name": "Tolyatti",
+        "source": "GeoNames",
+        "geoname_id": 482283,
+        "feature_code": "PPL",
+        "population": 702879,
+        "admin1": "65",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.4681,
+          53.1585
+        ]
+      },
+      "properties": {
+        "id": "geonames-484972",
+        "name": "Сызрань",
+        "ascii_name": "Syzran",
+        "source": "GeoNames",
+        "geoname_id": 484972,
+        "feature_code": "PPL",
+        "population": 189338,
+        "admin1": "65",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.94001,
+          53.09709
+        ]
+      },
+      "properties": {
+        "id": "geonames-518659",
+        "name": "Новокуйбышевск",
+        "ascii_name": "Novokuybyshevsk",
+        "source": "GeoNames",
+        "geoname_id": 518659,
+        "feature_code": "PPLA2",
+        "population": 111800,
+        "admin1": "65",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.31413,
+          59.93863
+        ]
+      },
+      "properties": {
+        "id": "geonames-498817",
+        "name": "Санкт-Петербург",
+        "ascii_name": "Saint Petersburg",
+        "source": "GeoNames",
+        "geoname_id": 498817,
+        "feature_code": "PPLA",
+        "population": 5351935,
+        "admin1": "66",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.58856,
+          59.75069
+        ]
+      },
+      "properties": {
+        "id": "geonames-546105",
+        "name": "Колпино",
+        "ascii_name": "Kolpino",
+        "source": "GeoNames",
+        "geoname_id": 546105,
+        "feature_code": "PPL",
+        "population": 138979,
+        "admin1": "66",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.9901,
+          51.54048
+        ]
+      },
+      "properties": {
+        "id": "geonames-498677",
+        "name": "Саратов",
+        "ascii_name": "Saratov",
+        "source": "GeoNames",
+        "geoname_id": 498677,
+        "feature_code": "PPLA",
+        "population": 844858,
+        "admin1": "67",
+        "admin2": "498661",
+        "timezone": "Europe/Saratov",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.79671,
+          52.02639
+        ]
+      },
+      "properties": {
+        "id": "geonames-579492",
+        "name": "Балаково",
+        "ascii_name": "Balakovo",
+        "source": "GeoNames",
+        "geoname_id": 579492,
+        "feature_code": "PPLA2",
+        "population": 199572,
+        "admin1": "67",
+        "admin2": null,
+        "timezone": "Europe/Saratov",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          46.10528,
+          51.48389
+        ]
+      },
+      "properties": {
+        "id": "geonames-563464",
+        "name": "Энгельс",
+        "ascii_name": "Engels",
+        "source": "GeoNames",
+        "geoname_id": 563464,
+        "feature_code": "PPL",
+        "population": 196011,
+        "admin1": "67",
+        "admin2": null,
+        "timezone": "Europe/Saratov",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.66986,
+          43.04101
+        ]
+      },
+      "properties": {
+        "id": "geonames-473249",
+        "name": "Владикавказ",
+        "ascii_name": "Vladikavkaz",
+        "source": "GeoNames",
+        "geoname_id": 473249,
+        "feature_code": "PPLA",
+        "population": 306258,
+        "admin1": "68",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.05088,
+          54.77826
+        ]
+      },
+      "properties": {
+        "id": "geonames-491687",
+        "name": "Смоленск",
+        "ascii_name": "Smolensk",
+        "source": "GeoNames",
+        "geoname_id": 491687,
+        "feature_code": "PPLA",
+        "population": 330025,
+        "admin1": "69",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.9642,
+          45.03442
+        ]
+      },
+      "properties": {
+        "id": "geonames-487846",
+        "name": "Ставрополь",
+        "ascii_name": "Stavropol",
+        "source": "GeoNames",
+        "geoname_id": 487846,
+        "feature_code": "PPLA",
+        "population": 433931,
+        "admin1": "70",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.05036,
+          44.05
+        ]
+      },
+      "properties": {
+        "id": "geonames-503550",
+        "name": "Пятигорск",
+        "ascii_name": "Pyatigorsk",
+        "source": "GeoNames",
+        "geoname_id": 503550,
+        "feature_code": "PPLA2",
+        "population": 142865,
+        "admin1": "70",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.9444,
+          44.6333
+        ]
+      },
+      "properties": {
+        "id": "geonames-522377",
+        "name": "Невинномысск",
+        "ascii_name": "Nevinnomyssk",
+        "source": "GeoNames",
+        "geoname_id": 522377,
+        "feature_code": "PPLA2",
+        "population": 134345,
+        "admin1": "70",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.72083,
+          43.91333
+        ]
+      },
+      "properties": {
+        "id": "geonames-548114",
+        "name": "Кисловодск",
+        "ascii_name": "Kislovodsk",
+        "source": "GeoNames",
+        "geoname_id": 548114,
+        "feature_code": "PPLA2",
+        "population": 132771,
+        "admin1": "70",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.61529,
+          56.85733
+        ]
+      },
+      "properties": {
+        "id": "geonames-1486209",
+        "name": "Екатеринбург",
+        "ascii_name": "Yekaterinburg",
+        "source": "GeoNames",
+        "geoname_id": 1486209,
+        "feature_code": "PPLA",
+        "population": 1495066,
+        "admin1": "71",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.965,
+          57.91944
+        ]
+      },
+      "properties": {
+        "id": "geonames-520494",
+        "name": "Нижний Тагил",
+        "ascii_name": "Nizhny Tagil",
+        "source": "GeoNames",
+        "geoname_id": 520494,
+        "feature_code": "PPL",
+        "population": 381116,
+        "admin1": "71",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.93347,
+          56.40626
+        ]
+      },
+      "properties": {
+        "id": "geonames-1504826",
+        "name": "Каменск-Уральский",
+        "ascii_name": "Kamensk-Ural'skiy",
+        "source": "GeoNames",
+        "geoname_id": 1504826,
+        "feature_code": "PPLA2",
+        "population": 182500,
+        "admin1": "71",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.94361,
+          56.90528
+        ]
+      },
+      "properties": {
+        "id": "geonames-510808",
+        "name": "Первоуральск",
+        "ascii_name": "Pervouralsk",
+        "source": "GeoNames",
+        "geoname_id": 510808,
+        "feature_code": "PPL",
+        "population": 133600,
+        "admin1": "71",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.44102,
+          52.73632
+        ]
+      },
+      "properties": {
+        "id": "geonames-484646",
+        "name": "Тамбов",
+        "ascii_name": "Tambov",
+        "source": "GeoNames",
+        "geoname_id": 484646,
+        "feature_code": "PPLA",
+        "population": 293661,
+        "admin1": "72",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.12214,
+          55.78874
+        ]
+      },
+      "properties": {
+        "id": "geonames-551487",
+        "name": "Казань",
+        "ascii_name": "Kazan",
+        "source": "GeoNames",
+        "geoname_id": 551487,
+        "feature_code": "PPLA",
+        "population": 1243500,
+        "admin1": "73",
+        "admin2": "862913",
+        "timezone": "Europe/Moscow",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.41961,
+          55.73718
+        ]
+      },
+      "properties": {
+        "id": "geonames-523750",
+        "name": "Набережные Челны",
+        "ascii_name": "Naberezhnyye Chelny",
+        "source": "GeoNames",
+        "geoname_id": 523750,
+        "feature_code": "PPLA2",
+        "population": 509870,
+        "admin1": "73",
+        "admin2": "480620",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.81502,
+          55.63794
+        ]
+      },
+      "properties": {
+        "id": "geonames-521118",
+        "name": "Нижнекамск",
+        "ascii_name": "Nizhnekamsk",
+        "source": "GeoNames",
+        "geoname_id": 521118,
+        "feature_code": "PPLA2",
+        "population": 234297,
+        "admin1": "73",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.31793,
+          54.90395
+        ]
+      },
+      "properties": {
+        "id": "geonames-582432",
+        "name": "Альметьевск",
+        "ascii_name": "Al'met'yevsk",
+        "source": "GeoNames",
+        "geoname_id": 582432,
+        "feature_code": "PPLA2",
+        "population": 140437,
+        "admin1": "73",
+        "admin2": "Al’met’yevskiy Rayon",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.98216,
+          56.50049
+        ]
+      },
+      "properties": {
+        "id": "geonames-1489425",
+        "name": "Томск",
+        "ascii_name": "Tomsk",
+        "source": "GeoNames",
+        "geoname_id": 1489425,
+        "feature_code": "PPLA",
+        "population": 574002,
+        "admin1": "75",
+        "admin2": "1489419",
+        "timezone": "Asia/Tomsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.88639,
+          56.60056
+        ]
+      },
+      "properties": {
+        "id": "geonames-1538637",
+        "name": "Северск",
+        "ascii_name": "Seversk",
+        "source": "GeoNames",
+        "geoname_id": 1538637,
+        "feature_code": "PPLA2",
+        "population": 109844,
+        "admin1": "75",
+        "admin2": null,
+        "timezone": "Asia/Tomsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.61822,
+          54.19609
+        ]
+      },
+      "properties": {
+        "id": "geonames-480562",
+        "name": "Тула",
+        "ascii_name": "Tula",
+        "source": "GeoNames",
+        "geoname_id": 480562,
+        "feature_code": "PPLA",
+        "population": 482873,
+        "admin1": "76",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.29084,
+          54.01098
+        ]
+      },
+      "properties": {
+        "id": "geonames-518557",
+        "name": "Новомосковск",
+        "ascii_name": "Novomoskovsk",
+        "source": "GeoNames",
+        "geoname_id": 518557,
+        "feature_code": "PPLA2",
+        "population": 130982,
+        "admin1": "76",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.90057,
+          56.85836
+        ]
+      },
+      "properties": {
+        "id": "geonames-480060",
+        "name": "Тверь",
+        "ascii_name": "Tver",
+        "source": "GeoNames",
+        "geoname_id": 480060,
+        "feature_code": "PPLA",
+        "population": 420065,
+        "admin1": "77",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.52722,
+          57.15222
+        ]
+      },
+      "properties": {
+        "id": "geonames-1488754",
+        "name": "Тюмень",
+        "ascii_name": "Tyumen",
+        "source": "GeoNames",
+        "geoname_id": 1488754,
+        "feature_code": "PPLA",
+        "population": 768358,
+        "admin1": "78",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.25457,
+          58.19807
+        ]
+      },
+      "properties": {
+        "id": "geonames-1489530",
+        "name": "Тобольск",
+        "ascii_name": "Tobolsk",
+        "source": "GeoNames",
+        "geoname_id": 1489530,
+        "feature_code": "PPL",
+        "population": 113800,
+        "admin1": "78",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94.43776,
+          51.71108
+        ]
+      },
+      "properties": {
+        "id": "geonames-1500973",
+        "name": "Кызыл",
+        "ascii_name": "Kyzyl",
+        "source": "GeoNames",
+        "geoname_id": 1500973,
+        "feature_code": "PPLA",
+        "population": 116983,
+        "admin1": "79",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.19862,
+          56.85225
+        ]
+      },
+      "properties": {
+        "id": "geonames-554840",
+        "name": "Ижевск",
+        "ascii_name": "Izhevsk",
+        "source": "GeoNames",
+        "geoname_id": 554840,
+        "feature_code": "PPLA",
+        "population": 648213,
+        "admin1": "80",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.65619,
+          58.14
+        ]
+      },
+      "properties": {
+        "id": "geonames-561347",
+        "name": "Глазов",
+        "ascii_name": "Glazov",
+        "source": "GeoNames",
+        "geoname_id": 561347,
+        "feature_code": "PPLA2",
+        "population": 100676,
+        "admin1": "80",
+        "admin2": null,
+        "timezone": "Europe/Samara",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.38657,
+          54.32824
+        ]
+      },
+      "properties": {
+        "id": "geonames-479123",
+        "name": "Ульяновск",
+        "ascii_name": "Ulyanovsk",
+        "source": "GeoNames",
+        "geoname_id": 479123,
+        "feature_code": "PPLA",
+        "population": 626540,
+        "admin1": "81",
+        "admin2": "479105",
+        "timezone": "Europe/Ulyanovsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.61838,
+          54.21386
+        ]
+      },
+      "properties": {
+        "id": "geonames-566199",
+        "name": "Димитровград",
+        "ascii_name": "Dimitrovgrad",
+        "source": "GeoNames",
+        "geoname_id": 566199,
+        "feature_code": "PPL",
+        "population": 132226,
+        "admin1": "81",
+        "admin2": null,
+        "timezone": "Europe/Ulyanovsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.39976,
+          56.13854
+        ]
+      },
+      "properties": {
+        "id": "geonames-473247",
+        "name": "Владимир",
+        "ascii_name": "Vladimir",
+        "source": "GeoNames",
+        "geoname_id": 473247,
+        "feature_code": "PPLA",
+        "population": 357024,
+        "admin1": "83",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.31893,
+          56.35752
+        ]
+      },
+      "properties": {
+        "id": "geonames-543460",
+        "name": "Ковров",
+        "ascii_name": "Kovrov",
+        "source": "GeoNames",
+        "geoname_id": 543460,
+        "feature_code": "PPLA2",
+        "population": 154224,
+        "admin1": "83",
+        "admin2": "543454",
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.02388,
+          55.56853
+        ]
+      },
+      "properties": {
+        "id": "geonames-524294",
+        "name": "Муром",
+        "ascii_name": "Murom",
+        "source": "GeoNames",
+        "geoname_id": 524294,
+        "feature_code": "PPLA2",
+        "population": 126931,
+        "admin1": "83",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.4976,
+          48.71378
+        ]
+      },
+      "properties": {
+        "id": "geonames-472757",
+        "name": "Волгоград",
+        "ascii_name": "Volgograd",
+        "source": "GeoNames",
+        "geoname_id": 472757,
+        "feature_code": "PPLA",
+        "population": 1013533,
+        "admin1": "84",
+        "admin2": null,
+        "timezone": "Europe/Volgograd",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.77973,
+          48.78583
+        ]
+      },
+      "properties": {
+        "id": "geonames-472231",
+        "name": "Волжский",
+        "ascii_name": "Volzhsky",
+        "source": "GeoNames",
+        "geoname_id": 472231,
+        "feature_code": "PPL",
+        "population": 323293,
+        "admin1": "84",
+        "admin2": null,
+        "timezone": "Europe/Volgograd",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.41277,
+          50.0885
+        ]
+      },
+      "properties": {
+        "id": "geonames-553287",
+        "name": "Камышин",
+        "ascii_name": "Kamyshin",
+        "source": "GeoNames",
+        "geoname_id": 553287,
+        "feature_code": "PPLA2",
+        "population": 128626,
+        "admin1": "84",
+        "admin2": null,
+        "timezone": "Europe/Volgograd",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9,
+          59.13333
+        ]
+      },
+      "properties": {
+        "id": "geonames-569223",
+        "name": "Череповец",
+        "ascii_name": "Cherepovets",
+        "source": "GeoNames",
+        "geoname_id": 569223,
+        "feature_code": "PPL",
+        "population": 315738,
+        "admin1": "85",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.88398,
+          59.2239
+        ]
+      },
+      "properties": {
+        "id": "geonames-472459",
+        "name": "Вологда",
+        "ascii_name": "Vologda",
+        "source": "GeoNames",
+        "geoname_id": 472459,
+        "feature_code": "PPLA",
+        "population": 312420,
+        "admin1": "85",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.19204,
+          51.66833
+        ]
+      },
+      "properties": {
+        "id": "geonames-472045",
+        "name": "Воронеж",
+        "ascii_name": "Voronezh",
+        "source": "GeoNames",
+        "geoname_id": 472045,
+        "feature_code": "PPLA",
+        "population": 1047549,
+        "admin1": "86",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.43728,
+          63.19309
+        ]
+      },
+      "properties": {
+        "id": "geonames-1496503",
+        "name": "Ноябрьск",
+        "ascii_name": "Noyabrsk",
+        "source": "GeoNames",
+        "geoname_id": 1496503,
+        "feature_code": "PPL",
+        "population": 110000,
+        "admin1": "87",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.87368,
+          57.62987
+        ]
+      },
+      "properties": {
+        "id": "geonames-468902",
+        "name": "Ярославль",
+        "ascii_name": "Yaroslavl",
+        "source": "GeoNames",
+        "geoname_id": 468902,
+        "feature_code": "PPLA",
+        "population": 608722,
+        "admin1": "88",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.83811,
+          58.04562
+        ]
+      },
+      "properties": {
+        "id": "geonames-500004",
+        "name": "Рыбинск",
+        "ascii_name": "Rybinsk",
+        "source": "GeoNames",
+        "geoname_id": 500004,
+        "feature_code": "PPLA2",
+        "population": 216724,
+        "admin1": "88",
+        "admin2": null,
+        "timezone": "Europe/Moscow",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.92033,
+          48.793
+        ]
+      },
+      "properties": {
+        "id": "geonames-2026643",
+        "name": "Биробиджан",
+        "ascii_name": "Birobidzhan",
+        "source": "GeoNames",
+        "geoname_id": 2026643,
+        "feature_code": "PPLA",
+        "population": 73623,
+        "admin1": "89",
+        "admin2": null,
+        "timezone": "Asia/Vladivostok",
+        "label_priority": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.25017,
+          58.01046
+        ]
+      },
+      "properties": {
+        "id": "geonames-511196",
+        "name": "Пермь",
+        "ascii_name": "Perm",
+        "source": "GeoNames",
+        "geoname_id": 511196,
+        "feature_code": "PPLA",
+        "population": 982419,
+        "admin1": "90",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.8204,
+          59.4091
+        ]
+      },
+      "properties": {
+        "id": "geonames-577206",
+        "name": "Березники",
+        "ascii_name": "Berezniki",
+        "source": "GeoNames",
+        "geoname_id": 577206,
+        "feature_code": "PPLA2",
+        "population": 167748,
+        "admin1": "90",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.74267,
+          59.66686
+        ]
+      },
+      "properties": {
+        "id": "geonames-491023",
+        "name": "Соликамск",
+        "ascii_name": "Solikamsk",
+        "source": "GeoNames",
+        "geoname_id": 491023,
+        "feature_code": "PPLA2",
+        "population": 100812,
+        "admin1": "90",
+        "admin2": null,
+        "timezone": "Asia/Yekaterinburg",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          92.93136,
+          56.03742
+        ]
+      },
+      "properties": {
+        "id": "geonames-1502026",
+        "name": "Красноярск",
+        "ascii_name": "Krasnoyarsk",
+        "source": "GeoNames",
+        "geoname_id": 1502026,
+        "feature_code": "PPLA",
+        "population": 1090811,
+        "admin1": "91",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.2027,
+          69.3535
+        ]
+      },
+      "properties": {
+        "id": "geonames-1497337",
+        "name": "Норильск",
+        "ascii_name": "Norilsk",
+        "source": "GeoNames",
+        "geoname_id": 1497337,
+        "feature_code": "PPL",
+        "population": 140800,
+        "admin1": "91",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.50145,
+          56.26792
+        ]
+      },
+      "properties": {
+        "id": "geonames-1512165",
+        "name": "Ачинск",
+        "ascii_name": "Achinsk",
+        "source": "GeoNames",
+        "geoname_id": 1512165,
+        "feature_code": "PPLA2",
+        "population": 117634,
+        "admin1": "91",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.71848,
+          56.20218
+        ]
+      },
+      "properties": {
+        "id": "geonames-1504682",
+        "name": "Канск",
+        "ascii_name": "Kansk",
+        "source": "GeoNames",
+        "geoname_id": 1504682,
+        "feature_code": "PPLA2",
+        "population": 101502,
+        "admin1": "91",
+        "admin2": null,
+        "timezone": "Asia/Krasnoyarsk",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          158.62751,
+          53.06393
+        ]
+      },
+      "properties": {
+        "id": "geonames-2122104",
+        "name": "Петропавловск-Камчатский",
+        "ascii_name": "Petropavlovsk-Kamchatsky",
+        "source": "GeoNames",
+        "geoname_id": 2122104,
+        "feature_code": "PPLA",
+        "population": 181216,
+        "admin1": "92",
+        "admin2": null,
+        "timezone": "Asia/Kamchatka",
+        "label_priority": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.49171,
+          52.04311
+        ]
+      },
+      "properties": {
+        "id": "geonames-2025339",
+        "name": "Чита",
+        "ascii_name": "Chita",
+        "source": "GeoNames",
+        "geoname_id": 2025339,
+        "feature_code": "PPLA",
+        "population": 349005,
+        "admin1": "93",
+        "admin2": null,
+        "timezone": "Asia/Chita",
+        "label_priority": 6
+      }
+    }
+  ]
+}
