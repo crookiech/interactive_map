@@ -112,20 +112,6 @@ public class GeoObjectTypeService {
 
     @Transactional
     @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateLod(Long id, GeoObjectTypeLodUpdateDto dto) {
-        validateLodRange(dto.getLodMin(), dto.getLodMax());
-
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setLodMin(dto.getLodMin());
-        geoObjectType.setLodMax(dto.getLodMax());
-
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated LOD for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
     public GeoObjectTypeResponseDto patchGeoObjectType(Long id, GeoObjectTypePatchDto dto) {
         GeoObjectType geoObjectType = findById(id);
 
@@ -155,93 +141,6 @@ public class GeoObjectTypeService {
 
         GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
         log.info("Patched geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateCode(Long id, GeoObjectTypeCodeUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        
-        // Проверяем уникальность кода
-        if (!geoObjectType.getCode().equals(dto.getCode()) && 
-            geoObjectTypeRepository.findByCode(dto.getCode()).isPresent()) {
-            throw new IllegalArgumentException("GeoObjectType with code '" + dto.getCode() + "' already exists");
-        }
-        
-        geoObjectType.setCode(dto.getCode());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated code for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateDisplayName(Long id, GeoObjectTypeDisplayNameUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setDisplayName(dto.getDisplayName());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated display name for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateGeometryType(Long id, GeoObjectTypeGeometryUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        
-        try {
-            GeometryTypeEnum enumValue = GeometryTypeEnum.valueOf(dto.getGeometryType().toUpperCase());
-            geoObjectType.setGeometryType(enumValue);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(
-                "Invalid geometry type: " + dto.getGeometryType() + 
-                ". Allowed values: " + GeometryTypeEnum.getAllowedValues()
-            );
-        }
-        
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated geometry type for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateColor(Long id, GeoObjectTypeColorUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setColorHex(dto.getColorHex());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated color for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateIcon(Long id, GeoObjectTypeIconUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setIconKey(dto.getIconKey());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated icon for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateSortOrder(Long id, GeoObjectTypeSortOrderUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setSortOrder(dto.getSortOrder());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated sort order for geo object type with id: {}", saved.getId());
-        return mapToResponseDto(saved);
-    }
-
-    @Transactional
-    @CacheEvict(value = "tiles", allEntries = true)
-    public GeoObjectTypeResponseDto updateVisibility(Long id, GeoObjectTypeVisibilityUpdateDto dto) {
-        GeoObjectType geoObjectType = findById(id);
-        geoObjectType.setVisibleByDefault(dto.getVisibleByDefault());
-        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
-        log.info("Updated visibility for geo object type with id: {}", saved.getId());
         return mapToResponseDto(saved);
     }
 
