@@ -40,7 +40,6 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
                 ) AS geom
             FROM geo_objects go
             JOIN geo_object_types got ON got.id = go.type_id
-            LEFT JOIN geo_object_violation gov ON gov.object_id = go.id
             WHERE
                 ST_Intersects(
                     ST_Transform(go.geometry, 3857),
@@ -63,15 +62,6 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
         }
 
         sql.append("""
-            GROUP BY
-                go.id,
-                go.name,
-                got.code,
-                go.geometry,
-                go.parent_id,
-                go.label_priority,
-                go.is_segment,
-                go.segment_order
         )
         SELECT ST_AsMVT(
             tile,
