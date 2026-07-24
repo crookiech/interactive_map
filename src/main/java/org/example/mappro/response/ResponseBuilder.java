@@ -20,15 +20,4 @@ public class ResponseBuilder {
         return new ResponseEntity<>(finalResponse, status);
     }
 
-    public static ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String errorMessage) {
-        Map<String, Object> responseDetails = new LinkedHashMap<>();
-        responseDetails.put("code", status.value());
-        responseDetails.put("description", errorMessage);
-
-        Map<String, Object> finalResponse = new LinkedHashMap<>();
-        finalResponse.put("response", responseDetails);
-        finalResponse.put("data", null); // Или можно не включать поле data, если оно не требуется
-
-        return new ResponseEntity<>(finalResponse, status);
-    }
 }

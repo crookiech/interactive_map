@@ -12,7 +12,7 @@ import io.swagger.v3.oas.models.PathItem;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 
-import org.example.mappro.tiles.dto.ErrorResponseDto;
+import org.example.mappro.exception.ApiErrorResponse;
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,8 +37,8 @@ public class OpenApiConfig {
     public OpenApiCustomizer openApiCustomizer() {
         return openApi -> {
             // Добавление схемы ошибки
-            var errorSchema = new Schema<ErrorResponseDto>();
-            openApi.getComponents().addSchemas("ErrorResponseDto", errorSchema);
+            var errorSchema = new Schema<ApiErrorResponse>();
+            openApi.getComponents().addSchemas("ApiErrorResponse", errorSchema);
             
             // Применение схемы к ответам
             for (PathItem pathItem : openApi.getPaths().values()) {
@@ -50,7 +50,7 @@ public class OpenApiConfig {
                             if (response.getContent() != null) {
                                 response.getContent().values()
                                     .forEach(mediaType -> mediaType.setSchema(
-                                        new Schema<>().$ref("#/components/schemas/ErrorResponseDto")
+                                        new Schema<>().$ref("#/components/schemas/ApiErrorResponse")
                                     ));
                             }
                         }
@@ -69,7 +69,7 @@ public class OpenApiConfig {
                 deprecated = true,
                 responses = {
                         @io.swagger.v3.oas.annotations.responses.ApiResponse(content = @Content(schema =
-                        @io.swagger.v3.oas.annotations.media.Schema(implementation = ErrorResponseDto.class)))
+                        @io.swagger.v3.oas.annotations.media.Schema(implementation = ApiErrorResponse.class)))
                 })
         @Tag(name = "Don't use")
         @DeleteMapping
