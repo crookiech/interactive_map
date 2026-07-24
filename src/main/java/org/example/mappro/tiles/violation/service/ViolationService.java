@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 @Slf4j
@@ -25,7 +26,10 @@ public class ViolationService {
     @Transactional
     public ViolationResponseDto createViolation(ViolationCreateDto dto) {
         ViolationType type = violationTypeRepository.findByName(dto.getType())
-                .orElseThrow(() -> new RuntimeException("Violation type not found: " + dto.getType()));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "VIOLATION_TYPE_NOT_FOUND",
+                        "Violation type not found: " + dto.getType()
+                ));
         
         Violation violation = new Violation();
         violation.setType(type);
@@ -43,7 +47,10 @@ public class ViolationService {
     @Transactional(readOnly = true)
     public ViolationResponseDto getViolation(Long id) {
         Violation violation = violationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Violation not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "VIOLATION_NOT_FOUND",
+                        "Violation not found with id: " + id
+                ));
         return mapToResponseDto(violation);
     }
 

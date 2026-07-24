@@ -6,6 +6,8 @@ import org.example.mappro.auth.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.example.mappro.exception.ResourceConflictException;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +17,10 @@ public class RoleService {
 
     public Role createRole(Role role) {
         if (roleRepository.existsByName(role.getName())) {
-            throw new IllegalArgumentException("Роль '" + role.getName() + "' уже существует");
+            throw new ResourceConflictException(
+                    "ROLE_NAME_CONFLICT",
+                    "Роль '" + role.getName() + "' уже существует"
+            );
         }
         return roleRepository.save(role);
     }
@@ -26,7 +31,10 @@ public class RoleService {
 
     public void deleteRole(Long id) {
         if (!roleRepository.existsById(id)) {
-            throw new IllegalArgumentException("Роль с ID " + id + " не найдена");
+            throw new ResourceNotFoundException(
+                    "ROLE_NOT_FOUND",
+                    "Роль с ID " + id + " не найдена"
+            );
         }
         roleRepository.deleteById(id);
     }

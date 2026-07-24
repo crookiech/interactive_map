@@ -16,6 +16,9 @@ import org.example.mappro.tiles.geoobjecttype.dto.*;
 import org.example.mappro.tiles.geoobjecttype.model.GeoObjectType;
 import org.example.mappro.tiles.geoobjecttype.GeometryTypeEnum;
 import org.example.mappro.tiles.geoobjecttype.repository.GeoObjectTypeRepository;
+import org.example.mappro.exception.RequestValidationException;
+import org.example.mappro.exception.ResourceConflictException;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 @Slf4j
@@ -63,7 +66,8 @@ public class GeoObjectTypeService {
     @Transactional
     public GeoObjectTypeResponseDto createGeoObjectType(GeoObjectTypeCreateDto dto) {
         if (geoObjectTypeRepository.findByCode(dto.getCode()).isPresent()) {
-            throw new IllegalArgumentException(
+            throw new ResourceConflictException(
+                "GEO_OBJECT_TYPE_CODE_CONFLICT",
                 "GeoObjectType with code '" + dto.getCode() + "' already exists"
             );
         }
@@ -71,7 +75,8 @@ public class GeoObjectTypeService {
         try {
             GeometryTypeEnum.valueOf(dto.getGeometryType().name());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(
+            throw new RequestValidationException(
+                "INVALID_GEOMETRY_TYPE",
                 "Invalid geometry type: " + dto.getGeometryType() + 
                 ". Allowed values: " + GeometryTypeEnum.getAllowedValues()
             );
@@ -117,7 +122,8 @@ public class GeoObjectTypeService {
 
         if (dto.getCode() != null && !geoObjectType.getCode().equals(dto.getCode())) {
             if (geoObjectTypeRepository.findByCode(dto.getCode()).isPresent()) {
-                throw new IllegalArgumentException(
+                throw new ResourceConflictException(
+                    "GEO_OBJECT_TYPE_CODE_CONFLICT",
                     "GeoObjectType with code '" + dto.getCode() + "' already exists"
                 );
             }
@@ -148,7 +154,7 @@ public class GeoObjectTypeService {
     @CacheEvict(value = "tiles", allEntries = true)
     public void deleteGeoObjectType(Long id) {
         if (!geoObjectTypeRepository.existsById(id)) {
-            throw new IllegalArgumentException("GeoObjectType with id " + id + " not found");
+            throw typeNotFound(id);
         }
         geoObjectTypeRepository.deleteById(id);
         log.info("Deleted geo object type with id: {}", id);
@@ -156,13 +162,23 @@ public class GeoObjectTypeService {
 
     private GeoObjectType findById(Long id) {
         return geoObjectTypeRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("GeoObjectType with id " + id + " not found"));
+            .orElseThrow(() -> typeNotFound(id));
     }
 
     private void validateLodRange(Integer lodMin, Integer lodMax) {
         if (lodMin != null && lodMax != null && lodMin > lodMax) {
-            throw new IllegalArgumentException("lodMin must not exceed lodMax");
+            throw new RequestValidationException(
+                "INVALID_LOD_RANGE",
+                "lodMin must not exceed lodMax"
+            );
         }
+    }
+
+    private ResourceNotFoundException typeNotFound(Long id) {
+        return new ResourceNotFoundException(
+            "GEO_OBJECT_TYPE_NOT_FOUND",
+            "GeoObjectType with id " + id + " not found"
+        );
     }
 
     private GeoObjectTypeResponseDto mapToResponseDto(GeoObjectType geoObjectType) {

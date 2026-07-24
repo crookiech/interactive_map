@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
+import org.example.mappro.exception.ResourceConflictException;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new IllegalArgumentException("User already exists");
+            throw new ResourceConflictException("USER_NAME_CONFLICT", "User already exists");
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -59,14 +61,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+                .orElseThrow(() -> userNotFound(id));
         return mapToDto(user);
     }
 
     @Override
     public UserDto create(UserDto userDto) {
         if (userRepository.existsByUsername(userDto.username())) {
-            throw new IllegalArgumentException("Пользователь с таким именем уже существует");
+            throw new ResourceConflictException(
+                    "USER_NAME_CONFLICT",
+                    "Пользователь с таким именем уже существует"
+            );
         }
         User user = new User();
         user.setUsername(userDto.username());
@@ -79,7 +84,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto update(UserDto userDto) {
         User user = userRepository.findById(userDto.id())
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+                .orElseThrow(() -> userNotFound(userDto.id()));
 
         user.setUsername(userDto.username());
         user.setEmail(userDto.email());
@@ -90,7 +95,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new IllegalArgumentException("Пользователь не найден");
+            throw userNotFound(id);
         }
         userRepository.deleteById(id);
     }
@@ -98,14 +103,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findByUsername(String username) {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден с username: " + username));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "USER_NOT_FOUND",
+                        "Пользователь не найден с username: " + username
+                ));
         return mapToDto(user);
     }
 
     @Override
     public UserDto updatePassword(Long id, String newPassword) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+                .orElseThrow(() -> userNotFound(id));
         user.setPassword(passwordEncoder.encode(newPassword));
         return mapToDto(userRepository.save(user));
     }
@@ -113,7 +121,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto updateEmail(Long id, String newEmail) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+                .orElseThrow(() -> userNotFound(id));
         user.setEmail(newEmail);
         return mapToDto(userRepository.save(user));
     }
@@ -122,11 +130,14 @@ public class UserServiceImpl implements UserService {
     public UserDto updateRole(Long userId, Long roleId) {
         // Находим пользователя
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Пользователь не найден"));
+                .orElseThrow(() -> userNotFound(userId));
 
         // Находим новую роль
         Role role = roleRepository.findById(roleId)
-                .orElseThrow(() -> new IllegalArgumentException("Роль не найдена"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "ROLE_NOT_FOUND",
+                        "Роль не найдена"
+                ));
 
         // Устанавливаем новую роль
         user.setRole(role);
@@ -142,6 +153,13 @@ public class UserServiceImpl implements UserService {
                 user.getUsername(),
                 user.getEmail(),
                 user.getRole()
+        );
+    }
+
+    private ResourceNotFoundException userNotFound(Long id) {
+        return new ResourceNotFoundException(
+                "USER_NOT_FOUND",
+                "Пользователь с ID " + id + " не найден"
         );
     }
 }

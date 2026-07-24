@@ -13,6 +13,8 @@ import org.example.mappro.tiles.geoobjecttype.repository.GeoObjectTypeRepository
 import org.locationtech.jts.io.ParseException;
 import org.locationtech.jts.io.WKTReader;
 import org.locationtech.jts.geom.Geometry;
+import org.example.mappro.exception.RequestValidationException;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 @Slf4j
@@ -27,7 +29,10 @@ public class GeoObjectService {
     public GeoObjectResponseDto createGeoObject(GeoObjectCreateDto dto) {
         try {
             GeoObjectType type = geoObjectTypeRepository.findByCode(dto.getType())
-                .orElseThrow(() -> new RuntimeException("Object type not found: " + dto.getType()));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                    "GEO_OBJECT_TYPE_NOT_FOUND",
+                    "Object type not found: " + dto.getType()
+                ));
 
             Geometry geometry = wktReader.read(dto.getGeometryWkt());
             geometry.setSRID(4326);
@@ -39,7 +44,10 @@ public class GeoObjectService {
             
             if (dto.getParentId() != null) {
                 GeoObject parent = geoObjectRepository.findById(dto.getParentId())
-                    .orElseThrow(() -> new RuntimeException("Parent not found: " + dto.getParentId()));
+                    .orElseThrow(() -> new ResourceNotFoundException(
+                        "GEO_OBJECT_PARENT_NOT_FOUND",
+                        "Parent not found: " + dto.getParentId()
+                    ));
                 geoObject.setParent(parent);
             }
             
@@ -51,39 +59,56 @@ public class GeoObjectService {
             return convertToResponseDto(saved);
             
         } catch (ParseException e) {
-            throw new RuntimeException("Invalid WKT geometry: " + e.getMessage(), e);
+            throw new RequestValidationException(
+                "INVALID_WKT_GEOMETRY",
+                "Invalid WKT geometry",
+                e
+            );
         }
     }
 
     @Transactional(readOnly = true)
     public GeoObjectResponseDto getGeoObject(Long id) {
         GeoObject geoObject = geoObjectRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Object not found: " + id));
+            .orElseThrow(() -> objectNotFound(id));
         return convertToResponseDto(geoObject);
     }
 
     @Transactional(readOnly = true)
     public GeoObjectResponseDto getGeoObjectByName(String name) {
         GeoObject geoObject = geoObjectRepository.findByName(name)
-            .orElseThrow(() -> new RuntimeException("Object not found: " + name));
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "GEO_OBJECT_NOT_FOUND",
+                "Object not found: " + name
+            ));
         return convertToResponseDto(geoObject);
     }
 
     @Transactional(readOnly = true)
     public GeoObject getById(Long id) {
         return geoObjectRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Object not found: " + id));
+            .orElseThrow(() -> objectNotFound(id));
     }
 
     @Transactional(readOnly = true)
     public GeoObject getByName(String name) {
         return geoObjectRepository.findByName(name)
-            .orElseThrow(() -> new RuntimeException("Object not found: " + name));
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "GEO_OBJECT_NOT_FOUND",
+                "Object not found: " + name
+            ));
     }
 
     @Transactional(readOnly = true)
     public boolean existsByName(String name) {
         return geoObjectRepository.findByName(name).isPresent();
+    }
+
+    private ResourceNotFoundException objectNotFound(Long id) {
+        return new ResourceNotFoundException(
+            "GEO_OBJECT_NOT_FOUND",
+            "Object not found: " + id
+        );
     }
 
     private GeoObjectResponseDto convertToResponseDto(GeoObject geoObject) {

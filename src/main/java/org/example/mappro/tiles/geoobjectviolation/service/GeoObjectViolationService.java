@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.example.mappro.exception.ResourceConflictException;
+import org.example.mappro.exception.ResourceNotFoundException;
 
 @Service
 @Slf4j
@@ -26,14 +28,23 @@ public class GeoObjectViolationService {
     @Transactional
     public GeoObjectViolationResponseDto createGeoObjectViolation(GeoObjectViolationCreateDto dto) {
         if (geoObjectViolationRepository.existsByGeoObjectIdAndViolationId(dto.getObjectId(), dto.getViolationId())) {
-            throw new RuntimeException("Relation already exists between object " + dto.getObjectId() + " and violation " + dto.getViolationId());
+            throw new ResourceConflictException(
+                "GEO_OBJECT_VIOLATION_CONFLICT",
+                "Relation already exists between object " + dto.getObjectId() + " and violation " + dto.getViolationId()
+            );
         }
 
         GeoObject geoObject = geoObjectRepository.findById(dto.getObjectId())
-            .orElseThrow(() -> new RuntimeException("GeoObject not found: " + dto.getObjectId()));
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "GEO_OBJECT_NOT_FOUND",
+                "GeoObject not found: " + dto.getObjectId()
+            ));
 
         Violation violation = violationRepository.findById(dto.getViolationId())
-            .orElseThrow(() -> new RuntimeException("Violation not found: " + dto.getViolationId()));
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "VIOLATION_NOT_FOUND",
+                "Violation not found: " + dto.getViolationId()
+            ));
 
         GeoObjectViolation geoObjectViolation = new GeoObjectViolation();
         geoObjectViolation.setGeoObject(geoObject);
@@ -47,7 +58,7 @@ public class GeoObjectViolationService {
     @Transactional(readOnly = true)
     public GeoObjectViolationResponseDto getGeoObjectViolation(Long id) {
         GeoObjectViolation geoObjectViolation = geoObjectViolationRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("GeoObjectViolation not found with id: " + id));
+            .orElseThrow(() -> relationNotFound(id));
         return mapToResponseDto(geoObjectViolation);
     }
 
@@ -89,7 +100,7 @@ public class GeoObjectViolationService {
     @Transactional
     public void deleteGeoObjectViolation(Long id) {
         if (!geoObjectViolationRepository.existsById(id)) {
-            throw new RuntimeException("GeoObjectViolation not found with id: " + id);
+            throw relationNotFound(id);
         }
         geoObjectViolationRepository.deleteById(id);
         log.info("Deleted GeoObjectViolation with id: {}", id);
@@ -98,8 +109,10 @@ public class GeoObjectViolationService {
     @Transactional
     public void deleteGeoObjectViolationByObjectAndViolation(Long objectId, Long violationId) {
         if (!geoObjectViolationRepository.existsByGeoObjectIdAndViolationId(objectId, violationId)) {
-            throw new RuntimeException("Relation not found between object " + objectId + 
-                    " and violation " + violationId);
+            throw new ResourceNotFoundException(
+                "GEO_OBJECT_VIOLATION_NOT_FOUND",
+                "Relation not found between object " + objectId + " and violation " + violationId
+            );
         }
         geoObjectViolationRepository.deleteByGeoObjectIdAndViolationId(objectId, violationId);
         log.info("Deleted relation between object {} and violation {}", objectId, violationId);
@@ -108,6 +121,13 @@ public class GeoObjectViolationService {
     @Transactional(readOnly = true)
     public boolean existsRelation(Long objectId, Long violationId) {
         return geoObjectViolationRepository.existsByGeoObjectIdAndViolationId(objectId, violationId);
+    }
+
+    private ResourceNotFoundException relationNotFound(Long id) {
+        return new ResourceNotFoundException(
+            "GEO_OBJECT_VIOLATION_NOT_FOUND",
+            "GeoObjectViolation not found with id: " + id
+        );
     }
 
     private GeoObjectViolationResponseDto mapToResponseDto(GeoObjectViolation geoObjectViolation) {

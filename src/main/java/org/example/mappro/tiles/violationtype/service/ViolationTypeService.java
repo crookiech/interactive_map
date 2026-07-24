@@ -8,6 +8,7 @@ import org.example.mappro.tiles.violationtype.dto.ViolationTypeCreateDto;
 import org.example.mappro.tiles.violationtype.dto.ViolationTypeResponseDto;
 import org.example.mappro.tiles.violationtype.model.ViolationType;
 import org.example.mappro.tiles.violationtype.repository.ViolationTypeRepository;
+import org.example.mappro.exception.ResourceConflictException;
 
 @Service
 @Slf4j
@@ -19,7 +20,10 @@ public class ViolationTypeService {
     @Transactional
     public ViolationTypeResponseDto createViolationType(ViolationTypeCreateDto dto) {
         if (violationTypeRepository.findByName(dto.getName()).isPresent()) {
-            throw new RuntimeException("ViolationType with type '" + dto.getName() + "' already exists");
+            throw new ResourceConflictException(
+                "VIOLATION_TYPE_NAME_CONFLICT",
+                "ViolationType with type '" + dto.getName() + "' already exists"
+            );
         }
         
         ViolationType violationType = new ViolationType();

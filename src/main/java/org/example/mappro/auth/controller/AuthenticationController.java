@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import java.time.Duration;
@@ -41,19 +42,12 @@ public class AuthenticationController {
             @RequestBody AuthenticationRequest authenticationRequest,
             HttpServletResponse response) {   // добавляем HttpServletResponse
 
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            authenticationRequest.getUsername(),
-                            authenticationRequest.getPassword()
-                    )
-            );
-        } catch (AuthenticationException e) {
-            logger.error("Ошибка аутентификации для пользователя: {}", authenticationRequest.getUsername(), e);
-            return ResponseEntity.status(401).body(
-                    new CustomResponse<>(401, "Неверное имя пользователя или пароль", null)
-            );
-        }
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getUsername(),
+                        authenticationRequest.getPassword()
+                )
+        );
 
         final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
 
@@ -92,25 +86,19 @@ public class AuthenticationController {
             HttpServletResponse response) {
 
         if (refreshToken == null) {
-            return ResponseEntity.status(401).body(
-                    new CustomResponse<>(401, "Refresh token отсутствует", null)
-            );
+            throw new BadCredentialsException("Refresh token отсутствует");
         }
 
         // 1. Проверка JWT
         if (!jwtUtil.validateToken(refreshToken, true)) {
-            return ResponseEntity.status(401).body(
-                    new CustomResponse<>(401, "Недействительный refresh токен", null)
-            );
+            throw new BadCredentialsException("Недействительный refresh токен");
         }
 
         String username = jwtUtil.extractUsername(refreshToken, true);
 
         // 2. Проверка наличия в БД и что не отозван
         if (!refreshTokenService.isValid(username, refreshToken)) {
-            return ResponseEntity.status(401).body(
-                    new CustomResponse<>(401, "Refresh токен отозван или не найден", null)
-            );
+            throw new BadCredentialsException("Refresh токен отозван или не найден");
         }
 
         // 3. Загружаем пользователя и генерируем новую пару
@@ -144,17 +132,10 @@ public class AuthenticationController {
     // ================= REGISTER =================
     @PostMapping("/register")
     public ResponseEntity<CustomResponse<String>> registerUser(@RequestBody User user) {
-        try {
-            userService.registerUser(user);
-            return ResponseEntity.ok(
-                    new CustomResponse<>(200, "Пользователь успешно зарегистрирован", null)
-            );
-        } catch (IllegalArgumentException e) {
-            logger.error("Ошибка регистрации пользователя: {}", user.getUsername(), e);
-            return ResponseEntity.badRequest().body(
-                    new CustomResponse<>(400, e.getMessage(), null)
-            );
-        }
+        userService.registerUser(user);
+        return ResponseEntity.ok(
+                new CustomResponse<>(200, "Пользователь успешно зарегистрирован", null)
+        );
     }
 
     // ================= LOGOUT =================
