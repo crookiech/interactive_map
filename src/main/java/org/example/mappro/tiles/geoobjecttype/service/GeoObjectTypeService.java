@@ -126,6 +126,40 @@ public class GeoObjectTypeService {
 
     @Transactional
     @CacheEvict(value = "tiles", allEntries = true)
+    public GeoObjectTypeResponseDto patchGeoObjectType(Long id, GeoObjectTypePatchDto dto) {
+        GeoObjectType geoObjectType = findById(id);
+
+        if (dto.getCode() != null && !geoObjectType.getCode().equals(dto.getCode())) {
+            if (geoObjectTypeRepository.findByCode(dto.getCode()).isPresent()) {
+                throw new IllegalArgumentException(
+                    "GeoObjectType with code '" + dto.getCode() + "' already exists"
+                );
+            }
+            geoObjectType.setCode(dto.getCode());
+        }
+
+        Integer nextLodMin = dto.getLodMin() != null ? dto.getLodMin() : geoObjectType.getLodMin();
+        Integer nextLodMax = dto.getLodMax() != null ? dto.getLodMax() : geoObjectType.getLodMax();
+        validateLodRange(nextLodMin, nextLodMax);
+
+        if (dto.getDisplayName() != null) geoObjectType.setDisplayName(dto.getDisplayName());
+        if (dto.getGeometryType() != null) geoObjectType.setGeometryType(dto.getGeometryType());
+        if (dto.getLodMin() != null) geoObjectType.setLodMin(dto.getLodMin());
+        if (dto.getLodMax() != null) geoObjectType.setLodMax(dto.getLodMax());
+        if (dto.getColorHex() != null) geoObjectType.setColorHex(dto.getColorHex());
+        if (dto.getIconKey() != null) geoObjectType.setIconKey(dto.getIconKey());
+        if (dto.getSortOrder() != null) geoObjectType.setSortOrder(dto.getSortOrder());
+        if (dto.getVisibleByDefault() != null) {
+            geoObjectType.setVisibleByDefault(dto.getVisibleByDefault());
+        }
+
+        GeoObjectType saved = geoObjectTypeRepository.save(geoObjectType);
+        log.info("Patched geo object type with id: {}", saved.getId());
+        return mapToResponseDto(saved);
+    }
+
+    @Transactional
+    @CacheEvict(value = "tiles", allEntries = true)
     public GeoObjectTypeResponseDto updateCode(Long id, GeoObjectTypeCodeUpdateDto dto) {
         GeoObjectType geoObjectType = findById(id);
         

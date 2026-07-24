@@ -9,6 +9,7 @@ import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeDisplayNameUpdate
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeGeometryUpdateDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeIconUpdateDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeLodUpdateDto;
+import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypePatchDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeResponseDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeSortOrderUpdateDto;
 import org.example.mappro.tiles.geoobjecttype.dto.GeoObjectTypeVisibilityUpdateDto;
@@ -54,6 +55,15 @@ public class GeoObjectTypeController {
         @Valid @RequestBody GeoObjectTypeLodUpdateDto dto
     ) {
         return ResponseEntity.ok(geoObjectTypeService.updateLod(id, dto));
+    }
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "Частичное изменение типа объекта")
+    public ResponseEntity<GeoObjectTypeResponseDto> patchGeoObjectType(
+        @PathVariable Long id,
+        @Valid @RequestBody GeoObjectTypePatchDto dto
+    ) {
+        return ResponseEntity.ok(geoObjectTypeService.patchGeoObjectType(id, dto));
     }
 
     @PutMapping("/{id}/code")
