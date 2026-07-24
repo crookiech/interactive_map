@@ -26,8 +26,8 @@ public class GeoObjectService {
     @Transactional
     public GeoObjectResponseDto createGeoObject(GeoObjectCreateDto dto) {
         try {
-            GeoObjectType type = geoObjectTypeRepository.findByName(dto.getType())
-                    .orElseThrow(() -> new RuntimeException("Object type not found: " + dto.getType()));
+            GeoObjectType type = geoObjectTypeRepository.findByCode(dto.getType())
+                .orElseThrow(() -> new RuntimeException("Object type not found: " + dto.getType()));
 
             Geometry geometry = wktReader.read(dto.getGeometryWkt());
             geometry.setSRID(4326);
@@ -39,12 +39,10 @@ public class GeoObjectService {
             
             if (dto.getParentId() != null) {
                 GeoObject parent = geoObjectRepository.findById(dto.getParentId())
-                        .orElseThrow(() -> new RuntimeException("Parent not found: " + dto.getParentId()));
+                    .orElseThrow(() -> new RuntimeException("Parent not found: " + dto.getParentId()));
                 geoObject.setParent(parent);
             }
             
-            // geoObject.setLodMin(dto.getLodMin());
-            // geoObject.setLodMax(dto.getLodMax());
             geoObject.setLabelPriority(dto.getLabelPriority());
             geoObject.setIsSegment(dto.getIsSegment());
             geoObject.setSegmentOrder(dto.getSegmentOrder());
@@ -60,27 +58,27 @@ public class GeoObjectService {
     @Transactional(readOnly = true)
     public GeoObjectResponseDto getGeoObject(Long id) {
         GeoObject geoObject = geoObjectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Object not found: " + id));
+            .orElseThrow(() -> new RuntimeException("Object not found: " + id));
         return convertToResponseDto(geoObject);
     }
 
     @Transactional(readOnly = true)
     public GeoObjectResponseDto getGeoObjectByName(String name) {
         GeoObject geoObject = geoObjectRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("Object not found: " + name));
+            .orElseThrow(() -> new RuntimeException("Object not found: " + name));
         return convertToResponseDto(geoObject);
     }
 
     @Transactional(readOnly = true)
     public GeoObject getById(Long id) {
         return geoObjectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Object not found: " + id));
+            .orElseThrow(() -> new RuntimeException("Object not found: " + id));
     }
 
     @Transactional(readOnly = true)
     public GeoObject getByName(String name) {
         return geoObjectRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("Object not found: " + name));
+            .orElseThrow(() -> new RuntimeException("Object not found: " + name));
     }
 
     @Transactional(readOnly = true)
@@ -90,18 +88,16 @@ public class GeoObjectService {
 
     private GeoObjectResponseDto convertToResponseDto(GeoObject geoObject) {
         return GeoObjectResponseDto.builder()
-                .id(geoObject.getId())
-                .name(geoObject.getName())
-                .typeId(geoObject.getType() != null ? geoObject.getType().getId() : null)
-                .typeName(geoObject.getType() != null ? geoObject.getType().getName() : null)
-                .geometryWkt(geoObject.getGeometry() != null ? geoObject.getGeometry().toText() : null)
-                .parentId(geoObject.getParent() != null ? geoObject.getParent().getId() : null)
-                .parentName(geoObject.getParent() != null ? geoObject.getParent().getName() : null)
-                // .lodMin(geoObject.getLodMin())
-                // .lodMax(geoObject.getLodMax())
-                .labelPriority(geoObject.getLabelPriority())
-                .isSegment(geoObject.getIsSegment())
-                .segmentOrder(geoObject.getSegmentOrder())
-                .build();
+            .id(geoObject.getId())
+            .name(geoObject.getName())
+            .typeId(geoObject.getType() != null ? geoObject.getType().getId() : null)
+            .typeName(geoObject.getType() != null ? geoObject.getType().getCode() : null)
+            .geometryWkt(geoObject.getGeometry() != null ? geoObject.getGeometry().toText() : null)
+            .parentId(geoObject.getParent() != null ? geoObject.getParent().getId() : null)
+            .parentName(geoObject.getParent() != null ? geoObject.getParent().getName() : null)
+            .labelPriority(geoObject.getLabelPriority())
+            .isSegment(geoObject.getIsSegment())
+            .segmentOrder(geoObject.getSegmentOrder())
+            .build();
     }
 }

@@ -17,8 +17,6 @@ public class GeoObjectResponseDto {
     private String geometryWkt;
     private Long parentId;
     private String parentName;
-    // private Integer lodMin;
-    // private Integer lodMax;
     private Integer labelPriority;
     private Boolean isSegment;
     private Integer segmentOrder;

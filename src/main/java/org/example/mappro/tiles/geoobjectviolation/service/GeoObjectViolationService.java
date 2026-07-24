@@ -25,72 +25,65 @@ public class GeoObjectViolationService {
 
     @Transactional
     public GeoObjectViolationResponseDto createGeoObjectViolation(GeoObjectViolationCreateDto dto) {
-        // Проверяем существование связи
         if (geoObjectViolationRepository.existsByGeoObjectIdAndViolationId(dto.getObjectId(), dto.getViolationId())) {
-            throw new RuntimeException("Relation already exists between object " + dto.getObjectId() + 
-                    " and violation " + dto.getViolationId());
+            throw new RuntimeException("Relation already exists between object " + dto.getObjectId() + " and violation " + dto.getViolationId());
         }
 
         GeoObject geoObject = geoObjectRepository.findById(dto.getObjectId())
-                .orElseThrow(() -> new RuntimeException("GeoObject not found: " + dto.getObjectId()));
+            .orElseThrow(() -> new RuntimeException("GeoObject not found: " + dto.getObjectId()));
 
         Violation violation = violationRepository.findById(dto.getViolationId())
-                .orElseThrow(() -> new RuntimeException("Violation not found: " + dto.getViolationId()));
+            .orElseThrow(() -> new RuntimeException("Violation not found: " + dto.getViolationId()));
 
         GeoObjectViolation geoObjectViolation = new GeoObjectViolation();
         geoObjectViolation.setGeoObject(geoObject);
         geoObjectViolation.setViolation(violation);
 
         GeoObjectViolation saved = geoObjectViolationRepository.save(geoObjectViolation);
-        log.info("Created GeoObjectViolation with id: {} for object {} and violation {}", 
-                saved.getId(), dto.getObjectId(), dto.getViolationId());
-
+        log.info("Created GeoObjectViolation with id: {} for object {} and violation {}", saved.getId(), dto.getObjectId(), dto.getViolationId());
         return mapToResponseDto(saved);
     }
 
     @Transactional(readOnly = true)
     public GeoObjectViolationResponseDto getGeoObjectViolation(Long id) {
         GeoObjectViolation geoObjectViolation = geoObjectViolationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("GeoObjectViolation not found with id: " + id));
+            .orElseThrow(() -> new RuntimeException("GeoObjectViolation not found with id: " + id));
         return mapToResponseDto(geoObjectViolation);
     }
 
     @Transactional(readOnly = true)
     public List<GeoObjectViolationResponseDto> getAllGeoObjectViolations() {
         return geoObjectViolationRepository.findAll().stream()
-                .map(this::mapToResponseDto)
-                .collect(Collectors.toList());
+            .map(this::mapToResponseDto)
+            .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public List<GeoObjectViolationResponseDto> getViolationsByObjectId(Long objectId) {
         return geoObjectViolationRepository.findViolationsByObjectId(objectId).stream()
-                .map(violation -> {
-                    // Находим связь для получения id
-                    GeoObjectViolation gov = geoObjectViolationRepository.findAll().stream()
-                            .filter(g -> g.getGeoObject().getId().equals(objectId) && 
-                                    g.getViolation().getId().equals(violation.getId()))
-                            .findFirst()
-                            .orElse(null);
-                    return gov != null ? mapToResponseDto(gov) : null;
-                })
-                .filter(dto -> dto != null)
-                .collect(Collectors.toList());
+            .map(violation -> {
+                GeoObjectViolation gov = geoObjectViolationRepository.findAll().stream()
+                    .filter(g -> g.getGeoObject().getId().equals(objectId) && g.getViolation().getId().equals(violation.getId()))
+                    .findFirst()
+                    .orElse(null);
+                return gov != null ? mapToResponseDto(gov) : null;
+            })
+            .filter(dto -> dto != null)
+            .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public List<GeoObjectViolationResponseDto> getObjectsByViolationId(Long violationId) {
         return geoObjectViolationRepository.findObjectsByViolationId(violationId).stream()
-                .map(geoObject -> {
-                    GeoObjectViolation gov = geoObjectViolationRepository.findAll().stream()
-                            .filter(g -> g.getGeoObject().getId().equals(geoObject.getId()) && 
-                                    g.getViolation().getId().equals(violationId))
-                            .findFirst()
-                            .orElse(null);
-                    return gov != null ? mapToResponseDto(gov) : null;
-                })
-                .filter(dto -> dto != null)
-                .collect(Collectors.toList());
+            .map(geoObject -> {
+                GeoObjectViolation gov = geoObjectViolationRepository.findAll().stream()
+                        .filter(g -> g.getGeoObject().getId().equals(geoObject.getId()) && g.getViolation().getId().equals(violationId))
+                        .findFirst()
+                        .orElse(null);
+                return gov != null ? mapToResponseDto(gov) : null;
+            })
+            .filter(dto -> dto != null)
+            .collect(Collectors.toList());
     }
 
     @Transactional
@@ -122,17 +115,15 @@ public class GeoObjectViolationService {
         Violation violation = geoObjectViolation.getViolation();
 
         return GeoObjectViolationResponseDto.builder()
-                .id(geoObjectViolation.getId())
-                .objectId(geoObject != null ? geoObject.getId() : null)
-                .objectName(geoObject != null ? geoObject.getName() : null)
-                .objectType(geoObject != null && geoObject.getType() != null ? 
-                        geoObject.getType().getName() : null)
-                .violationId(violation != null ? violation.getId() : null)
-                .violationType(violation != null && violation.getType() != null ? 
-                        violation.getType().getName() : null)
-                .violationSeverity(violation != null ? violation.getSeverity() : null)
-                .violationDescription(violation != null ? violation.getDescription() : null)
-                .status(violation != null ? violation.getStatus() : null)
-                .build();
+            .id(geoObjectViolation.getId())
+            .objectId(geoObject != null ? geoObject.getId() : null)
+            .objectName(geoObject != null ? geoObject.getName() : null)
+            .objectType(geoObject != null && geoObject.getType() != null ? geoObject.getType().getCode() : null)
+            .violationId(violation != null ? violation.getId() : null)
+            .violationType(violation != null && violation.getType() != null ? violation.getType().getName() : null)
+            .violationSeverity(violation != null ? violation.getSeverity() : null)
+            .violationDescription(violation != null ? violation.getDescription() : null)
+            .status(violation != null ? violation.getStatus() : null)
+            .build();
     }
 }

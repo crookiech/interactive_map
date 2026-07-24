@@ -60,5 +60,5 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
             @Param("simplifyTolerance") double simplifyTolerance
     );
 
-    List<GeoObject> findAllByType_NameOrderByIdAsc(String typeName);
+    List<GeoObject> findAllByType_CodeOrderByIdAsc(String code);
 }

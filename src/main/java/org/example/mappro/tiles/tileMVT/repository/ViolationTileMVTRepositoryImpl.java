@@ -38,7 +38,7 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
             GROUP BY
                 go.id,
                 go.name,
-                got.name,
+                got.code,
                 v.id,
                 v.date,
                 v.severity,
@@ -77,7 +77,7 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
             SELECT
                 go.id AS "geoObjectId",
                 go.name AS "geoObjectName",
-                got.name AS "geoObjectType",
+                got.code AS "geoObjectType",
                 v.id AS "violationId",
                 v.date AS "violationDate",
                 v.severity AS "violationSeverity",
@@ -116,13 +116,13 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
     ) {
         if (!showCities) {
             sql.append("""
-                AND got.name <> 'CITY'
+                AND got.code <> 'CITY'
         """);
         }
 
         if (types != null && !types.isEmpty()) {
             sql.append("""
-                AND got.name = ANY(CAST(:types AS text[]))
+                AND got.code = ANY(CAST(:types AS text[]))
         """);
             params.addValue("types", types.toArray(new String[0]));
         }

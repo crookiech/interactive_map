@@ -1,14 +1,19 @@
 package org.example.mappro.tiles.geoobjecttype.dto;
 
+import org.example.mappro.tiles.geoobjecttype.GeometryTypeEnum;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class GeoObjectTypeCreateDto {
-    @NotBlank(message = "Type is required")
-    private String name;
+    private String code;
+    private String displayName;
+    private GeometryTypeEnum geometryType;
+    private String colorHex;
+    private String iconKey;
+    private Integer sortOrder;
+    private Boolean visibleByDefault;
 
     @Min(value = 0, message = "lodMin must be at least 0")
     @Max(value = 22, message = "lodMin must not exceed 22")

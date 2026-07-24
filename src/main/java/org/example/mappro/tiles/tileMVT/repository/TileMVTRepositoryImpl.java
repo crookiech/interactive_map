@@ -26,7 +26,7 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
             SELECT
                 go.id,
                 go.name,
-                got.name AS type,
+                got.code AS type,
                 go.parent_id      AS "parentId",
                 go.label_priority AS "labelPriority",
                 go.is_segment     AS "isSegment",
@@ -57,7 +57,7 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
 
         if (types != null && !types.isEmpty()) {
             sql.append("""
-                AND got.name = ANY(CAST(:types AS text[]))
+                AND got.code = ANY(CAST(:types AS text[]))
         """);
             params.addValue("types", types.toArray(new String[0]));
         }
@@ -66,7 +66,7 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
             GROUP BY
                 go.id,
                 go.name,
-                got.name,
+                got.code,
                 go.geometry,
                 go.parent_id,
                 go.label_priority,
