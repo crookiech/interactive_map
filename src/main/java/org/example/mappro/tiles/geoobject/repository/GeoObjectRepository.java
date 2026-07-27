@@ -16,6 +16,8 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
 
     List<GeoObject> findByParent(Long parent);
 
+    List<GeoObject> findAllByType_CodeOrderByNameAscIdAsc(String code);
+
     @Query(value = """
         SELECT go.id, go.name, got.name AS type,
             ST_AsGeoJSON(

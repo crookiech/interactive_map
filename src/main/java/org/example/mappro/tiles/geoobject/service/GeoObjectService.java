@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
+import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
 import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.geoobject.repository.GeoObjectRepository;
 import org.example.mappro.tiles.geoobjecttype.model.GeoObjectType;
@@ -16,6 +17,8 @@ import org.locationtech.jts.geom.Geometry;
 
 import org.example.mappro.exception.RequestValidationException;
 import org.example.mappro.exception.ResourceNotFoundException;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -103,6 +106,13 @@ public class GeoObjectService {
     @Transactional(readOnly = true)
     public boolean existsByName(String name) {
         return geoObjectRepository.findByName(name).isPresent();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RegionResponseDto> getRegions() {
+        return geoObjectRepository.findAllByType_CodeOrderByNameAscIdAsc("REGION").stream()
+                .map(region -> new RegionResponseDto(region.getId(), region.getName()))
+                .toList();
     }
 
     private ResourceNotFoundException objectNotFound(Long id) {

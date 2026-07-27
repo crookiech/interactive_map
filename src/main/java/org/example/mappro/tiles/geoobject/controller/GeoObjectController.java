@@ -2,6 +2,7 @@ package org.example.mappro.tiles.geoobject.controller;
 
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
+import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
 import org.example.mappro.tiles.geoobject.service.GeoObjectService;
 
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/geo-objects")
@@ -47,6 +50,12 @@ public class GeoObjectController {
     public ResponseEntity<Boolean> existsByName(@RequestParam @Parameter(description = "Название объекта") String name) {
         boolean exists = geoObjectService.existsByName(name);
         return ResponseEntity.ok(exists);
+    }
+
+    @GetMapping("/regions")
+    @Operation(summary = "Получение регионов для фильтрации карты")
+    public ResponseEntity<List<RegionResponseDto>> getRegions() {
+        return ResponseEntity.ok(geoObjectService.getRegions());
     }
 
 }
