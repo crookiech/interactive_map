@@ -10,7 +10,7 @@ public interface TileMVTRepository {
         int y,
         List<String> types,
         double simplifyTolerance,
-        List<Long> excludedIds
+        List<Long> regionIds
     );
 
 }

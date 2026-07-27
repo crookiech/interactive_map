@@ -27,9 +27,9 @@ public class TileMVTController {
         @RequestParam(required = false) List<String> types,
         @RequestParam(required = false) String lang,
 
-        @RequestParam(required = false) List<Long> excludedIds
+        @RequestParam(required = false) List<Long> regionIds
     ) {
-        log.info("Getting tile z={}, x={}, y={}, excludedIds={}", z, x, y, excludedIds);
+        log.debug("Getting tile z={}, x={}, y={}, regionIds={}", z, x, y, regionIds);
 
         TileRequestDto request = TileRequestDto.builder()
                 .z(z)
@@ -37,7 +37,7 @@ public class TileMVTController {
                 .y(y)
                 .types(types)
                 .lang(lang)
-                .excludedIds(excludedIds)
+                .regionIds(regionIds)
                 .build();
 
         byte[] tile = tileService.getTile(request);

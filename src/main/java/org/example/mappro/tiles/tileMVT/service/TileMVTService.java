@@ -32,7 +32,7 @@ public class TileMVTService {
             request.getY(),
             request.getTypes(),
             computeSimplifyTolerance(request.getZ()),
-            request.getExcludedIds()
+            request.getRegionIds()
         );
     }
 

@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Repository
@@ -22,9 +21,9 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
         int y,
         List<String> types,
         double simplifyTolerance,
-        List<Long> excludedIds
+        List<Long> regionIds
     ) {
-        log.info("Repository: z={}, x={}, y={}, excludedIds={}", z, x, y, excludedIds);
+        log.debug("Repository: z={}, x={}, y={}, regionIds={}", z, x, y, regionIds);
 
         StringBuilder sql = new StringBuilder("""
         WITH tile AS (
@@ -66,16 +65,33 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
             params.addValue("types", types.toArray(new String[0]));
         }
 
-        if (excludedIds != null && !excludedIds.isEmpty()) {
-            List<Long> filteredExcludedIds = excludedIds.stream()
-                    .filter(id -> id != null)
-                    .collect(Collectors.toList());
-            
-            if (!filteredExcludedIds.isEmpty()) {
+        if (regionIds != null && !regionIds.isEmpty()) {
+            List<Long> filteredRegionIds = regionIds.stream()
+                    .filter(java.util.Objects::nonNull)
+                    .distinct()
+                    .toList();
+
+            if (!filteredRegionIds.isEmpty()) {
                 sql.append("""
-                    AND go.id NOT IN (:excludedIds)
+                    AND EXISTS (
+                        SELECT 1
+                        FROM geo_objects region
+                        JOIN geo_object_types region_type ON region_type.id = region.type_id
+                        WHERE region.id IN (:regionIds)
+                          AND region_type.code = 'REGION'
+                          AND (
+                              (
+                                  GeometryType(go.geometry) IN ('LINESTRING', 'MULTILINESTRING')
+                                  AND ST_Intersects(go.geometry, region.geometry)
+                              )
+                              OR (
+                                  GeometryType(go.geometry) NOT IN ('LINESTRING', 'MULTILINESTRING')
+                                  AND ST_CoveredBy(go.geometry, region.geometry)
+                              )
+                          )
+                    )
             """);
-                params.addValue("excludedIds", filteredExcludedIds);
+                params.addValue("regionIds", filteredRegionIds);
             }
         }
 
