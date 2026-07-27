@@ -51,12 +51,12 @@ public class GeoObjectTypeService {
 
     private void createDefaultTypes() {
         List<GeoObjectType> defaultTypes = Arrays.asList(
-            createGeoObjectType("REGION", "Регион / зона филиала", GeometryTypeEnum.POLYGON, 0, 22, "#FF0000", "polygon", 1, true),
-            createGeoObjectType("LINE_SECTION", "Линейная часть", GeometryTypeEnum.LINESTRING, 0, 22, "#00FF00", "line", 2, true),
-            createGeoObjectType("VALVE_NODE", "Крановый узел", GeometryTypeEnum.POINT, 0, 22, "#0000FF", "point", 3, true),
-            createGeoObjectType("COMPRESSOR_STATION", "Компрессорная станция", GeometryTypeEnum.POINT, 0, 22, "#FF00FF", "point", 4, true),
-            createGeoObjectType("GAS_DISTRIBUTION_STATION", "Газораспределительная станция", GeometryTypeEnum.POINT, 0, 22, "#FFFF00", "point", 5, true),
-            createGeoObjectType("GAS_PUMPING_UNIT", "Газоперекачивающий агрегат", GeometryTypeEnum.POINT, 0, 22, "#00FFFF", "point", 6, true)
+            createGeoObjectType("REGION", "Регион / зона филиала", GeometryTypeEnum.POLYGON, 0, 22, "#D98282", "polygon", 1, true),
+            createGeoObjectType("LINE_SECTION", "Линейная часть", GeometryTypeEnum.LINESTRING, 0, 22, "#6FAF8F", "line", 2, true),
+            createGeoObjectType("VALVE_NODE", "Крановый узел", GeometryTypeEnum.POINT, 0, 22, "#7698C7", "point", 3, true),
+            createGeoObjectType("COMPRESSOR_STATION", "Компрессорная станция", GeometryTypeEnum.POINT, 0, 22, "#9B87C4", "point", 4, true),
+            createGeoObjectType("GAS_DISTRIBUTION_STATION", "Газораспределительная станция", GeometryTypeEnum.POINT, 0, 22, "#C9A25D", "point", 5, true),
+            createGeoObjectType("GAS_PUMPING_UNIT", "Газоперекачивающий агрегат", GeometryTypeEnum.POINT, 0, 22, "#5FAAA5", "point", 6, true)
         );
         
         geoObjectTypeRepository.saveAll(defaultTypes);
