@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class PublicEndpointsConfig {
 
     public static final String[] PUBLIC_GET_ENDPOINTS = {
+        "/api/health",
         "/api/v3/roles",
         "/api/v1/bug-reports/**",
         "/api/v1/notifications/bug-report/*/status-changes",
