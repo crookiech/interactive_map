@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
+import org.example.mappro.tiles.geoobject.dto.RegionObjectResponseDto;
+import org.example.mappro.tiles.geoobject.dto.RegionObjectTypeCountDto;
 import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.geoobject.repository.GeoObjectRepository;
 import org.example.mappro.tiles.geoobjecttype.model.GeoObjectType;
@@ -19,6 +21,8 @@ import org.example.mappro.exception.RequestValidationException;
 import org.example.mappro.exception.ResourceNotFoundException;
 
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Service
 @Slf4j
@@ -110,9 +114,63 @@ public class GeoObjectService {
 
     @Transactional(readOnly = true)
     public List<RegionResponseDto> getRegions() {
-        return geoObjectRepository.findAllByType_CodeOrderByNameAscIdAsc("REGION").stream()
-                .map(region -> new RegionResponseDto(region.getId(), region.getName()))
+        Map<Long, RegionGroup> regions = new LinkedHashMap<>();
+
+        geoObjectRepository.findRegionTypeCounts().forEach(row -> {
+            RegionGroup region = regions.computeIfAbsent(
+                    row.getRegionId(),
+                    ignored -> new RegionGroup(row.getRegionName())
+            );
+
+            if (row.getTypeId() != null) {
+                region.objectTypes().add(new RegionObjectTypeCountDto(
+                        row.getTypeId(),
+                        row.getTypeCode(),
+                        row.getTypeName(),
+                        row.getObjectCount() == null ? 0 : row.getObjectCount()
+                ));
+            }
+        });
+
+        return regions.entrySet().stream()
+                .map(entry -> new RegionResponseDto(
+                        entry.getKey(),
+                        entry.getValue().name(),
+                        List.copyOf(entry.getValue().objectTypes())
+                ))
                 .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<RegionObjectResponseDto> getRegionObjects(Long regionId, Long typeId) {
+        GeoObject region = geoObjectRepository.findById(regionId)
+                .filter(object -> object.getType() != null)
+                .filter(object -> "REGION".equals(object.getType().getCode()))
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "REGION_NOT_FOUND",
+                        "Region not found: " + regionId
+                ));
+
+        GeoObjectType objectType = geoObjectTypeRepository.findById(typeId)
+                .filter(type -> !"REGION".equals(type.getCode()))
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "GEO_OBJECT_TYPE_NOT_FOUND",
+                        "Object type not found: " + typeId
+                ));
+
+        return geoObjectRepository.findObjectsByRegionIdAndTypeId(region.getId(), objectType.getId()).stream()
+                .map(object -> new RegionObjectResponseDto(
+                        object.getId(),
+                        object.getName(),
+                        object.getTypeCode()
+                ))
+                .toList();
+    }
+
+    private record RegionGroup(String name, List<RegionObjectTypeCountDto> objectTypes) {
+        private RegionGroup(String name) {
+            this(name, new java.util.ArrayList<>());
+        }
     }
 
     private ResourceNotFoundException objectNotFound(Long id) {

@@ -3,6 +3,7 @@ package org.example.mappro.tiles.geoobject.controller;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
+import org.example.mappro.tiles.geoobject.dto.RegionObjectResponseDto;
 import org.example.mappro.tiles.geoobject.service.GeoObjectService;
 
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,15 @@ public class GeoObjectController {
     @Operation(summary = "Получение регионов для фильтрации карты")
     public ResponseEntity<List<RegionResponseDto>> getRegions() {
         return ResponseEntity.ok(geoObjectService.getRegions());
+    }
+
+    @GetMapping("/regions/{regionId}/object-types/{typeId}/objects")
+    @Operation(summary = "Получение объектов выбранного типа в регионе")
+    public ResponseEntity<List<RegionObjectResponseDto>> getRegionObjects(
+            @PathVariable Long regionId,
+            @PathVariable Long typeId
+    ) {
+        return ResponseEntity.ok(geoObjectService.getRegionObjects(regionId, typeId));
     }
 
 }

@@ -16,7 +16,71 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
 
     List<GeoObject> findByParent(Long parent);
 
-    List<GeoObject> findAllByType_CodeOrderByNameAscIdAsc(String code);
+    @Query(value = """
+        SELECT
+            region.id AS "regionId",
+            region.name AS "regionName",
+            grouped.type_id AS "typeId",
+            grouped.type_code AS "typeCode",
+            grouped.type_name AS "typeName",
+            grouped.object_count AS "objectCount"
+        FROM geo_objects region
+        JOIN geo_object_types region_type ON region_type.id = region.type_id
+        LEFT JOIN LATERAL (
+            SELECT
+                object_type.id AS type_id,
+                object_type.code AS type_code,
+                object_type.display_name AS type_name,
+                COUNT(*) AS object_count,
+                object_type.sort_order AS type_sort_order
+                FROM geo_objects object
+                JOIN geo_object_types object_type ON object_type.id = object.type_id
+                WHERE object_type.code <> 'REGION'
+                  AND (
+                      (
+                          GeometryType(object.geometry) IN ('LINESTRING', 'MULTILINESTRING')
+                          AND ST_Intersects(object.geometry, region.geometry)
+                      )
+                      OR (
+                          GeometryType(object.geometry) NOT IN ('LINESTRING', 'MULTILINESTRING')
+                          AND ST_CoveredBy(object.geometry, region.geometry)
+                      )
+                  )
+                GROUP BY object_type.id, object_type.code, object_type.display_name, object_type.sort_order
+        ) grouped ON TRUE
+        WHERE region_type.code = 'REGION'
+        ORDER BY LOWER(region.name), region.id, grouped.type_sort_order, grouped.type_code
+    """, nativeQuery = true)
+    List<RegionTypeCountProjection> findRegionTypeCounts();
+
+    @Query(value = """
+        SELECT
+            object.id AS id,
+            object.name AS name,
+            object_type.code AS "typeCode"
+        FROM geo_objects region
+        JOIN geo_object_types region_type ON region_type.id = region.type_id
+        JOIN geo_objects object ON (
+            (
+                GeometryType(object.geometry) IN ('LINESTRING', 'MULTILINESTRING')
+                AND ST_Intersects(object.geometry, region.geometry)
+            )
+            OR (
+                GeometryType(object.geometry) NOT IN ('LINESTRING', 'MULTILINESTRING')
+                AND ST_CoveredBy(object.geometry, region.geometry)
+            )
+        )
+        JOIN geo_object_types object_type ON object_type.id = object.type_id
+        WHERE region.id = :regionId
+          AND region_type.code = 'REGION'
+          AND object_type.id = :typeId
+          AND object_type.code <> 'REGION'
+        ORDER BY LOWER(object.name), object.id
+    """, nativeQuery = true)
+    List<RegionObjectProjection> findObjectsByRegionIdAndTypeId(
+            @Param("regionId") Long regionId,
+            @Param("typeId") Long typeId
+    );
 
     @Query(value = """
         SELECT go.id, go.name, got.name AS type,
