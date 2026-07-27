@@ -1,11 +1,14 @@
 package org.example.mappro.tiles.geoobject.service;
 
+import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.geoobject.repository.GeoObjectRepository;
 import org.example.mappro.tiles.geoobject.repository.RegionTypeCountProjection;
+import org.example.mappro.tiles.geoobjecttype.model.GeoObjectType;
 import org.example.mappro.tiles.geoobjecttype.repository.GeoObjectTypeRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -35,6 +38,28 @@ class GeoObjectServiceTest {
         assertEquals("LINE_SECTION", regions.getFirst().objectTypes().getFirst().typeCode());
         assertEquals(12, regions.getFirst().objectTypes().getFirst().objectCount());
         assertTrue(regions.get(1).objectTypes().isEmpty());
+    }
+
+    @Test
+    void returnsEmptyGroupWhenTileCompatibleTypesExcludeItsType() {
+        GeoObjectRepository geoObjectRepository = mock(GeoObjectRepository.class);
+        GeoObjectTypeRepository typeRepository = mock(GeoObjectTypeRepository.class);
+        GeoObjectService service = new GeoObjectService(geoObjectRepository, typeRepository);
+
+        GeoObjectType regionType = new GeoObjectType();
+        regionType.setCode("REGION");
+        GeoObject region = new GeoObject();
+        region.setId(10L);
+        region.setType(regionType);
+
+        GeoObjectType objectType = new GeoObjectType();
+        objectType.setId(2L);
+        objectType.setCode("LINE_SECTION");
+
+        when(geoObjectRepository.findById(10L)).thenReturn(Optional.of(region));
+        when(typeRepository.findById(2L)).thenReturn(Optional.of(objectType));
+
+        assertTrue(service.getRegionObjects(10L, 2L, List.of("VALVE_NODE")).isEmpty());
     }
 
     private RegionTypeCountProjection row(

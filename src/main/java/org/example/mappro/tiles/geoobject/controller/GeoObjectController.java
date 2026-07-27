@@ -63,9 +63,10 @@ public class GeoObjectController {
     @Operation(summary = "Получение объектов выбранного типа в регионе")
     public ResponseEntity<List<RegionObjectResponseDto>> getRegionObjects(
             @PathVariable Long regionId,
-            @PathVariable Long typeId
+            @PathVariable Long typeId,
+            @RequestParam(required = false) List<String> types
     ) {
-        return ResponseEntity.ok(geoObjectService.getRegionObjects(regionId, typeId));
+        return ResponseEntity.ok(geoObjectService.getRegionObjects(regionId, typeId, types));
     }
 
 }

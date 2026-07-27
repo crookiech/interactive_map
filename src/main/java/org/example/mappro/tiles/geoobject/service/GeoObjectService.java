@@ -142,7 +142,11 @@ public class GeoObjectService {
     }
 
     @Transactional(readOnly = true)
-    public List<RegionObjectResponseDto> getRegionObjects(Long regionId, Long typeId) {
+    public List<RegionObjectResponseDto> getRegionObjects(
+            Long regionId,
+            Long typeId,
+            List<String> types
+    ) {
         GeoObject region = geoObjectRepository.findById(regionId)
                 .filter(object -> object.getType() != null)
                 .filter(object -> "REGION".equals(object.getType().getCode()))
@@ -157,6 +161,13 @@ public class GeoObjectService {
                         "GEO_OBJECT_TYPE_NOT_FOUND",
                         "Object type not found: " + typeId
                 ));
+
+        if (types != null && !types.isEmpty() && types.stream()
+                .filter(java.util.Objects::nonNull)
+                .map(String::trim)
+                .noneMatch(objectType.getCode()::equalsIgnoreCase)) {
+            return List.of();
+        }
 
         return geoObjectRepository.findObjectsByRegionIdAndTypeId(region.getId(), objectType.getId()).stream()
                 .map(object -> new RegionObjectResponseDto(

@@ -54,12 +54,17 @@ class GeoObjectControllerTest {
 
     @Test
     void returnsObjectsForExpandedRegion() throws Exception {
-        when(geoObjectService.getRegionObjects(10L, 2L)).thenReturn(List.of(
+        when(geoObjectService.getRegionObjects(
+                10L,
+                2L,
+                List.of("LINE_SECTION", "VALVE_NODE")
+        )).thenReturn(List.of(
                 new RegionObjectResponseDto(101L, "Pipeline", "LINE_SECTION"),
                 new RegionObjectResponseDto(102L, "Valve", "VALVE_NODE")
         ));
 
-        mockMvc.perform(get("/api/geo-objects/regions/10/object-types/2/objects"))
+        mockMvc.perform(get("/api/geo-objects/regions/10/object-types/2/objects")
+                        .param("types", "LINE_SECTION,VALVE_NODE"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(101))
                 .andExpect(jsonPath("$[0].name").value("Pipeline"))
@@ -67,4 +72,5 @@ class GeoObjectControllerTest {
                 .andExpect(jsonPath("$[1].id").value(102))
                 .andExpect(jsonPath("$[1].typeCode").value("VALVE_NODE"));
     }
+
 }
