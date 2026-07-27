@@ -48,6 +48,7 @@ class TileMVTRepositoryImplTest {
         assertTrue(sql.contains("region_type.code = 'REGION'"));
         assertTrue(sql.contains("ST_Intersects(go.geometry, region.geometry)"));
         assertTrue(sql.contains("ST_CoveredBy(go.geometry, region.geometry)"));
+        assertTrue(sql.contains("got.color_hex AS color"));
         assertFalse(sql.contains("NOT IN (:excludedIds)"));
         assertEquals(List.of(7L, 9L), params.getValue("regionIds"));
         assertArrayEquals(new byte[] {1, 2, 3}, tile);

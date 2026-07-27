@@ -31,6 +31,7 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
                 go.id,
                 go.name,
                 got.code AS type,
+                got.color_hex AS color,
                 go.parent_id      AS "parentId",
                 go.label_priority AS "labelPriority",
                 go.is_segment     AS "isSegment",
