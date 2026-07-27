@@ -30,9 +30,23 @@ public class GeoObjectTypeService {
     @PostConstruct
     @Transactional
     public void initDefaultGeoObjectTypes() {
-        if (geoObjectTypeRepository.count() == 0) {
+        if (!areDefaultTypesExist()) {
+            log.info("Default geo object types not found. Creating...");
             createDefaultTypes();
+            log.info("Default geo object types created successfully");
+        } else {
+            log.info("Default geo object types already exist");
         }
+    }
+
+    private boolean areDefaultTypesExist() {
+        List<String> defaultCodes = Arrays.asList("REGION", "LINE_SECTION", "VALVE_NODE", "COMPRESSOR_STATION", "GAS_DISTRIBUTION_STATION", "GAS_PUMPING_UNIT");
+        for (String code : defaultCodes) {
+            if (!geoObjectTypeRepository.existsByCode(code)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void createDefaultTypes() {
