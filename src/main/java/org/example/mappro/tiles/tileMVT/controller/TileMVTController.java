@@ -7,7 +7,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/tiles/mvt")
 @RequiredArgsConstructor
@@ -18,17 +20,16 @@ public class TileMVTController {
     @GetMapping("/{z}/{x}/{y}")
     public ResponseEntity<byte[]> getTile(
 
-            @PathVariable int z,
-            @PathVariable int x,
-            @PathVariable int y,
+        @PathVariable int z,
+        @PathVariable int x,
+        @PathVariable int y,
 
-            @RequestParam(required = false)
-            List<String> types,
+        @RequestParam(required = false) List<String> types,
+        @RequestParam(required = false) String lang,
 
-            @RequestParam(required = false)
-            String lang
-
+        @RequestParam(required = false) List<Long> excludedIds
     ) {
+        log.info("Getting tile z={}, x={}, y={}, excludedIds={}", z, x, y, excludedIds);
 
         TileRequestDto request = TileRequestDto.builder()
                 .z(z)
@@ -36,6 +37,7 @@ public class TileMVTController {
                 .y(y)
                 .types(types)
                 .lang(lang)
+                .excludedIds(excludedIds)
                 .build();
 
         byte[] tile = tileService.getTile(request);

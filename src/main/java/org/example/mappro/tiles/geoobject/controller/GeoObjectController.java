@@ -1,8 +1,13 @@
 package org.example.mappro.tiles.geoobject.controller;
 
+import java.util.List;
+
+import org.example.mappro.tiles.geoobject.dto.ChildObjectsResponseDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
+import org.example.mappro.tiles.geoobject.model.GeoObject;
 import org.example.mappro.tiles.geoobject.service.GeoObjectService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +51,22 @@ public class GeoObjectController {
     public ResponseEntity<Boolean> existsByName(@RequestParam @Parameter(description = "Название объекта") String name) {
         boolean exists = geoObjectService.existsByName(name);
         return ResponseEntity.ok(exists);
+    }
+
+    @GetMapping("/{id}/descendants")
+    @Operation(summary = "Получение ID всех дочерних объектов через PostGIS")
+    public ResponseEntity<ChildObjectsResponseDto> getDescendantsByGeometry(
+            @PathVariable @Parameter(description = "id родительского объекта") Long id
+    ) {
+        GeoObject parent = geoObjectService.getById(id);
+        List<Long> childIds = geoObjectService.getDescendantIdsByGeometry(id);
+        
+        ChildObjectsResponseDto response = ChildObjectsResponseDto.builder()
+            .parentId(id)
+            .parentName(parent.getName())
+            .childIds(childIds)
+            .build();
+        
+        return ResponseEntity.ok(response);
     }
 }

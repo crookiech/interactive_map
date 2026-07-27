@@ -12,4 +12,5 @@ public class TileRequestDto {
     private int y;
     private List<String> types;
     private String lang;
+    private List<Long> excludedIds;
 }

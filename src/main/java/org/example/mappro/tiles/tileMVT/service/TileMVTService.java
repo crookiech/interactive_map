@@ -27,11 +27,12 @@ public class TileMVTService {
     public byte[] getTile(TileRequestDto request) {
 
         return tileRepository.getTile(
-                request.getZ(),
-                request.getX(),
-                request.getY(),
-                request.getTypes(),
-                computeSimplifyTolerance(request.getZ())
+            request.getZ(),
+            request.getX(),
+            request.getY(),
+            request.getTypes(),
+            computeSimplifyTolerance(request.getZ()),
+            request.getExcludedIds()
         );
     }
 
@@ -59,17 +60,6 @@ public class TileMVTService {
         props.put("id", dto.getId());
         props.put("name", dto.getName());
         props.put("type", dto.getType());
-        // props.put("violationCount", dto.getViolationCount());
-
-        // Получаем массив типов нарушений и формируем топ-3, отфильтровывая null
-        // String[] types = dto.getViolationTypes();
-        // List<String> top3 = (types != null && types.length > 0)
-        //         ? Arrays.stream(types)
-        //         .filter(Objects::nonNull)   // исключаем null значения
-        //         .limit(3)
-        //         .collect(Collectors.toList())
-        //         : List.of();
-        // props.put("violationTypes", top3);
 
         props.put("labelPriority", dto.getLabelPriority());
 

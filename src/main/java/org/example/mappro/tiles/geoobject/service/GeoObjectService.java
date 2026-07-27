@@ -13,6 +13,9 @@ import org.example.mappro.tiles.geoobjecttype.repository.GeoObjectTypeRepository
 import org.locationtech.jts.io.ParseException;
 import org.locationtech.jts.io.WKTReader;
 import org.locationtech.jts.geom.Geometry;
+
+import java.util.List;
+
 import org.example.mappro.exception.RequestValidationException;
 import org.example.mappro.exception.ResourceNotFoundException;
 
@@ -124,5 +127,20 @@ public class GeoObjectService {
             .isSegment(geoObject.getIsSegment())
             .segmentOrder(geoObject.getSegmentOrder())
             .build();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Long> getDescendantIdsByGeometry(Long parentId) {
+        log.debug("Getting descendants by geometry for parentId: {}", parentId);
+        
+        // Проверяем, существует ли родитель
+        if (!geoObjectRepository.existsById(parentId)) {
+            throw new ResourceNotFoundException(
+                "GEO_OBJECT_NOT_FOUND",
+                "Object not found: " + parentId
+            );
+        }
+        
+        return geoObjectRepository.findDescendantIdsByGeometry(parentId);
     }
 }

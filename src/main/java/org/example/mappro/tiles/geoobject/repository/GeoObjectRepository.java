@@ -60,5 +60,26 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
             @Param("simplifyTolerance") double simplifyTolerance
     );
 
-    List<GeoObject> findAllByType_CodeOrderByIdAsc(String code);
+    @Query(value = """
+        WITH RECURSIVE descendants AS (
+            SELECT id, geometry, parent_id, 0 as depth
+            FROM geo_objects 
+            WHERE id = :parentId
+            
+            UNION ALL
+            
+            SELECT go.id, go.geometry, go.parent_id, d.depth + 1
+            FROM geo_objects go
+            INNER JOIN descendants d ON 
+                ST_Within(
+                    ST_Centroid(ST_Transform(go.geometry, 3857)),
+                    ST_Transform(d.geometry, 3857)
+                )
+                AND go.id != d.id
+                AND go.parent_id IS NOT NULL
+                AND d.depth < 10
+        )
+        SELECT id FROM descendants WHERE id != :parentId
+    """, nativeQuery = true)
+    List<Long> findDescendantIdsByGeometry(@Param("parentId") Long parentId);
 }

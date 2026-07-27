@@ -1,11 +1,14 @@
 package org.example.mappro.tiles.tileMVT.repository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class TileMVTRepositoryImpl implements TileMVTRepository {
@@ -14,12 +17,14 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
 
     @Override
     public byte[] getTile(
-            int z,
-            int x,
-            int y,
-            List<String> types,
-            double simplifyTolerance
+        int z,
+        int x,
+        int y,
+        List<String> types,
+        double simplifyTolerance,
+        List<Long> excludedIds
     ) {
+        log.info("Repository: z={}, x={}, y={}, excludedIds={}", z, x, y, excludedIds);
 
         StringBuilder sql = new StringBuilder("""
         WITH tile AS (
@@ -61,6 +66,19 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
             params.addValue("types", types.toArray(new String[0]));
         }
 
+        if (excludedIds != null && !excludedIds.isEmpty()) {
+            List<Long> filteredExcludedIds = excludedIds.stream()
+                    .filter(id -> id != null)
+                    .collect(Collectors.toList());
+            
+            if (!filteredExcludedIds.isEmpty()) {
+                sql.append("""
+                    AND go.id NOT IN (:excludedIds)
+            """);
+                params.addValue("excludedIds", filteredExcludedIds);
+            }
+        }
+
         sql.append("""
         )
         SELECT ST_AsMVT(
@@ -73,9 +91,9 @@ public class TileMVTRepositoryImpl implements TileMVTRepository {
         """);
 
         byte[] tile = jdbcTemplate.queryForObject(
-                sql.toString(),
-                params,
-                byte[].class
+            sql.toString(),
+            params,
+            byte[].class
         );
 
         return tile == null ? new byte[0] : tile;

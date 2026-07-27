@@ -5,11 +5,12 @@ import java.util.List;
 public interface TileMVTRepository {
 
     byte[] getTile(
-            int z,
-            int x,
-            int y,
-            List<String> types,
-            double simplifyTolerance
+        int z,
+        int x,
+        int y,
+        List<String> types,
+        double simplifyTolerance,
+        List<Long> excludedIds
     );
 
 }
