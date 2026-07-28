@@ -24,13 +24,21 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
         log.info("Getting aggregated violation MVT tile: z={}, x={}, y={}, types={}", z, x, y, types);
 
         try {
+            // Проверяем валидность координат
+            int maxXY = (int) Math.pow(2, z) - 1;
+            if (x < 0 || x > maxXY || y < 0 || y > maxXY) {
+                log.warn("Invalid tile coordinates: z={}, x={}, y={}. Max value: {}", z, x, y, maxXY);
+                return new byte[0];
+            }
 
             String sql = """
                 WITH RECURSIVE parent_tree AS (
+                    -- Находим все объекты в тайле
                     SELECT 
                         go.id,
                         go.parent_id,
                         go.geometry,
+                        go.name,
                         got.code AS type_code
                     FROM geo_objects go
                     JOIN geo_object_types got ON got.id = go.type_id
@@ -60,27 +68,28 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                         )
                         AND go.geometry IS NOT NULL
                 ),
-                violations_with_branch AS (
+                violations_with_region AS (
                     SELECT 
                         vit.violation_type,
                         vit.id,
                         vit.geometry,
                         COALESCE(
                             (
-                                SELECT pt.type_code
+                                -- Ищем родительский объект с типом REGION и возвращаем его name
+                                SELECT pt.name
                                 FROM parent_tree pt
                                 WHERE pt.id = vit.object_id
                                    OR pt.id = vit.parent_id
-                                AND pt.type_code IN ('REGION')
+                                AND pt.type_code = 'REGION'
                                 LIMIT 1
                             ),
                             'Unknown'
-                        ) AS branch_code
+                        ) AS region_name
                     FROM violations_in_tile vit
                 ),
                 aggregated AS (
                     SELECT 
-                        branch_code,
+                        region_name,
                         violation_type,
                         COUNT(DISTINCT id) AS count,
                         ST_Centroid(
@@ -88,7 +97,7 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                                 ST_Transform(geometry, 3857)
                             )
                         ) AS geom
-                    FROM violations_with_branch
+                    FROM violations_with_region
                     WHERE 1=1
                 """;
 
@@ -105,10 +114,10 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
             }
 
             sql += """
-                    GROUP BY branch_code, violation_type
+                    GROUP BY region_name, violation_type
                 )
                 SELECT 
-                    branch_code AS region,
+                    region_name AS region,
                     violation_type AS type,
                     count,
                     ST_AsMVTGeom(
