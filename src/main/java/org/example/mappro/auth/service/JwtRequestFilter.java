@@ -102,6 +102,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             for (String endpoint : PublicEndpointsConfig.PUBLIC_POST_ENDPOINTS) {
                 if (pathMatcher.match(endpoint, uri)) return true;
             }
+        } else if ("PATCH".equalsIgnoreCase(method)) {
+            for (String endpoint : PublicEndpointsConfig.PUBLIC_PATCH_ENDPOINTS) {
+                if (pathMatcher.match(endpoint, uri)) return true;
+            }
         }
 
         return false;

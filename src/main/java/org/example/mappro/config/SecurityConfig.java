@@ -88,6 +88,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.GET, PublicEndpointsConfig.PUBLIC_GET_ENDPOINTS).permitAll()
                 .requestMatchers(HttpMethod.POST, PublicEndpointsConfig.PUBLIC_POST_ENDPOINTS).permitAll()
+                .requestMatchers(HttpMethod.PATCH, PublicEndpointsConfig.PUBLIC_PATCH_ENDPOINTS).permitAll()
                 .requestMatchers(RoleEndpointsConfig.ADMIN_ENDPOINTS).hasRole("ADMIN")
                 .requestMatchers(RoleEndpointsConfig.DEVELOPER_ENDPOINTS).hasAnyRole("ADMIN", "DEVELOPER")
                 .requestMatchers(RoleEndpointsConfig.USER_ENDPOINTS).hasAnyRole("USER", "ADMIN", "DEVELOPER")

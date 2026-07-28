@@ -29,4 +29,8 @@ public class PublicEndpointsConfig {
         "/api/**",
         "/api/tiles/**"
     };
+
+    public static final String[] PUBLIC_PATCH_ENDPOINTS = {
+        "/api/**"
+    };
 }
