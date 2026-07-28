@@ -2,32 +2,39 @@ package org.example.mappro.tiles.tileMVT.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import org.example.mappro.tiles.tileMVT.dto.ViolationTileMVTRequestDto;
+import org.example.mappro.tiles.tileMVT.repository.ViolationTileMVTAggregatedRepository;
 import org.example.mappro.tiles.tileMVT.repository.ViolationTileMVTRepository;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class ViolationTileMVTService {
-    
+
+    private final ViolationTileMVTAggregatedRepository aggregatedRepository;
     private final ViolationTileMVTRepository violationTileRepository;
 
-    @Cacheable(value = "violationTiles", key = "#request")
-    public byte[] getViolationTile(ViolationTileMVTRequestDto request) {
-        log.debug("Getting violation tile for z={}, x={}, y={}", 
-                request.getZ(), request.getX(), request.getY());
-
-        return violationTileRepository.getViolationTile(
-                request.getZ(),
-                request.getX(),
-                request.getY(),
-                request.getTypes(),
-                request.getSeverities(),
-                request.getFromDate(),
-                request.getShowCities() == null || request.getShowCities()
-        );
-    }  
+    public byte[] getViolationTile(
+        int z,
+        int x,
+        int y,
+        List<String> types,
+        List<String> severities,
+        LocalDate fromDate,
+        boolean showCities
+    ) {
+        log.debug("Getting violation tile for zoom: {}", z);
+        
+        if (z < 5) {
+            log.debug("Using aggregated repository for zoom level {}", z);
+            return aggregatedRepository.getViolationTile(z, x, y, types);
+        } else {
+            log.debug("Using detailed repository for zoom level {}", z);
+            return violationTileRepository.getViolationTile(
+                z, x, y, types, severities, fromDate, showCities
+            );
+        }
+    }
 }

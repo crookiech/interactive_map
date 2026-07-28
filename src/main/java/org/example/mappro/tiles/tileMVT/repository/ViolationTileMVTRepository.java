@@ -5,12 +5,12 @@ import java.util.List;
 
 public interface ViolationTileMVTRepository {
     byte[] getViolationTile(
-            int z,
-            int x,
-            int y,
-            List<String> types,
-            List<String> severities,
-            LocalDate fromDate,
-            boolean showCities
+        int z,
+        int x,
+        int y,
+        List<String> types,
+        List<String> severities,
+        LocalDate fromDate,
+        boolean showCities
     );
 }

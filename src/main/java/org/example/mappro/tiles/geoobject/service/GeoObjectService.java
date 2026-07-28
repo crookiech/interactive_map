@@ -118,27 +118,27 @@ public class GeoObjectService {
 
         geoObjectRepository.findRegionTypeCounts().forEach(row -> {
             RegionGroup region = regions.computeIfAbsent(
-                    row.getRegionId(),
-                    ignored -> new RegionGroup(row.getRegionName())
+                row.getRegionId(),
+                ignored -> new RegionGroup(row.getRegionName())
             );
 
             if (row.getTypeId() != null) {
                 region.objectTypes().add(new RegionObjectTypeCountDto(
-                        row.getTypeId(),
-                        row.getTypeCode(),
-                        row.getTypeName(),
-                        row.getObjectCount() == null ? 0 : row.getObjectCount()
+                    row.getTypeId(),
+                    row.getTypeCode(),
+                    row.getTypeName(),
+                    row.getObjectCount() == null ? 0 : row.getObjectCount()
                 ));
             }
         });
 
         return regions.entrySet().stream()
-                .map(entry -> new RegionResponseDto(
-                        entry.getKey(),
-                        entry.getValue().name(),
-                        List.copyOf(entry.getValue().objectTypes())
-                ))
-                .toList();
+            .map(entry -> new RegionResponseDto(
+                    entry.getKey(),
+                    entry.getValue().name(),
+                    List.copyOf(entry.getValue().objectTypes())
+            ))
+            .toList();
     }
 
     @Transactional(readOnly = true)
@@ -148,19 +148,19 @@ public class GeoObjectService {
             List<String> types
     ) {
         GeoObject region = geoObjectRepository.findById(regionId)
-                .filter(object -> object.getType() != null)
-                .filter(object -> "REGION".equals(object.getType().getCode()))
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "REGION_NOT_FOUND",
-                        "Region not found: " + regionId
-                ));
+            .filter(object -> object.getType() != null)
+            .filter(object -> "REGION".equals(object.getType().getCode()))
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "REGION_NOT_FOUND",
+                "Region not found: " + regionId
+            ));
 
         GeoObjectType objectType = geoObjectTypeRepository.findById(typeId)
-                .filter(type -> !"REGION".equals(type.getCode()))
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "GEO_OBJECT_TYPE_NOT_FOUND",
-                        "Object type not found: " + typeId
-                ));
+            .filter(type -> !"REGION".equals(type.getCode()))
+            .orElseThrow(() -> new ResourceNotFoundException(
+                "GEO_OBJECT_TYPE_NOT_FOUND",
+                "Object type not found: " + typeId
+            ));
 
         if (types != null && !types.isEmpty() && types.stream()
                 .filter(java.util.Objects::nonNull)
@@ -170,12 +170,12 @@ public class GeoObjectService {
         }
 
         return geoObjectRepository.findObjectsByRegionIdAndTypeId(region.getId(), objectType.getId()).stream()
-                .map(object -> new RegionObjectResponseDto(
-                        object.getId(),
-                        object.getName(),
-                        object.getTypeCode()
-                ))
-                .toList();
+            .map(object -> new RegionObjectResponseDto(
+                object.getId(),
+                object.getName(),
+                object.getTypeCode()
+            ))
+            .toList();
     }
 
     private record RegionGroup(String name, List<RegionObjectTypeCountDto> objectTypes) {
