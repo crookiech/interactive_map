@@ -78,9 +78,8 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                                 -- Ищем родительский объект с типом REGION и возвращаем его name
                                 SELECT pt.name
                                 FROM parent_tree pt
-                                WHERE pt.id = vit.object_id
-                                   OR pt.id = vit.parent_id
-                                AND pt.type_code = 'REGION'
+                                WHERE (pt.id = vit.object_id OR pt.id = vit.parent_id)
+                                  AND pt.type_code = 'REGION'
                                 LIMIT 1
                             ),
                             'Unknown'
