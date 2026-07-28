@@ -95,7 +95,7 @@ public interface GeoObjectRepository extends JpaRepository<GeoObject, Long> {
             ) AS geometryJson,
             go.parent_id AS parentId, go.label_priority AS labelPriority, go.is_segment AS isSegment,
             go.segment_order AS segmentOrder, COUNT(v.id) AS violationCount,
-            ARRAY_REMOVE(ARRAY_AGG(DISTINCT vt.name), NULL) AS violationTypes
+            ARRAY_REMOVE(ARRAY_AGG(DISTINCT vt.code), NULL) AS violationTypes
         FROM geo_objects go
         JOIN geo_object_types got ON got.id = go.type_id
         LEFT JOIN geo_object_violation gov ON gov.object_id = go.id

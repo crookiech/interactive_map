@@ -10,6 +10,8 @@ import org.example.mappro.tiles.violationtype.model.ViolationType;
 import org.example.mappro.tiles.violationtype.repository.ViolationTypeRepository;
 import org.example.mappro.exception.ResourceConflictException;
 
+import java.util.List;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -19,15 +21,17 @@ public class ViolationTypeService {
 
     @Transactional
     public ViolationTypeResponseDto createViolationType(ViolationTypeCreateDto dto) {
-        if (violationTypeRepository.findByName(dto.getName()).isPresent()) {
+        String code = dto.getCode().trim().toUpperCase(java.util.Locale.ROOT);
+        if (violationTypeRepository.findByCode(code).isPresent()) {
             throw new ResourceConflictException(
-                "VIOLATION_TYPE_NAME_CONFLICT",
-                "ViolationType with type '" + dto.getName() + "' already exists"
+                "VIOLATION_TYPE_CODE_CONFLICT",
+                "Violation type with code '" + code + "' already exists"
             );
         }
         
         ViolationType violationType = new ViolationType();
-        violationType.setName(dto.getName());
+        violationType.setCode(code);
+        violationType.setDisplayName(dto.getDisplayName().trim());
 
         ViolationType saved = violationTypeRepository.save(violationType);
         log.info("Created violation type with id: {}", saved.getId());
@@ -35,10 +39,18 @@ public class ViolationTypeService {
         return mapToResponseDto(saved);
     }
 
+    @Transactional(readOnly = true)
+    public List<ViolationTypeResponseDto> getViolationTypes() {
+        return violationTypeRepository.findAll().stream()
+                .map(this::mapToResponseDto)
+                .toList();
+    }
+
     private ViolationTypeResponseDto mapToResponseDto(ViolationType violationType) {
         return ViolationTypeResponseDto.builder()
             .id(violationType.getId())
-            .name(violationType.getName())
+            .code(violationType.getCode())
+            .displayName(violationType.getDisplayName())
             .build();
     }
 }

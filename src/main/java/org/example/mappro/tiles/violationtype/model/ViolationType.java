@@ -11,5 +11,9 @@ public class ViolationType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(length = 100)
+    private String code;
+
+    @Column(name = "display_name")
+    private String displayName;
 }

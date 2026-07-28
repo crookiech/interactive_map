@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ViolationResponseDto {
     private Long id;
-    private String type;
+    private String typeCode;
+    private String typeName;
     private String severity;
     private LocalDateTime date;
     private String description;

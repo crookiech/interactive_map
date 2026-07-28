@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Data
 public class ViolationCreateDto {
-    @NotBlank(message = "Type is required")
-    private String type;
+    @NotBlank(message = "Type code is required")
+    private String typeCode;
 
     @NotBlank(message = "Severity is required")
     private String severity;

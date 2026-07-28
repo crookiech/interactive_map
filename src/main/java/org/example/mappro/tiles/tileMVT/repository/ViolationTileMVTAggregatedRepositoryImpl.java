@@ -53,7 +53,8 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                 violations_in_tile AS (
                     SELECT 
                         v.id,
-                        vt.name AS violation_type,
+                        vt.code AS violation_type_code,
+                        vt.display_name AS violation_type_name,
                         go.id AS object_id,
                         go.geometry,
                         go.parent_id
@@ -70,7 +71,8 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                 ),
                 violations_with_region AS (
                     SELECT 
-                        vit.violation_type,
+                        vit.violation_type_code,
+                        vit.violation_type_name,
                         vit.id,
                         vit.geometry,
                         COALESCE(
@@ -89,7 +91,8 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                 aggregated AS (
                     SELECT 
                         region_name,
-                        violation_type,
+                        violation_type_code,
+                        violation_type_name,
                         COUNT(DISTINCT id) AS count,
                         ST_Centroid(
                             ST_Collect(
@@ -107,17 +110,18 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
 
             if (types != null && !types.isEmpty()) {
                 sql += """
-                        AND violation_type = ANY(CAST(:types AS text[]))
+                        AND violation_type_code = ANY(CAST(:types AS text[]))
                     """;
                 params.addValue("types", types.toArray(new String[0]));
             }
 
             sql += """
-                    GROUP BY region_name, violation_type
+                    GROUP BY region_name, violation_type_code, violation_type_name
                 )
                 SELECT 
                     region_name AS region,
-                    violation_type AS type,
+                    violation_type_code AS type,
+                    violation_type_name AS "typeName",
                     count,
                     ST_AsMVTGeom(
                         geom,

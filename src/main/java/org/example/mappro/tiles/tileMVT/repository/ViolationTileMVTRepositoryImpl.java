@@ -37,7 +37,8 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
                     v.date,
                     v.description,
                     v.status,
-                    vt.name AS type,
+                    vt.code AS type,
+                    vt.display_name AS "typeName",
                     go.id AS object_id,
                     go.name AS object_name,
                     ST_AsMVTGeom(
@@ -69,7 +70,7 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
 
             if (types != null && !types.isEmpty()) {
                 sql += """
-                        AND vt.name = ANY(CAST(:types AS text[]))
+                        AND vt.code = ANY(CAST(:types AS text[]))
                     """;
                 params.addValue("types", types.toArray(new String[0]));
             }

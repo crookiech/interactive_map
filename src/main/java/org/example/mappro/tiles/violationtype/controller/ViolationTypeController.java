@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/violation-types")
 @Slf4j
@@ -22,6 +24,12 @@ import lombok.extern.slf4j.Slf4j;
 public class ViolationTypeController {
 
     private final ViolationTypeService violationTypeService;
+
+    @GetMapping
+    @Operation(summary = "Получение типов нарушений")
+    public ResponseEntity<List<ViolationTypeResponseDto>> getViolationTypes() {
+        return ResponseEntity.ok(violationTypeService.getViolationTypes());
+    }
 
     @PostMapping
     @Operation(summary = "Создание типа инцидента")

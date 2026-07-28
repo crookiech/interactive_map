@@ -15,7 +15,8 @@ public class GeoObjectViolationResponseDto {
     private String objectName;
     private String objectType;
     private Long violationId;
-    private String violationType;
+    private String violationTypeCode;
+    private String violationTypeName;
     private String violationSeverity;
     private String violationDescription;
     private String status;

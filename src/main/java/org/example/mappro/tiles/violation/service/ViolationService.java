@@ -25,10 +25,10 @@ public class ViolationService {
 
     @Transactional
     public ViolationResponseDto createViolation(ViolationCreateDto dto) {
-        ViolationType type = violationTypeRepository.findByName(dto.getType())
+        ViolationType type = violationTypeRepository.findByCode(dto.getTypeCode().trim().toUpperCase(java.util.Locale.ROOT))
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "VIOLATION_TYPE_NOT_FOUND",
-                        "Violation type not found: " + dto.getType()
+                        "Violation type not found: " + dto.getTypeCode()
                 ));
         
         Violation violation = new Violation();
@@ -71,7 +71,8 @@ public class ViolationService {
     private ViolationResponseDto mapToResponseDto(Violation violation) {
         return ViolationResponseDto.builder()
                 .id(violation.getId())
-                .type(violation.getType() != null ? violation.getType().getName() : null)
+                .typeCode(violation.getType() != null ? violation.getType().getCode() : null)
+                .typeName(violation.getType() != null ? violation.getType().getDisplayName() : null)
                 .severity(violation.getSeverity())
                 .date(violation.getDate())
                 .description(violation.getDescription())
