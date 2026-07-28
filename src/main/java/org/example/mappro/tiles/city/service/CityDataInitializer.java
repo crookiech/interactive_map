@@ -19,7 +19,6 @@ import org.locationtech.jts.geom.PrecisionModel;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,16 +59,10 @@ public class CityDataInitializer implements ApplicationRunner {
 
     private final CityRepository cityRepository;
     private final ObjectMapper objectMapper;
-    private final JdbcTemplate jdbcTemplate;
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        jdbcTemplate.execute("""
-            CREATE INDEX IF NOT EXISTS cities_geometry_gix
-            ON cities USING GIST (geometry)
-            """);
-
         Set<String> existingIds = cityRepository.findAllExternalIds();
         List<City> missingCities = new ArrayList<>();
         readSelectedCities().values().stream()
