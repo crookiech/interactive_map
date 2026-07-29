@@ -31,23 +31,12 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
         try {
 
             String sql = """
-                SELECT 
-                    v.id,
-                    v.severity,
-                    v.date,
-                    v.description,
-                    v.status,
-                    vt.code AS type,
-                    vt.display_name AS "typeName",
-                    go.id AS object_id,
-                    go.name AS object_name,
-                    ST_AsMVTGeom(
-                        ST_Transform(go.geometry, 3857),
-                        ST_TileEnvelope(:z, :x, :y),
-                        4096,
-                        64,
-                        true
-                    ) AS geom
+                WITH filtered_violations AS (
+                    SELECT
+                        v.id AS violation_id,
+                        vt.code AS violation_type_code,
+                        vt.display_name AS violation_type_name,
+                        go.id AS object_id
                 FROM violations v
                 JOIN geo_object_violation gov ON gov.violation_id = v.id
                 JOIN geo_objects go ON go.id = gov.object_id
@@ -94,6 +83,49 @@ public class ViolationTileMVTRepositoryImpl implements ViolationTileMVTRepositor
                         AND got.code != 'CITY'
                     """;
             }
+
+            sql += """
+                ),
+                violations_by_type AS (
+                    SELECT
+                        object_id,
+                        violation_type_code,
+                        violation_type_name,
+                        COUNT(DISTINCT violation_id) AS count
+                    FROM filtered_violations
+                    GROUP BY object_id, violation_type_code, violation_type_name
+                ),
+                violations_by_object AS (
+                    SELECT
+                        object_id,
+                        SUM(count)::bigint AS violation_count,
+                        jsonb_agg(
+                            jsonb_build_object(
+                                'type', violation_type_code,
+                                'typeName', violation_type_name,
+                                'count', count
+                            )
+                            ORDER BY count DESC, violation_type_code
+                        ) AS violations
+                    FROM violations_by_type
+                    GROUP BY object_id
+                )
+                SELECT
+                    vbo.object_id AS id,
+                    vbo.object_id,
+                    go.name AS object_name,
+                    vbo.violation_count AS "violationCount",
+                    vbo.violations::text AS types,
+                    ST_AsMVTGeom(
+                        ST_Transform(go.geometry, 3857),
+                        ST_TileEnvelope(:z, :x, :y),
+                        4096,
+                        64,
+                        true
+                    ) AS geom
+                FROM violations_by_object vbo
+                JOIN geo_objects go ON go.id = vbo.object_id
+                """;
 
             String mvtSql = """
                 WITH tile_data AS (
