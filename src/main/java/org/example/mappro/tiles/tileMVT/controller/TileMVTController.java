@@ -23,27 +23,25 @@ public class TileMVTController {
         @PathVariable int z,
         @PathVariable int x,
         @PathVariable int y,
-
         @RequestParam(required = false) List<String> types,
         @RequestParam(required = false) String lang,
-
         @RequestParam(required = false) List<Long> regionIds
     ) {
         log.debug("Getting tile z={}, x={}, y={}, regionIds={}", z, x, y, regionIds);
 
         TileRequestDto request = TileRequestDto.builder()
-                .z(z)
-                .x(x)
-                .y(y)
-                .types(types)
-                .lang(lang)
-                .regionIds(regionIds)
-                .build();
+            .z(z)
+            .x(x)
+            .y(y)
+            .types(types)
+            .lang(lang)
+            .regionIds(regionIds)
+            .build();
 
         byte[] tile = tileService.getTile(request);
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_TYPE, "application/x-protobuf")
-                .body(tile);
+            .header(HttpHeaders.CONTENT_TYPE, "application/x-protobuf")
+            .body(tile);
     }
 }

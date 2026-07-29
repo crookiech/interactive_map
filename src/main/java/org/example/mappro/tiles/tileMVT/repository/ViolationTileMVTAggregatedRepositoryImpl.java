@@ -24,16 +24,8 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
         log.info("Getting aggregated violation MVT tile: z={}, x={}, y={}, types={}", z, x, y, types);
 
         try {
-            // Проверяем валидность координат
-            int maxXY = (int) Math.pow(2, z) - 1;
-            if (x < 0 || x > maxXY || y < 0 || y > maxXY) {
-                log.warn("Invalid tile coordinates: z={}, x={}, y={}. Max value: {}", z, x, y, maxXY);
-                return new byte[0];
-            }
-
             String sql = """
                 WITH RECURSIVE parent_tree AS (
-                    -- Находим все объекты в тайле
                     SELECT 
                         go.id,
                         go.parent_id,
@@ -49,6 +41,13 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                         )
                         AND got.lod_min <= :z
                         AND got.lod_max >= :z
+                ),
+                region_geometry AS (
+                    SELECT DISTINCT
+                        pt.name AS region_name,
+                        ST_Centroid(ST_Transform(pt.geometry, 3857)) AS region_center
+                    FROM parent_tree pt
+                    WHERE pt.type_code = 'REGION'
                 ),
                 violations_in_tile AS (
                     SELECT 
@@ -77,7 +76,6 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                         vit.geometry,
                         COALESCE(
                             (
-                                -- Ищем родительский объект с типом REGION и возвращаем его name
                                 SELECT pt.name
                                 FROM parent_tree pt
                                 WHERE (pt.id = vit.object_id OR pt.id = vit.parent_id)
@@ -90,16 +88,11 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                 ),
                 aggregated AS (
                     SELECT 
-                        region_name,
-                        violation_type_code,
-                        violation_type_name,
-                        COUNT(DISTINCT id) AS count,
-                        ST_Centroid(
-                            ST_Collect(
-                                ST_Transform(geometry, 3857)
-                            )
-                        ) AS geom
-                    FROM violations_with_region
+                        vwr.region_name,
+                        vwr.violation_type_code,
+                        vwr.violation_type_name,
+                        COUNT(DISTINCT vwr.id) AS count
+                    FROM violations_with_region vwr
                     WHERE 1=1
                 """;
 
@@ -110,28 +103,42 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
 
             if (types != null && !types.isEmpty()) {
                 sql += """
-                        AND violation_type_code = ANY(CAST(:types AS text[]))
+                        AND vwr.violation_type_code = ANY(CAST(:types AS text[]))
                     """;
                 params.addValue("types", types.toArray(new String[0]));
             }
 
             sql += """
-                    GROUP BY region_name, violation_type_code, violation_type_name
+                    GROUP BY vwr.region_name, vwr.violation_type_code, vwr.violation_type_name
+                ),
+                violations_by_region AS (
+                    SELECT 
+                        region_name,
+                        jsonb_agg(
+                            jsonb_build_object(
+                                'type', violation_type_code,
+                                'typeName', violation_type_name,
+                                'count', count
+                            )
+                            ORDER BY count DESC
+                        ) AS violations
+                    FROM aggregated
+                    GROUP BY region_name
                 )
                 SELECT 
-                    region_name AS region,
-                    violation_type_code AS type,
-                    violation_type_name AS "typeName",
-                    count,
+                    vbr.region_name AS region,
+                    vbr.violations AS types,
                     ST_AsMVTGeom(
-                        geom,
+                        rg.region_center,
                         ST_TileEnvelope(:z, :x, :y),
                         4096,
                         64,
                         true
                     ) AS geom
-                FROM aggregated
-                WHERE geom IS NOT NULL
+                FROM violations_by_region vbr
+                LEFT JOIN region_geometry rg ON rg.region_name = vbr.region_name
+                WHERE rg.region_center IS NOT NULL
+                  AND ST_Intersects(rg.region_center, ST_TileEnvelope(:z, :x, :y))
                 """;
 
             String mvtSql = """
