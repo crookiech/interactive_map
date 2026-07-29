@@ -118,8 +118,7 @@ public class GeoObjectTypeService {
     @Transactional(readOnly = true)
     public List<GeoObjectTypeResponseDto> getGeoObjectTypes() {
         return geoObjectTypeRepository.findAll().stream()
-            .sorted(Comparator.comparing(GeoObjectType::getCode, 
-                Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER)))
+            .sorted(Comparator.comparing(GeoObjectType::getCode, Comparator.nullsLast(String.CASE_INSENSITIVE_ORDER)))
             .map(this::mapToResponseDto)
             .toList();
     }

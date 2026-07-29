@@ -2,9 +2,12 @@ package org.example.mappro.tiles.geoobject.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
+import org.example.mappro.tiles.geoobject.dto.GeoObjectPatchDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionObjectResponseDto;
@@ -18,6 +21,7 @@ import org.locationtech.jts.io.WKTReader;
 import org.locationtech.jts.geom.Geometry;
 
 import org.example.mappro.exception.RequestValidationException;
+import org.example.mappro.exception.ResourceConflictException;
 import org.example.mappro.exception.ResourceNotFoundException;
 
 import java.util.List;
@@ -164,7 +168,7 @@ public class GeoObjectService {
 
         if (types != null && !types.isEmpty() && types.stream()
                 .filter(java.util.Objects::nonNull)
-                .map(String::trim)
+                .map(type -> type.trim())
                 .noneMatch(objectType.getCode()::equalsIgnoreCase)) {
             return List.of();
         }
@@ -206,4 +210,83 @@ public class GeoObjectService {
             .build();
     }
 
+    @Transactional
+    @CacheEvict(value = "tiles", allEntries = true)
+    public GeoObjectResponseDto patchGeoObject(Long id, GeoObjectPatchDto dto) {
+        GeoObject geoObject = findById(id);
+
+        if (dto.getName() != null && !geoObject.getName().equals(dto.getName())) {
+            if (geoObjectRepository.findByName(dto.getName()).isPresent()) {
+                throw new ResourceConflictException(
+                    "GEO_OBJECT_NAME_CONFLICT",
+                    "GeoObject with name '" + dto.getName() + "' already exists"
+                );
+            }
+            geoObject.setName(dto.getName());
+        }
+
+        if (dto.getParentId() != null) {
+            if (dto.getParentId().equals(id)) {
+                throw new RequestValidationException(
+                    "INVALID_PARENT",
+                    "Object cannot be its own parent"
+                );
+            }
+            GeoObject parent = geoObjectRepository.findById(dto.getParentId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                    "GEO_OBJECT_PARENT_NOT_FOUND",
+                    "Parent not found: " + dto.getParentId()
+                ));
+            geoObject.setParent(parent);
+        }
+
+        if (dto.getTypeId() != null) {
+            GeoObjectType type = geoObjectTypeRepository.findById(dto.getTypeId())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                    "GEO_OBJECT_TYPE_NOT_FOUND",
+                    "Object type not found: " + dto.getTypeId()
+                ));
+            geoObject.setType(type);
+        }
+
+        if (dto.getGeometryWkt() != null) {
+            try {
+                Geometry geometry = wktReader.read(dto.getGeometryWkt());
+                geometry.setSRID(4326);
+                geoObject.setGeometry(geometry);
+            } catch (ParseException e) {
+                throw new RequestValidationException(
+                    "INVALID_WKT_GEOMETRY",
+                    "Invalid WKT geometry",
+                    e
+                );
+            }
+        }
+
+        if (dto.getLabelPriority() != null) {
+            geoObject.setLabelPriority(dto.getLabelPriority());
+        }
+        if (dto.getIsSegment() != null) {
+            geoObject.setIsSegment(dto.getIsSegment());
+        }
+        if (dto.getSegmentOrder() != null) {
+            geoObject.setSegmentOrder(dto.getSegmentOrder());
+        }
+
+        GeoObject saved = geoObjectRepository.save(geoObject);
+        log.info("Patched geo object with id: {}", saved.getId());
+        return convertToResponseDto(saved);
+    }
+
+    private ResourceNotFoundException typeNotFound(Long id) {
+        return new ResourceNotFoundException(
+            "GEO_OBJECT_NOT_FOUND",
+            "GeoObject with id " + id + " not found"
+        );
+    }
+
+    private GeoObject findById(Long id) {
+        return geoObjectRepository.findById(id)
+            .orElseThrow(() -> typeNotFound(id));
+    }
 }

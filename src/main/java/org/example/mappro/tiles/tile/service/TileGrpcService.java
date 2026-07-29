@@ -12,7 +12,6 @@ import org.example.mappro.tiles.grpc.HealthResponse;
 import org.example.mappro.tiles.grpc.TileRequest;
 import org.example.mappro.tiles.grpc.TileServiceGrpc;
 import org.example.mappro.tiles.tile.dto.TileRequestDto;
-import java.time.LocalDate;
 
 @GrpcService
 @RequiredArgsConstructor

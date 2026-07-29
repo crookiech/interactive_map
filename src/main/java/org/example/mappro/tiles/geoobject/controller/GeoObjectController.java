@@ -1,20 +1,19 @@
 package org.example.mappro.tiles.geoobject.controller;
 
 import org.example.mappro.tiles.geoobject.dto.GeoObjectCreateDto;
+import org.example.mappro.tiles.geoobject.dto.GeoObjectPatchDto;
 import org.example.mappro.tiles.geoobject.dto.GeoObjectResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionResponseDto;
 import org.example.mappro.tiles.geoobject.dto.RegionObjectResponseDto;
 import org.example.mappro.tiles.geoobject.service.GeoObjectService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -67,6 +66,15 @@ public class GeoObjectController {
             @RequestParam(required = false) List<String> types
     ) {
         return ResponseEntity.ok(geoObjectService.getRegionObjects(regionId, typeId, types));
+    }
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "Частичное изменение объекта")
+    public ResponseEntity<GeoObjectResponseDto> patchGeoObject(
+        @PathVariable Long id,
+        @Valid @RequestBody GeoObjectPatchDto dto
+    ) {
+        return ResponseEntity.ok(geoObjectService.patchGeoObject(id, dto));
     }
 
 }
