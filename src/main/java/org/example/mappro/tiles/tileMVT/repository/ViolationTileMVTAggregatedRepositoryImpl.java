@@ -127,7 +127,7 @@ public class ViolationTileMVTAggregatedRepositoryImpl implements ViolationTileMV
                 )
                 SELECT 
                     vbr.region_name AS region,
-                    vbr.violations AS types,
+                    vbr.violations::text AS types,
                     ST_AsMVTGeom(
                         rg.region_center,
                         ST_TileEnvelope(:z, :x, :y),

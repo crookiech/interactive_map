@@ -33,7 +33,8 @@ class ViolationTileMVTAggregatedRepositoryImplTest {
         ));
         assertTrue(normalizedSql.contains("vt.code AS violation_type_code"));
         assertTrue(normalizedSql.contains("vt.display_name AS violation_type_name"));
-        assertTrue(normalizedSql.contains("violation_type_code AS type"));
-        assertTrue(normalizedSql.contains("violation_type_name AS \"typeName\""));
+        assertTrue(normalizedSql.contains("'type', violation_type_code"));
+        assertTrue(normalizedSql.contains("'typeName', violation_type_name"));
+        assertTrue(normalizedSql.contains("vbr.violations::text AS types"));
     }
 }
